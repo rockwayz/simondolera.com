@@ -259,20 +259,16 @@ main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidd
 h1 { animation: h1in 1s var(--ease-out) 0.10s both; }
 .role { animation: fade 0.8s var(--ease-out) 0.26s both; }
 .bio { animation: fade 0.8s var(--ease-out) 0.38s both; }
-.status { animation: fade 0.8s var(--ease-out) 0.46s both; }
 nav a { animation: fade 0.7s var(--ease-out) both; }
 nav a:nth-child(1) { animation-delay: 0.54s; }
 nav a:nth-child(2) { animation-delay: 0.62s; }
 nav a:nth-child(3) { animation-delay: 0.70s; }
 nav a:nth-child(4) { animation-delay: 0.78s; }
-.meta { animation: fade 0.7s var(--ease-out) 0.86s both; }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 .mark { display: block; width: clamp(8rem, 13.42vw, 11.5rem); height: auto; aspect-ratio: 1; margin-bottom: 48px; }
 h1 { margin: 0 0 16px; font-family: 'Archivo', 'Archivo-fallback', Helvetica, Arial, sans-serif; font-weight: 600; font-stretch: 125%; font-size: 4rem; font-size: clamp(3rem, 7vw, 6rem); line-height: 1.05; letter-spacing: 0; color: var(--paper); text-transform: uppercase; }
 .role { margin: 0 0 40px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; font-size: clamp(0.6875rem, 0.9vw, 0.8125rem); text-wrap: balance; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); line-height: 1.7; }
-.bio { margin: 0 0 24px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 1.3rem; font-size: clamp(1.25rem, 1.65vw, 1.5rem); line-height: 1.62; color: var(--mid); max-width: 56ch; text-wrap: pretty; }
-.status { margin: 0 0 56px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; font-size: clamp(0.6875rem, 0.9vw, 0.8125rem); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); line-height: 1.7; text-wrap: balance; }
-.status .live { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-right: 10px; vertical-align: 1px; }
+.bio { margin: 0 0 56px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 1.3rem; font-size: clamp(1.25rem, 1.65vw, 1.5rem); line-height: 1.62; color: var(--mid); max-width: 56ch; text-wrap: pretty; }
 nav { display: flex; flex-wrap: wrap; gap: 20px 48px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
 nav a { display: inline-flex; align-items: center; gap: 10px; color: var(--paper); padding: 14px 10px; margin: -14px -10px; border-radius: 6px; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: color 0.2s ease, background 0.2s ease, transform var(--dur-micro) var(--ease-out); }
 nav a svg { transition: transform var(--dur-ui) var(--ease-swift); }
@@ -289,17 +285,13 @@ nav a:active span { text-decoration-color: var(--signal); }
 nav a:active svg:last-of-type { transform: translate(3px, -3px) scale(0.92); }
 nav a.email { color: var(--signal); }
 nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inline-block; min-width: 6ch; }
-.meta { margin-top: 56px; border-top: 1px solid rgba(248, 244, 240, 0.08); padding-top: 16px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); opacity: 0.8; font-variant-numeric: tabular-nums; }
-.meta a { color: inherit; }
-.meta a:hover { color: var(--paper); text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 640px) {
   main { padding: 32px 24px; }
   .mark { width: 224px; margin-bottom: 24px; }
   h1 { font-size: clamp(2.5rem, 12.5vw, 3.25rem); margin-bottom: 12px; }
   .role { margin-bottom: 20px; }
-  .bio { font-size: 0.97rem; line-height: 1.55; margin-bottom: 14px; }
-  .status { margin-bottom: 24px; }
-  .status .tz, .paper-year, .meta { display: none; }
+  .bio { font-size: 0.97rem; line-height: 1.55; margin-bottom: 32px; }
+  .paper-year { display: none; }
   nav { gap: 20px 28px; }
   .ghost { width: min(180vh, 1400px); }
 }
@@ -309,9 +301,8 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   main { min-height: auto; background: #fff; }
   h1 { color: #040404; }
   .bio { color: #222; }
-  .role, .status, nav a, .meta { color: #555; }
+  .role, nav a { color: #555; }
   nav a.email { color: #b35c10; }
-  .status .live { background: #b35c10; }
   .mark [stroke='#F8F4F0'] { stroke: #040404; }
   .mark [stroke='#040404'] { stroke: #fff; }
   .mark .tri { fill: #b35c10; }
@@ -323,8 +314,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   .mark { width: 128px; margin-bottom: 14px; }
   h1 { margin-bottom: 10px; }
   .role { margin-bottom: 16px; }
-  .bio { font-size: 0.94rem; margin-bottom: 12px; }
-  .status { margin-bottom: 20px; }
+  .bio { font-size: 0.94rem; margin-bottom: 24px; }
 }
 </style>
 </head>
@@ -406,8 +396,6 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
 
       <p class="bio">I construct machine-checked guarantees for AI systems: formal proof where verification is tractable, explicit bounds where it is not. Every assumption is stated, every residual risk quantified — nothing rests on confidence alone.</p>
 
-      <p class="status"><span class="live" aria-hidden="true"></span>Currently — mechanizing a verification calculus in Lean 4 <span class="sep" aria-hidden="true">·</span> One audit slot open from Q4 2026<span class="tz"> <span class="sep" aria-hidden="true">·</span> US Eastern</span></p>
-
       <nav aria-label="Links">
         <a href="https://doi.org/10.5281/zenodo.21341445" title="Bounded-Uncertainty Verification for Artificial Intelligence Systems — doi.org/10.5281/zenodo.21341445">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 1.5 H9.5 L13 5 V14.5 H4 Z"></path><path d="M9.5 1.5 V5 H13"></path></svg>
@@ -429,8 +417,6 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
           <span aria-live="polite">Email</span>
         </a>
       </nav>
-
-      <footer class="meta">simondolera.com <span class="sep" aria-hidden="true">·</span> updated 2026-07 <span class="sep" aria-hidden="true">·</span> <a href="https://github.com/rockwayz/bounded-uncertainty-verification" title="Lean 4 formalization, zero sorry">Lean 4 · no sorry</a></footer>
 
     </div>
   </div>
