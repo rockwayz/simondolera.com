@@ -234,11 +234,8 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); }
 nav a.email:hover span { text-decoration-color: var(--signal); }
 nav a.email:hover { color: #FFF6E8; }
 @media (max-width: 640px) {
-  main { padding: 32px 20px; }
-  /* stretch the card over the full viewport: free height distributes into the
-     gaps between the groups (mark / name / role / bio / links) */
-  .card { min-height: calc(100svh - 64px); justify-content: space-between; }
-  .mark { width: 112px; height: 112px; margin-bottom: 22px; }
+  main { padding: 24px 20px; }
+  .mark { width: 224px; height: 224px; margin-bottom: 22px; }
   h1 { font-size: clamp(44px, 13.5vw, 54px); margin-bottom: 12px; }
   .role { margin-bottom: 22px; font-size: 10px; }
   .bio { font-size: 16.5px; line-height: 1.66; margin-bottom: 28px; }
@@ -256,8 +253,11 @@ nav a.email:hover { color: #FFF6E8; }
   .role .sep, nav a.email { color: #b35c10; }
 }
 @media (max-width: 640px) and (max-height: 700px) {
-  .mark { width: 92px; height: 92px; margin-bottom: 18px; }
-  .bio { font-size: 15.5px; margin-bottom: 24px; }
+  main { padding: 20px; }
+  .mark { width: 128px; height: 128px; margin-bottom: 14px; }
+  h1 { margin-bottom: 10px; }
+  .role { margin-bottom: 16px; }
+  .bio { font-size: 15px; margin-bottom: 20px; }
 }
 </style>
 </head>
