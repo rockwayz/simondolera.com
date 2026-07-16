@@ -234,7 +234,10 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); }
 nav a.email:hover span { text-decoration-color: var(--signal); }
 nav a.email:hover { color: #FFF6E8; }
 @media (max-width: 640px) {
-  main { padding: 24px 20px; }
+  main { padding: 32px 20px; }
+  /* stretch the card over the full viewport: free height distributes into the
+     gaps between the groups (mark / name / role / bio / links) */
+  .card { min-height: calc(100svh - 64px); justify-content: space-between; }
   .mark { width: 112px; height: 112px; margin-bottom: 22px; }
   h1 { font-size: clamp(44px, 13.5vw, 54px); margin-bottom: 12px; }
   .role { margin-bottom: 22px; font-size: 10px; }
@@ -242,9 +245,6 @@ nav a.email:hover { color: #FFF6E8; }
   nav { gap: 14px 28px; }
   .ghost { width: 228vh; }
   .role { font-size: 11px; }
-}
-@media (max-width: 500px) {
-  main { padding-top: 15vh; }
 }
 @media print {
   .ghost, #orb, #torch, #shade { display: none !important; }
