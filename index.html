@@ -196,20 +196,21 @@ html, body { margin: 0; padding: 0; background: var(--ink); color-scheme: dark; 
 a { color: var(--dim); text-decoration: none; }
 a:hover { color: var(--paper); }
 a:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
-#orb { position: fixed; left: 0; top: 0; z-index: 6; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; pointer-events: none; opacity: 0; will-change: transform; background: radial-gradient(circle, #FFF6E8 0%, #F8E7C8 40%, rgba(234, 126, 35, 0.55) 70%, rgba(234, 126, 35, 0) 100%); box-shadow: 0 0 18px 6px rgba(255, 240, 214, 0.55), 0 0 48px 18px rgba(234, 126, 35, 0.3); }
+#orb { position: fixed; left: 0; top: 0; z-index: 7; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; pointer-events: none; opacity: 0; will-change: transform; background: radial-gradient(circle, #FFF6E8 0%, #F8E7C8 40%, rgba(234, 126, 35, 0.55) 70%, rgba(234, 126, 35, 0) 100%); box-shadow: 0 0 18px 6px rgba(255, 240, 214, 0.55), 0 0 48px 18px rgba(234, 126, 35, 0.3); }
 #shade, #torch, #orb { display: none; }
 @media (hover: hover) and (pointer: fine) { #shade, #torch, #orb { display: block; } }
 .has-orb main, .has-orb main a { cursor: none; }
 #shade { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; background: rgba(0, 0, 0, 0.18); }
 #torch { position: fixed; left: 0; top: 0; z-index: 5; width: 360px; height: 360px; margin: -180px 0 0 -180px; border-radius: 50%; pointer-events: none; will-change: transform; background: radial-gradient(circle, rgba(248, 244, 240, 0.10) 0%, rgba(248, 244, 240, 0.035) 40%, rgba(248, 244, 240, 0) 72%); }
 main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidden; display: flex; align-items: center; padding: 64px 24px; }
-.ghost { position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3200px); height: auto; opacity: 0.32; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; }
-.wrap { width: 100%; max-width: 1240px; margin: 0 auto; position: relative; }
-.card { max-width: 1000px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+.ghost { position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3200px); height: auto; opacity: 0.16; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.wrap { width: 100%; max-width: 1240px; margin: 0 auto; position: relative; z-index: 6; }
+.card { max-width: 1000px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; position: relative; }
+.card::before { content: ''; position: absolute; z-index: -1; left: -12%; right: -12%; top: -6%; height: 60%; background: radial-gradient(ellipse 90% 95% at 35% 45%, var(--ink) 45%, rgba(4, 4, 4, 0) 78%); pointer-events: none; }
 @keyframes fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes markin { from { opacity: 0; transform: scale(0.92) rotate(-8deg); } to { opacity: 1; transform: none; } }
 @keyframes drift { from { transform: translate(50%, -50%) rotate(0deg); } to { transform: translate(50%, -50%) rotate(360deg); } }
-@keyframes ghostin { from { opacity: 0; } to { opacity: 0.32; } }
+@keyframes ghostin { from { opacity: 0; } to { opacity: 0.16; } }
 a { transition: color 0.25s ease; }
 .ghost { animation: ghostin 2s ease-out both, drift 480s linear 2s infinite; will-change: transform; }
 .mark { animation: markin 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
@@ -221,11 +222,11 @@ nav { animation: fade 0.8s ease-out 0.6s both; }
 .mark { display: block; width: clamp(128px, 12.5vw, 184px); height: clamp(128px, 12.5vw, 184px); margin-bottom: 44px; }
 h1 { margin: 0 0 16px; font-family: 'Archivo', Helvetica, Arial, sans-serif; font-weight: 600; font-stretch: 125%; font-size: 64px; font-size: clamp(48px, 7vw, 96px); line-height: 1.05; letter-spacing: 0.01em; color: var(--paper); text-transform: uppercase; }
 .role { margin: 0 0 44px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-size: clamp(11px, 0.9vw, 13px); text-wrap: balance; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); line-height: 1.7; }
-.role .sep { color: var(--signal); }
+.role .sep { color: var(--dim); }
 .bio { margin: 0 0 56px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 21px; font-size: clamp(20px, 1.65vw, 24px); line-height: 1.75; color: var(--mid); max-width: 60ch; text-wrap: pretty; }
 nav { display: flex; flex-wrap: wrap; gap: 16px 48px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
 nav a { display: inline-flex; align-items: center; gap: 10px; color: var(--paper); padding: 12px 4px; margin: -12px -4px; }
-nav a span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; text-decoration-color: rgba(248, 244, 240, 0.35); transition: text-decoration-color 0.25s ease; }
+nav a span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; text-decoration-color: rgba(248, 244, 240, 0.55); transition: text-decoration-color 0.25s ease; }
 nav a:hover { color: var(--signal); }
 nav a:hover span, nav a:active span { text-decoration-color: var(--signal); }
 nav a:active { color: var(--signal); }
@@ -242,6 +243,9 @@ nav a.email:hover { color: #FFF6E8; }
   nav { gap: 14px 28px; }
   .ghost { width: 228vh; }
   .role { font-size: 11px; }
+}
+@media (max-width: 500px) {
+  main { padding-top: 15vh; }
 }
 @media print {
   .ghost, #orb, #torch, #shade { display: none !important; }
@@ -288,25 +292,25 @@ nav a.email:hover { color: #FFF6E8; }
       <path id="gp-ring-12" d="M 249.73 52.79 A 157 157 0 1 1 249.32 51.48" fill="none"></path>
       <path id="gp-ring-13" d="M 17.50 242.89 A 165 165 0 1 1 18.75 243.61" fill="none"></path>
     </defs>
-    <text font-size="5.5" fill="#EA7E23" letter-spacing="0.4"><textPath href="#gp-band-a-outer">theorem assurance_bound : ∀ x, verified x → risk x ≤ ε</textPath></text>
-    <text font-size="5.5" fill="#6FB7AE" letter-spacing="0.4"><textPath href="#gp-band-a-inner">fn verify(claim: &amp;Claim) -&gt; Result&lt;Proof, Bound&gt;</textPath></text>
-    <text font-size="5.5" fill="#E8E2DA" letter-spacing="0.4"><textPath href="#gp-band-b-outer">(check-sat) (get-model)</textPath></text>
-    <text font-size="5.5" fill="#E2C044" letter-spacing="0.4"><textPath href="#gp-band-b-inner">(assert (≤ risk ε))</textPath></text>
-    <text font-size="4.5" fill="#7A9ECC" letter-spacing="0.4"><textPath href="#gp-circle">lemma proof_runs_out : ¬ ∀ (s : System), Decidable (safe s) := by exact halting_reduction</textPath></text>
-    <text font-size="4.5" fill="#B08BD4" letter-spacing="0.4"><textPath href="#gp-line">#check @assurance_bound</textPath></text>
-    <text font-size="4" fill="#E2C044" letter-spacing="0.4" opacity="0.65"><textPath href="#gp-ring-1">(set-logic QF_LIA) (assert (&lt;= risk bound)) (check-sat) (get-unsat-core)</textPath></text>
-    <text font-size="4.5" fill="#6FB7AE" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-2">impl Audit for Verifier { fn admit(&amp;self, c: Claim) -&gt; Verdict } // prove-or-clean-stop</textPath></text>
-    <text font-size="4.5" fill="#D96A6A" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-3">theorem no_false_assurance : ∀ v, admits v → certified v := by exact audit_sound -- verified end-to-end</textPath></text>
-    <text font-size="4.5" fill="#7A9ECC" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-4">def assurance (S : System) : Prop := ∀ c ∈ S.claims, proved c ∨ bounded c -- soundness before persuasion</textPath></text>
-    <text font-size="4.5" fill="#E8E2DA" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-ring-5">structure Evidence where claim : Claim proof : Proof bound : ℝ deriving Repr -- evidence over eloquence</textPath></text>
-    <text font-size="4.5" fill="#B08BD4" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-ring-6">match verdict with | Certified p =&gt; accept p | CleanStop =&gt; halt | Unknown =&gt; widen the bound -- never bluff</textPath></text>
-    <text font-size="4.5" fill="#6FB7AE" letter-spacing="0.4" opacity="0.35"><textPath href="#gp-ring-7">#[test] fn audit_survives() { assert!(system.verify_all().is_sound()) } // passes and survives</textPath></text>
-    <text font-size="4.5" fill="#EA7E23" letter-spacing="0.4" opacity="0.3"><textPath href="#gp-ring-8">axiom no_free_assurance : ¬ ∃ (p : Proof), cost p = 0 ∧ sound p -- every guarantee is earned, not asserted</textPath></text>
-    <text font-size="4.5" fill="#E2C044" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-ring-9">(define-fun residual_risk () Real (- claimed proven)) (assert (= residual_risk 0.0)) (check-sat) ; unsat means honest</textPath></text>
-    <text font-size="4.5" fill="#7A9ECC" letter-spacing="0.4" opacity="0.2"><textPath href="#gp-ring-10">theorem audit_closure : ∀ s, survives s ↔ (∀ c ∈ claims s, certified c ∧ within_bound c) -- q.e.d.</textPath></text>
-    <text font-size="4.5" fill="#D96A6A" letter-spacing="0.4" opacity="0.17"><textPath href="#gp-ring-11">inductive Verdict | certified (p : Proof) | bounded (b : Bound) | clean_stop -- three honest answers, nothing in between</textPath></text>
-    <text font-size="4.5" fill="#6FB7AE" letter-spacing="0.4" opacity="0.14"><textPath href="#gp-ring-12">fn main() { let audit = Auditor::new(policy); std::process::exit(audit.run(system).code()) } // exit code is the verdict</textPath></text>
-    <text font-size="4.5" fill="#E8E2DA" letter-spacing="0.4" opacity="0.11"><textPath href="#gp-ring-13">∎ QED — what is proven stays proven; what is assumed stays labeled; what is unknown stays bounded — simondolera.com</textPath></text>
+    <text font-size="5.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-band-a-outer">theorem assurance_bound : ∀ x, verified x → risk x ≤ ε</textPath></text>
+    <text font-size="5.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-band-a-inner">fn verify(claim: &amp;Claim) -&gt; Result&lt;Proof, Bound&gt;</textPath></text>
+    <text font-size="5.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-band-b-outer">(check-sat) (get-model)</textPath></text>
+    <text font-size="5.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-band-b-inner">(assert (≤ risk ε))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-circle">lemma proof_runs_out : ¬ ∀ (s : System), Decidable (safe s) := by exact halting_reduction</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-line">#check @assurance_bound</textPath></text>
+    <text font-size="4" fill="#A8A199" letter-spacing="0.4" opacity="0.65"><textPath href="#gp-ring-1">(set-logic QF_LIA) (assert (&lt;= risk bound)) (check-sat) (get-unsat-core)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-2">impl Audit for Verifier { fn admit(&amp;self, c: Claim) -&gt; Verdict } // prove-or-clean-stop</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-3">theorem no_false_assurance : ∀ v, admits v → certified v := by exact audit_sound -- verified end-to-end</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-4">def assurance (S : System) : Prop := ∀ c ∈ S.claims, proved c ∨ bounded c -- soundness before persuasion</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-ring-5">structure Evidence where claim : Claim proof : Proof bound : ℝ deriving Repr -- evidence over eloquence</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-ring-6">match verdict with | Certified p =&gt; accept p | CleanStop =&gt; halt | Unknown =&gt; widen the bound -- never bluff</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.35"><textPath href="#gp-ring-7">#[test] fn audit_survives() { assert!(system.verify_all().is_sound()) } // passes and survives</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.3"><textPath href="#gp-ring-8">axiom no_free_assurance : ¬ ∃ (p : Proof), cost p = 0 ∧ sound p -- every guarantee is earned, not asserted</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-ring-9">(define-fun residual_risk () Real (- claimed proven)) (assert (= residual_risk 0.0)) (check-sat) ; unsat means honest</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.2"><textPath href="#gp-ring-10">theorem audit_closure : ∀ s, survives s ↔ (∀ c ∈ claims s, certified c ∧ within_bound c) -- q.e.d.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.17"><textPath href="#gp-ring-11">inductive Verdict | certified (p : Proof) | bounded (b : Bound) | clean_stop -- three honest answers, nothing in between</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.14"><textPath href="#gp-ring-12">fn main() { let audit = Auditor::new(policy); std::process::exit(audit.run(system).code()) } // exit code is the verdict</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.11"><textPath href="#gp-ring-13">∎ QED — what is proven stays proven; what is assumed stays labeled; what is unknown stays bounded — simondolera.com</textPath></text>
   </svg>
 
   <div class="wrap">
@@ -335,7 +339,7 @@ nav a.email:hover { color: #FFF6E8; }
 
       <nav aria-label="Links">
         <a href="https://doi.org/10.5281/zenodo.21341445" title="doi.org/10.5281/zenodo.21341445">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#E2C044" stroke-width="1.4" aria-hidden="true"><path d="M4 1.5 H9.5 L13 5 V14.5 H4 Z"></path><path d="M9.5 1.5 V5 H13"></path></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#F8F4F0" stroke-width="1.4" aria-hidden="true"><path d="M4 1.5 H9.5 L13 5 V14.5 H4 Z"></path><path d="M9.5 1.5 V5 H13"></path></svg>
           <span>Paper</span>
           <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 9.5 L9.5 2.5"></path><path d="M4 2.5 H9.5 V8"></path></svg>
         </a>
@@ -345,7 +349,7 @@ nav a.email:hover { color: #FFF6E8; }
           <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 9.5 L9.5 2.5"></path><path d="M4 2.5 H9.5 V8"></path></svg>
         </a>
         <a href="https://linkedin.com/in/simon-dolera" title="linkedin.com/in/simon-dolera">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="#0A66C2" aria-hidden="true"><path fill-rule="evenodd" d="M1 1h14v14H1V1Zm3.4 4.2a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM3.3 6.4h2.2v6.3H3.3V6.4Zm4 0h2.1v.9c.3-.55 1.05-1.1 2.1-1.1 1.9 0 2.5 1.2 2.5 2.9v3.6h-2.2V9.6c0-.9-.3-1.5-1.1-1.5-.75 0-1.2.55-1.2 1.5v3.1H7.3V6.4Z"></path></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#F8F4F0" aria-hidden="true"><path fill-rule="evenodd" d="M1 1h14v14H1V1Zm3.4 4.2a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM3.3 6.4h2.2v6.3H3.3V6.4Zm4 0h2.1v.9c.3-.55 1.05-1.1 2.1-1.1 1.9 0 2.5 1.2 2.5 2.9v3.6h-2.2V9.6c0-.9-.3-1.5-1.1-1.5-.75 0-1.2.55-1.2 1.5v3.1H7.3V6.4Z"></path></svg>
           <span>LinkedIn</span>
           <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 9.5 L9.5 2.5"></path><path d="M4 2.5 H9.5 V8"></path></svg>
         </a>
@@ -396,7 +400,7 @@ nav a.email:hover { color: #FFF6E8; }
   var nodes = Array.prototype.map.call(document.querySelectorAll('textPath[href^="#gp-"]'), function (el) {
     return { el: el, original: el.textContent };
   });
-  var colors = ['#EA7E23', '#6FB7AE', '#7A9ECC', '#B08BD4', '#E2C044', '#F8F4F0', '#D96A6A'];
+  var colors = ['#A8A199'];
   var words = ['theorem', 'lemma', 'proof', 'verify', 'bound', 'solver', 'risk', 'sat', 'unsat', 'check', 'assume', 'decide', 'Claim', 'Result', 'audit', 'safe', 'trust', 'assert', 'invariant', 'model'];
   function esc(c) { return c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c; }
   // Mutating all rings every tick with a tspan per character starved the main
