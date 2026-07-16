@@ -538,9 +538,6 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   });
   // Grey speaks in three brightnesses; the orange accent never enters the background.
   var colors = ['#C6BFB5', '#A8A199', '#A8A199', '#8F887F'];
-  var dict = ['sat', 'QED', 'SMT', 'safe', 'risk', 'unsat', 'proof', 'lemma', 'bound', 'check', 'trust', 'audit', 'Claim', 'solver', 'verify', 'decide', 'assume', 'assert', 'theorem', 'Verdict', 'soundness', 'invariant', 'certified'];
-  var byLen = {};
-  dict.forEach(function (w) { (byLen[w.length] = byLen[w.length] || []).push(w); });
   function esc(c) { return c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c; }
   // Touch only a small rotating slice per tick; tspans only for changed glyphs.
   var cursor = 0;
@@ -565,30 +562,14 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
     n.el.innerHTML = out;
     n.dirty = true;
   }
-  function swapNode(n) {
-    // Same-length swaps only: mono on a path means zero downstream reflow.
-    var parts = n.original.split(' ');
-    var out = '';
-    for (var i = 0; i < parts.length; i++) {
-      var cands = byLen[parts[i].length];
-      if (cands && Math.random() < 0.12) {
-        out += '<tspan fill="' + colors[(Math.random() * colors.length) | 0] + '">' +
-          cands[(Math.random() * cands.length) | 0] + '</tspan>';
-      } else {
-        out += parts[i].split('').map(esc).join('');
-      }
-      if (i < parts.length - 1) out += ' ';
-    }
-    n.el.innerHTML = out;
-    n.dirty = true;
-  }
   // Spin→idle resolves like a decoder settling: five steps back to the truth.
   function resolveNode(n, step) {
-    if (step >= 5) { n.el.textContent = n.original; n.dirty = false; return; }
+    if (mode !== 'idle') return; // spin re-entered — leave dirty, next idle re-heals
+    if (step >= 4) { n.el.textContent = n.original; n.dirty = false; return; }
     var out = '';
     for (var i = 0; i < n.original.length; i++) {
       var c = n.original[i];
-      if (c !== ' ' && Math.random() > (step + 1) / 5) {
+      if (c !== ' ' && Math.random() > (step + 1) / 4) {
         out += '<tspan fill="' + colors[(Math.random() * colors.length) | 0] + '">' +
           esc(pool[(Math.random() * pool.length) | 0]) + '</tspan>';
       } else {
@@ -596,7 +577,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
       }
     }
     n.el.innerHTML = out;
-    setTimeout(function () { resolveNode(n, step + 1); }, 70);
+    setTimeout(function () { resolveNode(n, step + 1); }, 50);
   }
   var lastTick = 0;
   var mode = 'idle';
@@ -610,20 +591,21 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
       if (mode === 'idle') {
         var i = 0;
         nodes.forEach(function (n) {
-          if (n.dirty) setTimeout(function () { resolveNode(n, 0); }, (i++) * 60);
+          if (n.dirty) setTimeout(function () { resolveNode(n, 0); }, (i++) * 30);
         });
+        // hard guarantee: whatever the resolve race left behind, idle text is truth
+        setTimeout(function () {
+          if (mode !== 'idle') return;
+          nodes.forEach(function (n) {
+            if (n.dirty) { n.el.textContent = n.original; n.dirty = false; }
+          });
+        }, 1200);
       }
       lastTick = now;
     }
     if (mode === 'spin') {
       var interval = Math.max(160, 500 - v * 30);
       if (now - lastTick >= interval) { lastTick = now; pick().forEach(scrambleNode); }
-    } else if (now - lastTick >= 1600) {
-      lastTick = now;
-      pick().forEach(function (n) {
-        if (n.dirty && Math.random() < 0.3) { n.el.textContent = n.original; n.dirty = false; }
-        else swapNode(n);
-      });
     }
     schedule();
   }
