@@ -35,6 +35,7 @@
   "url": "https://simondolera.com/",
   "image": "https://simondolera.com/og.png",
   "email": "mailto:simon@simondolera.com",
+  "knowsAbout": ["formal verification", "AI assurance", "theorem proving"],
   "sameAs": [
     "https://github.com/rockwayz",
     "https://linkedin.com/in/simon-dolera"
@@ -42,6 +43,8 @@
   "subjectOf": {
     "@type": "ScholarlyArticle",
     "@id": "https://doi.org/10.5281/zenodo.21341445",
+    "name": "Bounded-Uncertainty Verification for Artificial Intelligence Systems: An Honest Output Classification Grounded in Formal Impossibility Results",
+    "datePublished": "2026-07-13",
     "author": { "@id": "https://simondolera.com/#person" }
   }
 }
@@ -187,86 +190,150 @@
   src: url("assets/asset-14.woff2") format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+/* pre-swap fallback matched to Archivo Expanded's width so the wordmark doesn't reflow */
+@font-face {
+  font-family: 'Archivo-fallback';
+  src: local('Arial');
+  size-adjust: 122%;
+}
 </style>
 <style>
-:root { --ink: #040404; --paper: #F8F4F0; --signal: #EA7E23; --mid: #E8E2DA; --dim: #A8A199; }
+:root {
+  --ink: #040404; --paper: #F8F4F0; --signal: #EA7E23; --mid: #E8E2DA; --dim: #A8A199;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-swift: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-micro: 140ms; --dur-ui: 200ms;
+}
+@supports (color: color(display-p3 1 0 0)) { :root { --signal: color(display-p3 0.93 0.52 0.17); } }
 * { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 html, body { margin: 0; padding: 0; background: var(--ink); color-scheme: dark; }
 ::selection { background: var(--signal); color: var(--ink); }
-a { color: var(--dim); text-decoration: none; }
+a { color: var(--dim); text-decoration: none; transition: color 0.2s ease; }
 a:hover { color: var(--paper); }
-a:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
-#orb { position: fixed; left: 0; top: 0; z-index: 7; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; pointer-events: none; opacity: 0; will-change: transform; background: radial-gradient(circle, #FFF6E8 0%, #F8E7C8 40%, rgba(234, 126, 35, 0.55) 70%, rgba(234, 126, 35, 0) 100%); box-shadow: 0 0 18px 6px rgba(255, 240, 214, 0.55), 0 0 48px 18px rgba(234, 126, 35, 0.3); }
-#shade, #torch, #orb { display: none; }
-@media (hover: hover) and (pointer: fine) { #shade, #torch, #orb { display: block; } }
+a:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--ink), 0 0 0 4px var(--signal); }
+/* static grain: dithers the glow gradients, gives the void tooth */
+body::after { content: ''; position: fixed; inset: 0; z-index: 5; pointer-events: none; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 180px; }
+/* cursor system — orb rides the pointer; orange blooms only over actionable targets */
+#orb { position: fixed; left: 0; top: 0; z-index: 7; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; pointer-events: none; opacity: 0; will-change: transform; transition: opacity 0.35s ease; }
+#orb::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, #FFF6E8 0%, #F8E7C8 40%, rgba(234, 126, 35, 0.45) 70%, transparent 100%); box-shadow: 0 0 10px 3px rgba(255, 240, 214, 0.45), 0 0 26px 8px rgba(234, 126, 35, 0.16); transition: transform 0.25s var(--ease-swift), box-shadow 0.25s ease; }
+#orb.on-link::before { transform: scale(1.7); box-shadow: 0 0 12px 4px rgba(255, 240, 214, 0.5), 0 0 30px 10px rgba(234, 126, 35, 0.35); }
+#orb.down::before { transform: scale(0.75); }
+#torch { position: fixed; left: 0; top: 0; z-index: 5; width: 360px; height: 360px; margin: -180px 0 0 -180px; border-radius: 50%; pointer-events: none; will-change: transform; background: radial-gradient(circle, rgba(248, 244, 240, 0.07) 0%, rgba(248, 244, 240, 0.04) 35%, rgba(248, 244, 240, 0.015) 60%, transparent 78%); }
+/* effects exist only when JS confirms a fine pointer without reduced motion */
+#torch, #orb { display: none; }
+.has-orb #torch, .has-orb #orb { display: block; }
 .has-orb main, .has-orb main a { cursor: none; }
-#shade { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; background: rgba(0, 0, 0, 0.18); }
-#torch { position: fixed; left: 0; top: 0; z-index: 5; width: 360px; height: 360px; margin: -180px 0 0 -180px; border-radius: 50%; pointer-events: none; will-change: transform; background: radial-gradient(circle, rgba(248, 244, 240, 0.10) 0%, rgba(248, 244, 240, 0.035) 40%, rgba(248, 244, 240, 0) 72%); }
-main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidden; display: flex; align-items: center; padding: 64px 24px; }
-.ghost { position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3200px); height: auto; opacity: 0.16; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+@media (forced-colors: active) { #torch, #orb, #reveal, body::after { display: none !important; } }
+/* layered ground: warm tint toward the card, vignette at the base */
+main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidden; display: flex; align-items: center; padding: 64px 24px; background: radial-gradient(52% 58% at 50% 100%, rgba(4, 4, 4, 0) 0%, rgba(0, 0, 0, 0.5) 100%), radial-gradient(120% 90% at 32% 18%, #0a0705 0%, #040404 62%); }
+.ghost-wrap { position: absolute; inset: 0; pointer-events: none; will-change: transform; -webkit-mask-image: radial-gradient(115% 115% at 62% 50%, #000 25%, rgba(0, 0, 0, 0.55) 55%, transparent 82%); mask-image: radial-gradient(115% 115% at 62% 50%, #000 25%, rgba(0, 0, 0, 0.55) 55%, transparent 82%); }
+/* ambient layer: vignette-masked so it recedes near the type; the lit clone above it
+   is revealed only inside the torch radius and is never scrambled — the cursor
+   shows the pristine code while the ambient copy drifts and mutates */
+.ghost { position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3200px); height: auto; opacity: 0.16; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; animation: ghostin 2.2s ease-out 0.5s both, drift 480s linear 2s infinite; will-change: transform; }
+.ghost-lit { opacity: 0.38; animation: litin 2.2s ease-out 0.5s both, drift 480s linear 2s infinite; }
+#reveal { position: fixed; left: 0; top: 0; width: 480px; height: 480px; margin: -240px 0 0 -240px; z-index: 5; pointer-events: none; display: none; will-change: transform; -webkit-mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); }
+.has-orb #reveal { display: block; }
+.reveal-inner { position: absolute; left: 0; top: 0; width: 100vw; height: 100vh; will-change: transform; }
+/* even rings counter-rotate: slow 3:4 interference, never synchronized */
+.ghost .ccw { transform-box: fill-box; transform-origin: 50% 50%; animation: driftccw 640s linear 2s infinite; }
 .wrap { width: 100%; max-width: 1240px; margin: 0 auto; position: relative; z-index: 6; }
 .card { max-width: 1000px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
-@keyframes fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-@keyframes markin { from { opacity: 0; transform: scale(0.92) rotate(-8deg); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; transform: translateY(18px); } }
+@keyframes h1in { from { opacity: 0; transform: translateY(22px); letter-spacing: 0.05em; } to { opacity: 1; transform: none; letter-spacing: 0; } }
 @keyframes drift { from { transform: translate(50%, -50%) rotate(0deg); } to { transform: translate(50%, -50%) rotate(360deg); } }
+@keyframes driftccw { to { transform: rotate(-360deg); } }
 @keyframes ghostin { from { opacity: 0; } to { opacity: 0.16; } }
-a { transition: color 0.25s ease; }
-.ghost { animation: ghostin 2s ease-out both, drift 480s linear 2s infinite; will-change: transform; }
-.mark { animation: markin 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
-h1 { animation: fade 0.8s ease-out 0.15s both; }
-.role { animation: fade 0.8s ease-out 0.3s both; }
-.bio { animation: fade 0.8s ease-out 0.45s both; }
-nav { animation: fade 0.8s ease-out 0.6s both; }
+@keyframes litin { from { opacity: 0; } to { opacity: 0.38; } }
+/* the mark proves itself stroke by stroke; the accent lands last, then stillness */
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes tri { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: none; } }
+.mark path, .mark circle, .mark line { stroke-dasharray: 1; animation: draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) both; }
+.mark path:nth-of-type(1), .mark path:nth-of-type(2) { animation-delay: 0.05s; }
+.mark path:nth-of-type(3), .mark path:nth-of-type(4) { animation-delay: 0.25s; }
+.mark circle { animation-delay: 0.45s; }
+.mark line { animation-delay: 0.55s; animation-duration: 0.5s; }
+.mark polygon { transform-box: fill-box; transform-origin: 100% 0; animation: tri 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s both; }
+.mark .tri { fill: var(--signal); }
+h1 { animation: h1in 1s var(--ease-out) 0.10s both; }
+.role { animation: fade 0.8s var(--ease-out) 0.26s both; }
+.bio { animation: fade 0.8s var(--ease-out) 0.38s both; }
+.status { animation: fade 0.8s var(--ease-out) 0.46s both; }
+nav a { animation: fade 0.7s var(--ease-out) both; }
+nav a:nth-child(1) { animation-delay: 0.54s; }
+nav a:nth-child(2) { animation-delay: 0.62s; }
+nav a:nth-child(3) { animation-delay: 0.70s; }
+nav a:nth-child(4) { animation-delay: 0.78s; }
+.meta { animation: fade 0.7s var(--ease-out) 0.86s both; }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-.mark { display: block; width: clamp(128px, 12.5vw, 184px); height: clamp(128px, 12.5vw, 184px); margin-bottom: 44px; }
-h1 { margin: 0 0 16px; font-family: 'Archivo', Helvetica, Arial, sans-serif; font-weight: 600; font-stretch: 125%; font-size: 64px; font-size: clamp(48px, 7vw, 96px); line-height: 1.05; letter-spacing: 0.01em; color: var(--paper); text-transform: uppercase; }
-.role { margin: 0 0 44px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-size: clamp(11px, 0.9vw, 13px); text-wrap: balance; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); line-height: 1.7; }
-.role .sep { color: var(--dim); }
-.bio { margin: 0 0 56px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 21px; font-size: clamp(20px, 1.65vw, 24px); line-height: 1.75; color: var(--mid); max-width: 60ch; text-wrap: pretty; }
-nav { display: flex; flex-wrap: wrap; gap: 16px 48px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
-nav a { display: inline-flex; align-items: center; gap: 10px; color: var(--paper); padding: 12px 4px; margin: -12px -4px; }
-nav a span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; text-decoration-color: rgba(248, 244, 240, 0.55); transition: text-decoration-color 0.25s ease; }
-nav a:hover { color: var(--signal); }
-nav a:hover span, nav a:active span { text-decoration-color: var(--signal); }
-nav a:active { color: var(--signal); }
+.mark { display: block; width: clamp(8rem, 13.42vw, 11.5rem); height: auto; aspect-ratio: 1; margin-bottom: 48px; }
+h1 { margin: 0 0 16px; font-family: 'Archivo', 'Archivo-fallback', Helvetica, Arial, sans-serif; font-weight: 600; font-stretch: 125%; font-size: 4rem; font-size: clamp(3rem, 7vw, 6rem); line-height: 1.05; letter-spacing: 0; color: var(--paper); text-transform: uppercase; }
+.role { margin: 0 0 40px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; font-size: clamp(0.6875rem, 0.9vw, 0.8125rem); text-wrap: balance; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); line-height: 1.7; }
+.bio { margin: 0 0 24px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 1.3rem; font-size: clamp(1.25rem, 1.65vw, 1.5rem); line-height: 1.62; color: var(--mid); max-width: 56ch; text-wrap: pretty; }
+.status { margin: 0 0 56px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; font-size: clamp(0.6875rem, 0.9vw, 0.8125rem); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); line-height: 1.7; text-wrap: balance; }
+.status .live { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-right: 10px; vertical-align: 1px; }
+nav { display: flex; flex-wrap: wrap; gap: 20px 48px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+nav a { display: inline-flex; align-items: center; gap: 10px; color: var(--paper); padding: 14px 10px; margin: -14px -10px; border-radius: 6px; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: color 0.2s ease, background 0.2s ease, transform var(--dur-micro) var(--ease-out); }
+nav a svg { transition: transform var(--dur-ui) var(--ease-swift); }
+nav a span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; text-decoration-color: rgba(248, 244, 240, 0.55); transition: text-decoration-color 0.25s ease, text-underline-offset 0.25s var(--ease-swift); }
+@media (hover: hover) {
+  nav a:hover { color: var(--signal); background: rgba(248, 244, 240, 0.05); }
+  nav a:hover span { text-decoration-color: var(--signal); text-underline-offset: 7px; }
+  nav a:hover svg:last-of-type { transform: translate(2px, -2px); }
+  nav a.email:hover svg { transform: translateY(-1px); }
+  nav a.email:hover { color: #FFF6E8; }
+}
+nav a:active { color: var(--signal); transform: scale(0.97); }
+nav a:active span { text-decoration-color: var(--signal); }
+nav a:active svg:last-of-type { transform: translate(3px, -3px) scale(0.92); }
 nav a.email { color: var(--signal); }
-nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); }
-nav a.email:hover span { text-decoration-color: var(--signal); }
-nav a.email:hover { color: #FFF6E8; }
+nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inline-block; min-width: 6ch; }
+.meta { margin-top: 56px; border-top: 1px solid rgba(248, 244, 240, 0.08); padding-top: 16px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); opacity: 0.8; font-variant-numeric: tabular-nums; }
+.meta a { color: inherit; }
+.meta a:hover { color: var(--paper); text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 640px) {
-  main { padding: 24px 20px; }
-  .mark { width: 224px; height: 224px; margin-bottom: 22px; }
-  h1 { font-size: clamp(44px, 13.5vw, 54px); margin-bottom: 12px; }
-  .role { margin-bottom: 22px; font-size: 10px; }
-  .bio { font-size: 16.5px; line-height: 1.66; margin-bottom: 28px; }
-  nav { gap: 14px 28px; }
-  .ghost { width: 228vh; }
-  .role { font-size: 11px; }
+  main { padding: 32px 24px; }
+  .mark { width: 224px; margin-bottom: 24px; }
+  h1 { font-size: clamp(2.5rem, 12.5vw, 3.25rem); margin-bottom: 12px; }
+  .role { margin-bottom: 20px; }
+  .bio { font-size: 0.97rem; line-height: 1.55; margin-bottom: 14px; }
+  .status { margin-bottom: 24px; }
+  .status .tz, .paper-year, .meta { display: none; }
+  nav { gap: 20px 28px; }
+  .ghost { width: min(180vh, 1400px); }
 }
 @media print {
-  .ghost, #orb, #torch, #shade { display: none !important; }
+  .ghost-wrap, #orb, #torch, #reveal, body::after { display: none !important; }
   html, body { background: #fff; }
-  main { min-height: auto; }
+  main { min-height: auto; background: #fff; }
   h1 { color: #040404; }
   .bio { color: #222; }
-  .role, nav a { color: #555; }
-  .role .sep, nav a.email { color: #b35c10; }
+  .role, .status, nav a, .meta { color: #555; }
+  nav a.email { color: #b35c10; }
+  .status .live { background: #b35c10; }
+  .mark [stroke='#F8F4F0'] { stroke: #040404; }
+  .mark [stroke='#040404'] { stroke: #fff; }
+  .mark .tri { fill: #b35c10; }
+  nav a[href^='http']::after { content: ' (' attr(href) ')'; text-transform: none; letter-spacing: 0; font-size: 10px; }
+  nav a.email::after { content: ' (simon@simondolera.com)'; text-transform: none; letter-spacing: 0; font-size: 10px; }
 }
 @media (max-width: 640px) and (max-height: 700px) {
   main { padding: 20px; }
-  .mark { width: 128px; height: 128px; margin-bottom: 14px; }
+  .mark { width: 128px; margin-bottom: 14px; }
   h1 { margin-bottom: 10px; }
   .role { margin-bottom: 16px; }
-  .bio { font-size: 15px; margin-bottom: 20px; }
+  .bio { font-size: 0.94rem; margin-bottom: 12px; }
+  .status { margin-bottom: 20px; }
 }
 </style>
 </head>
 <body>
 <main>
-<div id="shade"></div>
 <div id="torch"></div>
 <div id="orb"></div>
 
+  <div class="ghost-wrap">
   <svg viewBox="-75 -75 350 350" aria-hidden="true" class="ghost" text-rendering="optimizeSpeed">
     <defs>
       <!-- the mark's core at 1.55×; the hollow band's two edges become paired code streams -->
@@ -298,19 +365,22 @@ nav a.email:hover { color: #FFF6E8; }
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-circle">lemma proof_runs_out : ¬ ∀ (s : System), Decidable (safe s) := by exact halting_reduction</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-line">#check @assurance_bound</textPath></text>
     <text font-size="4" fill="#A8A199" letter-spacing="0.4" opacity="0.65"><textPath href="#gp-ring-1">(set-logic QF_LIA) (assert (&lt;= risk bound)) (check-sat) (get-unsat-core)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-2">impl Audit for Verifier { fn admit(&amp;self, c: Claim) -&gt; Verdict } // prove-or-clean-stop</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-3">theorem no_false_assurance : ∀ v, admits v → certified v := by exact audit_sound -- verified end-to-end</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-4">def assurance (S : System) : Prop := ∀ c ∈ S.claims, proved c ∨ bounded c -- soundness before persuasion</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-ring-5">structure Evidence where claim : Claim proof : Proof bound : ℝ deriving Repr -- evidence over eloquence</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-ring-6">match verdict with | Certified p =&gt; accept p | CleanStop =&gt; halt | Unknown =&gt; widen the bound -- never bluff</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.35"><textPath href="#gp-ring-7">#[test] fn audit_survives() { assert!(system.verify_all().is_sound()) } // passes and survives</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.3"><textPath href="#gp-ring-8">axiom no_free_assurance : ¬ ∃ (p : Proof), cost p = 0 ∧ sound p -- every guarantee is earned, not asserted</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-ring-9">(define-fun residual_risk () Real (- claimed proven)) (assert (= residual_risk 0.0)) (check-sat) ; unsat means honest</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.2"><textPath href="#gp-ring-10">theorem audit_closure : ∀ s, survives s ↔ (∀ c ∈ claims s, certified c ∧ within_bound c) -- q.e.d.</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.17"><textPath href="#gp-ring-11">inductive Verdict | certified (p : Proof) | bounded (b : Bound) | clean_stop -- three honest answers, nothing in between</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.14"><textPath href="#gp-ring-12">fn main() { let audit = Auditor::new(policy); std::process::exit(audit.run(system).code()) } // exit code is the verdict</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.11"><textPath href="#gp-ring-13">∎ QED — what is proven stays proven; what is assumed stays labeled; what is unknown stays bounded — simondolera.com</textPath></text>
+    <g class="ccw">
+      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-2">impl Audit for Verifier { fn admit(&amp;self, c: Claim) -&gt; Verdict } // prove-or-clean-stop</textPath></text>
+      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-4">def assurance (S : System) : Prop := ∀ c ∈ S.claims, proved c ∨ bounded c -- soundness before persuasion</textPath></text>
+      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-ring-6">match verdict with | Certified p =&gt; accept p | CleanStop =&gt; halt | Unknown =&gt; widen the bound -- never bluff</textPath></text>
+      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.3"><textPath href="#gp-ring-8">axiom no_free_assurance : ¬ ∃ (p : Proof), cost p = 0 ∧ sound p -- every guarantee is earned, not asserted</textPath></text>
+      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.2"><textPath href="#gp-ring-10">theorem audit_closure : ∀ s, survives s ↔ (∀ c ∈ claims s, certified c ∧ within_bound c) -- q.e.d.</textPath></text>
+      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.14"><textPath href="#gp-ring-12">fn main() { let audit = Auditor::new(policy); std::process::exit(audit.run(system).code()) } // exit code is the verdict</textPath></text>
+    </g>
   </svg>
+  </div>
 
   <div class="wrap">
     <div class="card">
@@ -318,16 +388,16 @@ nav a.email:hover { color: #FFF6E8; }
       <svg class="mark" width="184" height="184" viewBox="48 48 104 104" role="img" aria-label="Simon Dolera mark">
         <!-- hollow band: 12 o'clock, counterclockwise around the left, to 6 o'clock;
              black overstroke trimmed ~2.2° per end so the white understroke forms the end caps -->
-        <path d="M 100 58 A 42 42 0 0 0 100 142" fill="none" stroke="#F8F4F0" stroke-width="7.6"></path>
-        <path d="M 98.39 58.03 A 42 42 0 0 0 98.39 141.97" fill="none" stroke="#040404" stroke-width="4.4"></path>
+        <path d="M 100 58 A 42 42 0 0 0 100 142" fill="none" stroke="#F8F4F0" stroke-width="7.6" pathLength="1"></path>
+        <path d="M 98.39 58.03 A 42 42 0 0 0 98.39 141.97" fill="none" stroke="#040404" stroke-width="4.4" pathLength="1"></path>
         <!-- hollow band: right segment, 3 o'clock clockwise down to ~5:45 -->
-        <path d="M 141.99 99.27 A 42 42 0 0 1 105.48 141.64" fill="none" stroke="#F8F4F0" stroke-width="7.6"></path>
-        <path d="M 141.99 100.88 A 42 42 0 0 1 107.08 141.40" fill="none" stroke="#040404" stroke-width="4.4"></path>
+        <path d="M 141.99 99.27 A 42 42 0 0 1 105.48 141.64" fill="none" stroke="#F8F4F0" stroke-width="7.6" pathLength="1"></path>
+        <path d="M 141.99 100.88 A 42 42 0 0 1 107.08 141.40" fill="none" stroke="#040404" stroke-width="4.4" pathLength="1"></path>
         <!-- thin circle + full vertical diameter -->
-        <circle cx="100" cy="100" r="30.8" fill="none" stroke="#F8F4F0" stroke-width="1.2"></circle>
-        <line x1="100" y1="69.2" x2="100" y2="130.8" stroke="#F8F4F0" stroke-width="1.2"></line>
+        <circle cx="100" cy="100" r="30.8" fill="none" stroke="#F8F4F0" stroke-width="1.2" pathLength="1"></circle>
+        <line x1="100" y1="69.2" x2="100" y2="130.8" stroke="#F8F4F0" stroke-width="1.2" pathLength="1"></line>
         <!-- orange triangle: flat top, vertical right edge, in the open upper-right quadrant -->
-        <polygon points="126.8,64.2 141,64.2 141,78.3" fill="#EA7E23"></polygon>
+        <polygon class="tri" points="126.8,64.2 141,64.2 141,78.3"></polygon>
       </svg>
 
       <h1>Simon Dolera</h1>
@@ -336,75 +406,157 @@ nav a.email:hover { color: #FFF6E8; }
 
       <p class="bio">I construct machine-checked guarantees for AI systems: formal proof where verification is tractable, explicit bounds where it is not. Every assumption is stated, every residual risk quantified — nothing rests on confidence alone.</p>
 
+      <p class="status"><span class="live" aria-hidden="true"></span>Currently — mechanizing a verification calculus in Lean 4 <span class="sep" aria-hidden="true">·</span> One audit slot open from Q4 2026<span class="tz"> <span class="sep" aria-hidden="true">·</span> US Eastern</span></p>
+
       <nav aria-label="Links">
-        <a href="https://doi.org/10.5281/zenodo.21341445" title="doi.org/10.5281/zenodo.21341445">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#F8F4F0" stroke-width="1.4" aria-hidden="true"><path d="M4 1.5 H9.5 L13 5 V14.5 H4 Z"></path><path d="M9.5 1.5 V5 H13"></path></svg>
-          <span>Paper</span>
+        <a href="https://doi.org/10.5281/zenodo.21341445" title="Bounded-Uncertainty Verification for Artificial Intelligence Systems — doi.org/10.5281/zenodo.21341445">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 1.5 H9.5 L13 5 V14.5 H4 Z"></path><path d="M9.5 1.5 V5 H13"></path></svg>
+          <span>Paper — Bounded Uncertainty<span class="paper-year"> (2026)</span></span>
           <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 9.5 L9.5 2.5"></path><path d="M4 2.5 H9.5 V8"></path></svg>
         </a>
-        <a href="https://github.com/rockwayz" title="github.com/rockwayz">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="#F8F4F0" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+        <a href="https://github.com/rockwayz/bounded-uncertainty-verification" title="github.com/rockwayz/bounded-uncertainty-verification — Lean 4, no-sorry formalization">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
           <span>GitHub</span>
           <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 9.5 L9.5 2.5"></path><path d="M4 2.5 H9.5 V8"></path></svg>
         </a>
-        <a href="https://linkedin.com/in/simon-dolera" title="linkedin.com/in/simon-dolera">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="#F8F4F0" aria-hidden="true"><path fill-rule="evenodd" d="M1 1h14v14H1V1Zm3.4 4.2a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM3.3 6.4h2.2v6.3H3.3V6.4Zm4 0h2.1v.9c.3-.55 1.05-1.1 2.1-1.1 1.9 0 2.5 1.2 2.5 2.9v3.6h-2.2V9.6c0-.9-.3-1.5-1.1-1.5-.75 0-1.2.55-1.2 1.5v3.1H7.3V6.4Z"></path></svg>
+        <a href="https://linkedin.com/in/simon-dolera" rel="me" title="linkedin.com/in/simon-dolera">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M1 1h14v14H1V1Zm3.4 4.2a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM3.3 6.4h2.2v6.3H3.3V6.4Zm4 0h2.1v.9c.3-.55 1.05-1.1 2.1-1.1 1.9 0 2.5 1.2 2.5 2.9v3.6h-2.2V9.6c0-.9-.3-1.5-1.1-1.5-.75 0-1.2.55-1.2 1.5v3.1H7.3V6.4Z"></path></svg>
           <span>LinkedIn</span>
           <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 9.5 L9.5 2.5"></path><path d="M4 2.5 H9.5 V8"></path></svg>
         </a>
         <a class="email" href="mailto:simon@simondolera.com" title="simon@simondolera.com">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1"></rect><path d="M1.5 4.5 8 9 14.5 4.5"></path></svg>
-          <span>Email</span>
+          <span aria-live="polite">Email</span>
         </a>
       </nav>
+
+      <footer class="meta">simondolera.com <span class="sep" aria-hidden="true">·</span> updated 2026-07 <span class="sep" aria-hidden="true">·</span> <a href="https://github.com/rockwayz/bounded-uncertainty-verification" title="Lean 4 formalization, zero sorry">Lean 4 · no sorry</a></footer>
 
     </div>
   </div>
 </main>
 <script>
 (function () {
-  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fineQ = window.matchMedia('(hover: hover) and (pointer: fine)');
+  var reduceQ = window.matchMedia('(prefers-reduced-motion: reduce)');
   var torch = document.getElementById('torch');
   var orb = document.getElementById('orb');
+  var ghostWrap = document.querySelector('.ghost-wrap');
+  var ghost = document.querySelector('.ghost');
   var speed = { v: 0 };
-  if (fine && !reduce) {
-    // Custom cursor only when JS runs on a fine pointer without reduced motion —
-    // any failure leaves the native cursor intact.
+  var effectsOn = false;
+  var lit = null, reveal = null, revealInner = null, litWrap = null;
+
+  function enableEffects() {
+    if (effectsOn) return;
+    effectsOn = true;
     document.documentElement.classList.add('has-orb');
-    var tx = window.innerWidth / 2, ty = window.innerHeight * 0.45;
-    var cx = tx, cy = ty, seen = false, ticking = false;
-    torch.style.transform = 'translate(' + cx + 'px, ' + cy + 'px)';
-    var tick = function () {
-      var dx = (tx - cx) * 0.16;
-      var dy = (ty - cy) * 0.16;
-      cx += dx; cy += dy;
-      speed.v += (Math.sqrt(dx * dx + dy * dy) - speed.v) * 0.1;
-      torch.style.transform = 'translate(' + cx.toFixed(1) + 'px, ' + cy.toFixed(1) + 'px)';
-      if (Math.abs(tx - cx) < 0.2 && Math.abs(ty - cy) < 0.2 && speed.v < 0.02) {
-        speed.v = 0; ticking = false; return; // settled — stop burning frames until the pointer moves
-      }
-      requestAnimationFrame(tick);
-    };
-    window.addEventListener('mousemove', function (e) {
-      tx = e.clientX; ty = e.clientY;
-      if (!seen) { seen = true; cx = tx; cy = ty; orb.style.opacity = '1'; }
-      // The orb rides the real pointer so clicks land where it shows; only the torch glow trails.
-      orb.style.transform = 'translate(' + tx + 'px, ' + ty + 'px)';
-      if (!ticking) { ticking = true; requestAnimationFrame(tick); }
-    });
+    if (!lit) {
+      // The lit layer is a pristine clone shown through a fixed torch-window.
+      // The window's mask is static; the clone counter-translates inside it —
+      // every per-frame update is a transform, so nothing re-rasterizes.
+      var clone = ghost.cloneNode(true);
+      var defs = clone.querySelector('defs');
+      if (defs) defs.remove(); // textPath hrefs resolve to the original's defs
+      clone.classList.add('ghost-lit');
+      reveal = document.createElement('div');
+      reveal.id = 'reveal';
+      reveal.setAttribute('aria-hidden', 'true');
+      revealInner = document.createElement('div');
+      revealInner.className = 'reveal-inner';
+      litWrap = document.createElement('div');
+      litWrap.className = 'ghost-wrap';
+      litWrap.style.maskImage = 'none';
+      litWrap.style.webkitMaskImage = 'none';
+      litWrap.appendChild(clone);
+      revealInner.appendChild(litWrap);
+      reveal.appendChild(revealInner);
+      document.querySelector('main').appendChild(reveal);
+      lit = clone;
+    }
   }
-  if (reduce) return;
-  var pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789∀∃εδℝ≤→{}()[]<>=+-*/;:#?!';
-  var nodes = Array.prototype.map.call(document.querySelectorAll('textPath[href^="#gp-"]'), function (el) {
-    return { el: el, original: el.textContent };
+  function disableEffects() {
+    effectsOn = false;
+    document.documentElement.classList.remove('has-orb');
+  }
+  function applyGates() {
+    if (fineQ.matches && !reduceQ.matches) enableEffects(); else disableEffects();
+  }
+  applyGates();
+  if (fineQ.addEventListener) {
+    fineQ.addEventListener('change', applyGates);
+    reduceQ.addEventListener('change', applyGates);
+  }
+
+  // Pointer physics — frame-rate independent damping so the torch trails
+  // identically on 60Hz and 120Hz displays.
+  var tx = window.innerWidth / 2, ty = window.innerHeight * 0.45;
+  var cx = tx, cy = ty, seen = false, ticking = false, last = 0;
+  function tick(now) {
+    if (!effectsOn) { ticking = false; return; }
+    var dt = Math.min(now - last, 50) || 16;
+    last = now;
+    var k = 1 - Math.exp(-dt / 85);
+    var dx = (tx - cx) * k, dy = (ty - cy) * k;
+    cx += dx; cy += dy;
+    speed.v += (Math.sqrt(dx * dx + dy * dy) / dt * 16 - speed.v) * 0.1;
+    torch.style.transform = 'translate(' + cx.toFixed(1) + 'px, ' + cy.toFixed(1) + 'px)';
+    // Damped parallax: the ring field recedes from the cursor, max ±6px.
+    var px = ((cx / window.innerWidth - 0.5) * -12).toFixed(1), py = ((cy / window.innerHeight - 0.5) * -8).toFixed(1);
+    ghostWrap.style.transform = 'translate(' + px + 'px,' + py + 'px)';
+    if (reveal) {
+      reveal.style.transform = 'translate(' + cx.toFixed(1) + 'px, ' + cy.toFixed(1) + 'px)';
+      revealInner.style.transform = 'translate(' + (240 - cx).toFixed(1) + 'px,' + (240 - cy).toFixed(1) + 'px)';
+      litWrap.style.transform = 'translate(' + px + 'px,' + py + 'px)';
+    }
+    if (Math.abs(tx - cx) < 0.2 && Math.abs(ty - cy) < 0.2 && speed.v < 0.02) {
+      speed.v = 0; ticking = false; return; // settled — stop burning frames
+    }
+    requestAnimationFrame(tick);
+  }
+  window.addEventListener('mousemove', function (e) {
+    if (!effectsOn) return;
+    tx = e.clientX; ty = e.clientY;
+    if (!seen) { seen = true; cx = tx; cy = ty; orb.style.opacity = '1'; }
+    // The orb rides the real pointer so clicks land where it shows; the torch trails.
+    orb.style.transform = 'translate(' + tx + 'px, ' + ty + 'px)';
+    if (!ticking) { ticking = true; last = performance.now(); requestAnimationFrame(tick); }
+  }, { passive: true });
+  function hideOrb() { orb.style.opacity = '0'; seen = false; }
+  document.documentElement.addEventListener('mouseleave', hideOrb);
+  window.addEventListener('blur', hideOrb);
+  // Orb states: orange blooms only over actionable targets; presses compress.
+  document.addEventListener('pointerover', function (e) {
+    orb.classList.toggle('on-link', !!(e.target.closest && e.target.closest('a')));
+  }, { passive: true });
+  document.addEventListener('mousedown', function () { orb.classList.add('down'); }, { passive: true });
+  document.addEventListener('mouseup', function () { orb.classList.remove('down'); }, { passive: true });
+
+  // Email click-to-copy: feedback lives in the element; mailto stays the fallback.
+  var emailA = document.querySelector('nav a.email');
+  var emailSpan = emailA.querySelector('span');
+  emailA.addEventListener('click', function (e) {
+    if (!navigator.clipboard) return;
+    e.preventDefault();
+    navigator.clipboard.writeText('simon@simondolera.com').then(function () {
+      emailSpan.textContent = 'Copied';
+      setTimeout(function () { emailSpan.textContent = 'Email'; }, 1400);
+    }, function () { window.location.href = 'mailto:simon@simondolera.com'; });
   });
-  var colors = ['#A8A199'];
-  var words = ['theorem', 'lemma', 'proof', 'verify', 'bound', 'solver', 'risk', 'sat', 'unsat', 'check', 'assume', 'decide', 'Claim', 'Result', 'audit', 'safe', 'trust', 'assert', 'invariant', 'model'];
+
+  // ---- ambient scramble: original ghost only — the lit clone stays pristine ----
+  if (reduceQ.matches || !fineQ.matches) return;
+  var pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789∀∃εδℝ≤→{}()[]<>=+-*/;:#?!';
+  var nodes = Array.prototype.map.call(ghost.querySelectorAll('textPath[href^="#gp-"]'), function (el) {
+    return { el: el, original: el.textContent, dirty: false };
+  });
+  // Grey speaks in three brightnesses; the orange accent never enters the background.
+  var colors = ['#C6BFB5', '#A8A199', '#A8A199', '#8F887F'];
+  var dict = ['sat', 'QED', 'SMT', 'safe', 'risk', 'unsat', 'proof', 'lemma', 'bound', 'check', 'trust', 'audit', 'Claim', 'solver', 'verify', 'decide', 'assume', 'assert', 'theorem', 'Verdict', 'soundness', 'invariant', 'certified'];
+  var byLen = {};
+  dict.forEach(function (w) { (byLen[w.length] = byLen[w.length] || []).push(w); });
   function esc(c) { return c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c; }
-  // Mutating all rings every tick with a tspan per character starved the main
-  // thread (the whole ghost layer re-rasterizes on any change). Touch only a
-  // small rotating slice per tick, and emit tspans for changed glyphs only.
+  // Touch only a small rotating slice per tick; tspans only for changed glyphs.
   var cursor = 0;
   var SLICE = 3;
   function pick() {
@@ -425,38 +577,74 @@ nav a.email:hover { color: #FFF6E8; }
       }
     }
     n.el.innerHTML = out;
+    n.dirty = true;
   }
   function swapNode(n) {
+    // Same-length swaps only: mono on a path means zero downstream reflow.
     var parts = n.original.split(' ');
     var out = '';
     for (var i = 0; i < parts.length; i++) {
-      if (parts[i].length > 2 && Math.random() < 0.12) {
+      var cands = byLen[parts[i].length];
+      if (cands && Math.random() < 0.12) {
         out += '<tspan fill="' + colors[(Math.random() * colors.length) | 0] + '">' +
-          words[(Math.random() * words.length) | 0] + '</tspan>';
+          cands[(Math.random() * cands.length) | 0] + '</tspan>';
       } else {
         out += parts[i].split('').map(esc).join('');
       }
       if (i < parts.length - 1) out += ' ';
     }
     n.el.innerHTML = out;
+    n.dirty = true;
+  }
+  // Spin→idle resolves like a decoder settling: five steps back to the truth.
+  function resolveNode(n, step) {
+    if (step >= 5) { n.el.textContent = n.original; n.dirty = false; return; }
+    var out = '';
+    for (var i = 0; i < n.original.length; i++) {
+      var c = n.original[i];
+      if (c !== ' ' && Math.random() > (step + 1) / 5) {
+        out += '<tspan fill="' + colors[(Math.random() * colors.length) | 0] + '">' +
+          esc(pool[(Math.random() * pool.length) | 0]) + '</tspan>';
+      } else {
+        out += esc(c);
+      }
+    }
+    n.el.innerHTML = out;
+    setTimeout(function () { resolveNode(n, step + 1); }, 70);
   }
   var lastTick = 0;
   var mode = 'idle';
   function loop(now) {
+    if (document.hidden) { lastTick = now; schedule(); return; }
     var v = speed.v;
-    // Hysteresis: enter spin fast, leave slow — hovering near one threshold cannot flap modes.
+    // Hysteresis: enter spin fast, leave slow — no mode flapping near a threshold.
     var newMode = mode === 'spin' ? (v < 0.3 ? 'idle' : 'spin') : (v > 0.9 ? 'spin' : 'idle');
     if (newMode !== mode) {
       mode = newMode;
-      if (mode === 'idle') nodes.forEach(function (n) { n.el.textContent = n.original; });
+      if (mode === 'idle') {
+        var i = 0;
+        nodes.forEach(function (n) {
+          if (n.dirty) setTimeout(function () { resolveNode(n, 0); }, (i++) * 60);
+        });
+      }
       lastTick = now;
     }
-    var interval = mode === 'spin' ? Math.max(160, 500 - v * 30) : 1600;
-    if (now - lastTick >= interval) {
+    if (mode === 'spin') {
+      var interval = Math.max(160, 500 - v * 30);
+      if (now - lastTick >= interval) { lastTick = now; pick().forEach(scrambleNode); }
+    } else if (now - lastTick >= 1600) {
       lastTick = now;
-      pick().forEach(mode === 'spin' ? scrambleNode : swapNode);
+      pick().forEach(function (n) {
+        if (n.dirty && Math.random() < 0.3) { n.el.textContent = n.original; n.dirty = false; }
+        else swapNode(n);
+      });
     }
-    requestAnimationFrame(loop);
+    schedule();
+  }
+  function schedule() {
+    // Idle needs only ~4Hz to catch the spin threshold; spin runs on frames.
+    if (mode === 'idle') setTimeout(function () { requestAnimationFrame(loop); }, 250);
+    else requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
 })();
