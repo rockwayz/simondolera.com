@@ -138,7 +138,7 @@ main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidd
 /* ambient layer: vignette-masked so it recedes near the type; the lit clone above it
    is revealed only inside the torch radius and is never scrambled — the cursor
    shows the pristine code while the ambient copy drifts and mutates */
-.ghost { position: absolute; top: 50%; right: 32%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3600px); height: auto; opacity: 0.18; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; animation: ghostin 2.2s ease-out 0.5s both; }
+.ghost { position: absolute; top: 50%; right: 32%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3600px); height: auto; opacity: 0.2; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; animation: ghostin 2.2s ease-out 0.5s both; }
 .ghost-lit { opacity: 0.38; animation: litin 2.2s ease-out 0.5s both; }
 #reveal { position: fixed; left: 0; top: 0; width: 480px; height: 480px; margin: -240px 0 0 -240px; z-index: 5; pointer-events: none; display: none; opacity: 0; will-change: transform; transition: opacity 0.35s ease; -webkit-mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); }
 .has-orb #reveal { display: block; }
@@ -147,7 +147,7 @@ main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidd
 .card { max-width: 1000px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 @keyframes fade { from { opacity: 0; transform: translateY(18px); } }
 @keyframes h1in { from { opacity: 0; transform: translateY(22px); letter-spacing: 0.05em; } to { opacity: 1; transform: none; letter-spacing: 0; } }
-@keyframes ghostin { from { opacity: 0; } to { opacity: 0.18; } }
+@keyframes ghostin { from { opacity: 0; } to { opacity: 0.2; } }
 @keyframes litin { from { opacity: 0; } to { opacity: 0.38; } }
 /* the mark proves itself stroke by stroke; the accent lands last, then stillness */
 @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
@@ -511,7 +511,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
       maxW = Math.max(maxW, card.children[i].getBoundingClientRect().width);
     }
     var cx = rc.left + maxW / 2, cy = rc.top + rc.height / 2;
-    var rx = maxW / 2 + 84, ry = rc.height / 2 + 84;
+    var rx = maxW / 2 + 120, ry = rc.height / 2 + 120;
     var g = 'radial-gradient(ellipse ' + rx.toFixed(0) + 'px ' + ry.toFixed(0) + 'px at ' + cx.toFixed(0) + 'px ' + cy.toFixed(0) + 'px, transparent 0%, transparent 85%, rgba(0,0,0,0.8) 95%, #000 100%)';
     ghostWrap.style.webkitMaskImage = g;
     ghostWrap.style.maskImage = g;
