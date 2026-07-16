@@ -205,8 +205,7 @@ a:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
 main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidden; display: flex; align-items: center; padding: 64px 24px; }
 .ghost { position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3200px); height: auto; opacity: 0.16; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; }
 .wrap { width: 100%; max-width: 1240px; margin: 0 auto; position: relative; z-index: 6; }
-.card { max-width: 1000px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; position: relative; }
-.card::before { content: ''; position: absolute; z-index: -1; left: -12%; right: -12%; top: -6%; height: 60%; background: radial-gradient(ellipse 90% 95% at 35% 45%, var(--ink) 45%, rgba(4, 4, 4, 0) 78%); pointer-events: none; }
+.card { max-width: 1000px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 @keyframes fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes markin { from { opacity: 0; transform: scale(0.92) rotate(-8deg); } to { opacity: 1; transform: none; } }
 @keyframes drift { from { transform: translate(50%, -50%) rotate(0deg); } to { transform: translate(50%, -50%) rotate(360deg); } }
