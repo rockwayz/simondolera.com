@@ -233,17 +233,20 @@ main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidd
    shows the pristine code while the ambient copy drifts and mutates */
 .ghost { position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3200px); height: auto; opacity: 0.16; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; animation: ghostin 2.2s ease-out 0.5s both, drift 480s linear 2s infinite; will-change: transform; }
 .ghost-lit { opacity: 0.38; animation: litin 2.2s ease-out 0.5s both, drift 480s linear 2s infinite; }
+.ghost-lit.ccw-el { animation: litin 2.2s ease-out 0.5s both, driftccwEl 640s linear 2s infinite; }
 #reveal { position: fixed; left: 0; top: 0; width: 480px; height: 480px; margin: -240px 0 0 -240px; z-index: 5; pointer-events: none; display: none; will-change: transform; -webkit-mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); }
 .has-orb #reveal { display: block; }
 .reveal-inner { position: absolute; left: 0; top: 0; width: 100vw; height: 100vh; will-change: transform; }
-/* even rings counter-rotate: slow 3:4 interference, never synchronized */
-.ghost .ccw { transform-box: fill-box; transform-origin: 50% 50%; animation: driftccw 640s linear 2s infinite; }
+/* counter-rotating layers are separate svg elements: element-level transforms
+   stay on the compositor — an animated inner <g> would re-raster every frame */
+.ghost.ccw-el { animation: ghostin 2.2s ease-out 0.5s both, driftccwEl 640s linear 2s infinite; }
+.ghost.static { animation: ghostin 2.2s ease-out 0.5s both; will-change: auto; }
 .wrap { width: 100%; max-width: 1240px; margin: 0 auto; position: relative; z-index: 6; }
 .card { max-width: 1000px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 @keyframes fade { from { opacity: 0; transform: translateY(18px); } }
 @keyframes h1in { from { opacity: 0; transform: translateY(22px); letter-spacing: 0.05em; } to { opacity: 1; transform: none; letter-spacing: 0; } }
 @keyframes drift { from { transform: translate(50%, -50%) rotate(0deg); } to { transform: translate(50%, -50%) rotate(360deg); } }
-@keyframes driftccw { to { transform: rotate(-360deg); } }
+@keyframes driftccwEl { from { transform: translate(50%, -50%) rotate(0deg); } to { transform: translate(50%, -50%) rotate(-360deg); } }
 @keyframes ghostin { from { opacity: 0; } to { opacity: 0.16; } }
 @keyframes litin { from { opacity: 0; } to { opacity: 0.38; } }
 /* the mark proves itself stroke by stroke; the accent lands last, then stillness */
@@ -327,7 +330,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
 <div id="orb"></div>
 
   <div class="ghost-wrap">
-  <svg viewBox="-75 -75 350 350" aria-hidden="true" class="ghost" text-rendering="optimizeSpeed">
+  <svg viewBox="-75 -75 350 350" aria-hidden="true" class="ghost core" text-rendering="optimizeSpeed">
     <defs>
       <!-- the mark's core at 1.55×; the hollow band's two edges become paired code streams -->
       <path id="gp-band-a-outer" d="M 100 171 A 71 71 0 0 1 100 29" fill="none"></path>
@@ -350,6 +353,20 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
       <path id="gp-ring-11" d="M -35.04 37.03 A 149 149 0 1 1 -35.58 38.21" fill="none"></path>
       <path id="gp-ring-12" d="M 249.73 52.79 A 157 157 0 1 1 249.32 51.48" fill="none"></path>
       <path id="gp-ring-13" d="M 17.50 242.89 A 165 165 0 1 1 18.75 243.61" fill="none"></path>
+      <path id="gp-ring-14" d="M 100.00 84.00 A 16 16 0 1 1 99.86 84.00" fill="none"></path>
+      <path id="gp-ring-15" d="M 116.21 117.69 A 24 24 0 1 1 116.37 117.55" fill="none"></path>
+      <path id="gp-ring-16" d="M 68.12 97.21 A 32 32 0 1 1 68.10 97.49" fill="none"></path>
+      <path id="gp-ring-17" d="M 131.73 75.65 A 40 40 0 1 1 131.52 75.37" fill="none"></path>
+      <path id="gp-ring-18" d="M 69.96 270.37 A 173 173 0 1 1 71.45 270.63" fill="none"></path>
+      <path id="gp-ring-19" d="M 2.75 -52.65 A 181 181 0 1 1 1.42 -51.80" fill="none"></path>
+      <path id="gp-ring-20" d="M 282.56 148.92 A 189 189 0 1 1 282.98 147.32" fill="none"></path>
+      <path id="gp-ring-21" d="M -74.74 190.96 A 197 197 0 1 1 -73.94 192.49" fill="none"></path>
+      <path id="gp-ring-22" d="M 170.11 -92.64 A 205 205 0 1 1 168.43 -93.24" fill="none"></path>
+      <path id="gp-ring-23" d="M 181.51 296.79 A 213 213 0 1 1 183.23 296.07" fill="none"></path>
+      <path id="gp-ring-24" d="M -100.29 6.60 A 221 221 0 1 1 -101.10 8.35" fill="none"></path>
+      <path id="gp-ring-25" d="M 318.40 31.14 A 229 229 0 1 1 317.79 29.24" fill="none"></path>
+      <path id="gp-ring-26" d="M -18.50 305.25 A 237 237 0 1 1 -16.70 306.27" fill="none"></path>
+      <path id="gp-ring-27" d="M 46.97 -139.19 A 245 245 0 1 1 44.89 -138.72" fill="none"></path>
     </defs>
     <text font-size="5.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-band-a-outer">theorem assurance_bound : ∀ x, verified x → risk x ≤ ε</textPath></text>
     <text font-size="5.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-band-a-inner">fn verify(claim: &amp;Claim) -&gt; Result&lt;Proof, Bound&gt;</textPath></text>
@@ -364,14 +381,61 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-ring-9">(define-fun residual_risk () Real (- claimed proven)) (assert (= residual_risk 0.0)) (check-sat) ; unsat means honest</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.17"><textPath href="#gp-ring-11">inductive Verdict | certified (p : Proof) | bounded (b : Bound) | clean_stop -- three honest answers, nothing in between</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.11"><textPath href="#gp-ring-13">∎ QED — what is proven stays proven; what is assumed stays labeled; what is unknown stays bounded — simondolera.com</textPath></text>
-    <g class="ccw">
+  </svg>
+  <svg viewBox="-75 -75 350 350" aria-hidden="true" class="ghost core ccw-el" text-rendering="optimizeSpeed">
       <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-2">impl Audit for Verifier { fn admit(&amp;self, c: Claim) -&gt; Verdict } // prove-or-clean-stop</textPath></text>
       <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-4">def assurance (S : System) : Prop := ∀ c ∈ S.claims, proved c ∨ bounded c -- soundness before persuasion</textPath></text>
       <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-ring-6">match verdict with | Certified p =&gt; accept p | CleanStop =&gt; halt | Unknown =&gt; widen the bound -- never bluff</textPath></text>
       <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.3"><textPath href="#gp-ring-8">axiom no_free_assurance : ¬ ∃ (p : Proof), cost p = 0 ∧ sound p -- every guarantee is earned, not asserted</textPath></text>
       <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.2"><textPath href="#gp-ring-10">theorem audit_closure : ∀ s, survives s ↔ (∀ c ∈ claims s, certified c ∧ within_bound c) -- q.e.d.</textPath></text>
       <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.14"><textPath href="#gp-ring-12">fn main() { let audit = Auditor::new(policy); std::process::exit(audit.run(system).code()) } // exit code is the verdict</textPath></text>
-    </g>
+  </svg>
+  <!-- static aura: never mutated, never rotated — rasterizes once -->
+  <svg viewBox="-75 -75 350 350" aria-hidden="true" class="ghost aura static" text-rendering="optimizeSpeed">
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-ring-5" startOffset="339">(assert (not (exists ((x Real)) (and (certified x) (&gt; (risk x) delta)))))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.35"><textPath href="#gp-ring-7" startOffset="314">(define-fun honest ((c Real) (b Real)) Bool (and (&lt;= c b) (&gt;= b 0.0)))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-ring-9" startOffset="383">Inductive Assurance := Proven (p : Proof) | Bounded (b : ℝ) | Unknown.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.17"><textPath href="#gp-ring-11" startOffset="392">structure Certificate where (claim : Prop) (evidence : claim) (ε : ℝ)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.11"><textPath href="#gp-ring-13" startOffset="380">Fairness == WF_vars(Verify) /\ SF_vars(Disclose) \* no claim starves</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.11"><textPath href="#gp-ring-13" startOffset="708">Lemma clean_stop_sound : ∀ P, ¬ decidable P → verdict P = CleanStop.</textPath></text>
+    <text font-size="3.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-ring-15">Theorem belief_not_proof : ∃ c P, believes c P ∧ ¬ P.</textPath></text>
+    <text font-size="4" fill="#A8A199" letter-spacing="0.4" opacity="0.35"><textPath href="#gp-ring-17">lemma AuditSurvives(t: Trace) requires Complete(t) ensures Replay(t) == Verdict(t)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.09"><textPath href="#gp-ring-19">(push 1) (assert (not invariant)) (check-sat) (pop 1) ; unsat is the certificate, sat hands you the counterexample</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.09"><textPath href="#gp-ring-19" startOffset="379">fn admit(claim: Claim) -&gt; Result&lt;Sealed&lt;Fact&gt;, Unsound&gt; { verify(&amp;claim.witness).map(|p| Sealed::mint(claim, p)) }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.09"><textPath href="#gp-ring-19" startOffset="758">// invariant: no capability is minted without a checker-verified proof; confidence alone admits nothing</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.075"><textPath href="#gp-ring-21">Liveness == \A g \in goals : (g \in admissible) ~&gt; (Certified(g) \/ CleanStop(g)) \* progress promised only inside the envelope</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.075"><textPath href="#gp-ring-21" startOffset="413">theorem honesty : ∀ (c : Claim), (∃ p, Proof p c) ∨ (∃ b, Bound b c) ∨ verdict c = Verdict.clean_stop := by exact trichotomy c</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.075"><textPath href="#gp-ring-21" startOffset="825">(define-fun assurance ((claim Bool) (proof Bool)) Bool (and claim proof)) ; confidence without proof does not typecheck here</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.065"><textPath href="#gp-ring-23">theorem no_overclaim (s : System) (h : sound s) : ∀ c, s.asserts c → Provable c ∨ s.flags_uncertain c := fun c hc =&gt; audit_split s h c hc</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.065"><textPath href="#gp-ring-23" startOffset="446">Theorem replay_deterministic : ∀ l l', ledger_ok l → ledger_ok l' → tip l = tip l' → l = l'. Proof. induction l; destruct l'; auto. Qed.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.065"><textPath href="#gp-ring-23" startOffset="892">THEOREM Impl =&gt; Spec \* refinement: the audit survives because the mapping is exhibited, not assumed</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.055"><textPath href="#gp-ring-25">method Audit(log: seq&lt;Event&gt;) returns (v: Verdict) ensures v.Certified? ==&gt; Sound(log)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.055"><textPath href="#gp-ring-25" startOffset="480">debug_assert!(claims.iter().all(|c| c.witness.is_some()), "unwitnessed claim");</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.055"><textPath href="#gp-ring-25" startOffset="959">theorem clean_stop_sound : ¬ decidable_here q → verdict q = Verdict.clean_stop</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.045"><textPath href="#gp-ring-27">impl Verified { fn downgrade(self) -&gt; Speculated { Speculated::from(self) } }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.045"><textPath href="#gp-ring-27" startOffset="513">#[ensures(result.risk() &lt;= EPSILON || matches!(result, Verdict::CleanStop))]</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.045"><textPath href="#gp-ring-27" startOffset="1026">def Verdict.honest : Verdict → Prop | .certified p =&gt; Sound p | _ =&gt; True</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-ring-6" startOffset="355">Print Assumptions assurance_bound. (* Closed under the global context *)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.3"><textPath href="#gp-ring-8" startOffset="349">CheckedByTLC == \A s \in reachable : Inv(s) \* 2^47 states, zero faith</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.2"><textPath href="#gp-ring-10" startOffset="324">Lemma audit_survives_replay : ∀ w, wf w → audit w = audit (replay w).</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.14"><textPath href="#gp-ring-12" startOffset="395">theorem audit_survives : ∀ t, holds_at t claim → holds_at (t+1) claim</textPath></text>
+    <text font-size="3.5" fill="#A8A199" letter-spacing="0.4" opacity="0.5"><textPath href="#gp-ring-14">(assert (=&gt; verified (&lt;= risk eps)))</textPath></text>
+    <text font-size="4" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-ring-16">requires no_hidden_assumptions(env) ensures result.risk &lt;= epsilon</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.1"><textPath href="#gp-ring-18">Corollary risk_bounded : ∀ x, verified x → risk x ≤ ε. Proof. intros; apply assurance_bound; assumption. Qed.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.1"><textPath href="#gp-ring-18" startOffset="362">THEOREM Assurance == Spec =&gt; [](\A claim \in asserted : proven(claim) \/ bounded(claim) \/ clean_stop(claim))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.1"><textPath href="#gp-ring-18" startOffset="725">predicate AuditSurvivesReplay(t: Trace) { forall step :: step in t ==&gt; Justified(step) &amp;&amp; Replayable(step) }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.08"><textPath href="#gp-ring-20">(assert (forall ((s State)) (=&gt; (reachable s) (or (safe s) (flagged s))))) ; every reachable state answers to the audit</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.08"><textPath href="#gp-ring-20" startOffset="396">theorem risk_antitone : ∀ x y, evidence x ≤ evidence y → risk y ≤ risk x := by intro x y h; exact bound_of_evidence h</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.08"><textPath href="#gp-ring-20" startOffset="792">assert forall i :: 0 &lt;= i &lt; |ledger| ==&gt; ledger[i].hash == Blake3(ledger[i].prev, ledger[i].claim); // tamper-evident</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.07"><textPath href="#gp-ring-22">#[kani::proof] fn overflow_free() { let x: u32 = kani::any(); kani::assume(x &lt;= BOUND); assert!(x.checked_add(DELTA).is_some()); }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.07"><textPath href="#gp-ring-22" startOffset="429">method Certify(evidence: set&lt;Fact&gt;) returns (v: Verdict) ensures v.Certified? ==&gt; forall f :: f in evidence ==&gt; Checked(f)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.07"><textPath href="#gp-ring-22" startOffset="859">Fixpoint check (l : list Claim) : bool := match l with [] =&gt; true | c :: t =&gt; sound c &amp;&amp; check t end.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.06"><textPath href="#gp-ring-24">CONSTANT Epsilon ASSUME Epsilon \in Real /\ Epsilon &gt; 0 \* every bound is named before it is trusted</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.06"><textPath href="#gp-ring-24" startOffset="463">(set-logic QF_UFLRA) (set-option :produce-unsat-cores true) (set-option :produce-proofs true)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.06"><textPath href="#gp-ring-24" startOffset="926">Theorem no_certificate_without_witness : ∀ c, certified c → ∃ p : Proof, checker p c = true.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.05"><textPath href="#gp-ring-26">forAll(arbitrary[Claim]) { c =&gt; verify(c).isBounded || verify(c).isCleanStop }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.05"><textPath href="#gp-ring-26" startOffset="496">quickcheck(prop_verdict_never_overclaims); // 10_000 cases, 0 counterexamples</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.05"><textPath href="#gp-ring-26" startOffset="993">fn certify(e: Evidence) -&gt; Result&lt;Sealed&lt;Claim&gt;, CleanStop&gt; { gate.check(e) }</textPath></text>
   </svg>
   </div>
 
@@ -431,7 +495,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   var torch = document.getElementById('torch');
   var orb = document.getElementById('orb');
   var ghostWrap = document.querySelector('.ghost-wrap');
-  var ghost = document.querySelector('.ghost');
+  var ghost = document.querySelector('.ghost.core');
   var speed = { v: 0 };
   var effectsOn = false;
   var lit = null, reveal = null, revealInner = null, litWrap = null;
@@ -444,24 +508,26 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
       // The lit layer is a pristine clone shown through a fixed torch-window.
       // The window's mask is static; the clone counter-translates inside it —
       // every per-frame update is a transform, so nothing re-rasterizes.
-      var clone = ghost.cloneNode(true);
-      var defs = clone.querySelector('defs');
-      if (defs) defs.remove(); // textPath hrefs resolve to the original's defs
-      clone.classList.add('ghost-lit');
+      litWrap = document.createElement('div');
+      litWrap.className = 'ghost-wrap';
+      litWrap.style.maskImage = 'none';
+      litWrap.style.webkitMaskImage = 'none';
+      ghostWrap.querySelectorAll('.ghost.core').forEach(function (g) {
+        var c = g.cloneNode(true);
+        var defs = c.querySelector('defs');
+        if (defs) defs.remove(); // textPath hrefs resolve to the originals' defs
+        c.classList.add('ghost-lit');
+        litWrap.appendChild(c);
+        if (!lit) lit = c;
+      });
       reveal = document.createElement('div');
       reveal.id = 'reveal';
       reveal.setAttribute('aria-hidden', 'true');
       revealInner = document.createElement('div');
       revealInner.className = 'reveal-inner';
-      litWrap = document.createElement('div');
-      litWrap.className = 'ghost-wrap';
-      litWrap.style.maskImage = 'none';
-      litWrap.style.webkitMaskImage = 'none';
-      litWrap.appendChild(clone);
       revealInner.appendChild(litWrap);
       reveal.appendChild(revealInner);
       document.querySelector('main').appendChild(reveal);
-      lit = clone;
     }
   }
   function disableEffects() {
@@ -536,7 +602,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   // ---- ambient scramble: original ghost only — the lit clone stays pristine ----
   if (reduceQ.matches || !fineQ.matches) return;
   var pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789∀∃εδℝ≤→{}()[]<>=+-*/;:#?!';
-  var nodes = Array.prototype.map.call(ghost.querySelectorAll('textPath[href^="#gp-"]'), function (el) {
+  var nodes = Array.prototype.map.call(ghostWrap.querySelectorAll('.ghost.core textPath[href^="#gp-"]'), function (el) {
     return { el: el, original: el.textContent, dirty: false };
   });
   // Grey speaks in three brightnesses; the orange accent never enters the background.
