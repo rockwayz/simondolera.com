@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#040404">
 <meta name="color-scheme" content="dark">
 <title>Simon Dolera — Formal verification &amp; AI assurance</title>
-<meta name="description" content="Simon Dolera is an independent researcher working on formal verification and AI assurance.">
+<meta name="description" content="Simon Dolera builds machine-checked guarantees for AI systems — formal proof where verification is tractable, explicit bounds where it is not.">
 <link rel="canonical" href="https://simondolera.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://simondolera.com/">
@@ -38,7 +38,7 @@
   "knowsAbout": ["formal verification", "AI assurance", "theorem proving"],
   "sameAs": [
     "https://github.com/rockwayz",
-    "https://linkedin.com/in/simon-dolera"
+    "https://www.linkedin.com/in/simon-dolera"
   ],
   "subjectOf": {
     "@type": "ScholarlyArticle",
@@ -49,29 +49,13 @@
   }
 }
 </script>
+<script>/* entrance choreography plays once per session — revisits paint instantly */
+try { if (sessionStorage.getItem('sd-seen')) document.documentElement.classList.add('revisit'); else sessionStorage.setItem('sd-seen', '1'); } catch (e) {}</script>
 <link rel="preload" href="assets/asset-02.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/asset-08.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/asset-14.woff2" as="font" type="font/woff2" crossorigin>
-<style>/* vietnamese */
-@font-face {
-  font-family: 'Archivo';
-  font-style: normal;
-  font-weight: 600;
-  font-stretch: 125%;
-  font-display: swap;
-  src: url("assets/asset-00.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Archivo';
-  font-style: normal;
-  font-weight: 600;
-  font-stretch: 125%;
-  font-display: swap;
-  src: url("assets/asset-01.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
+<style>/* only the subsets this page can actually request are declared: the three
+   latin faces plus JetBrains Mono greek (ε/δ in the art and scramble pool) */
 /* latin */
 @font-face {
   font-family: 'Archivo';
@@ -82,24 +66,6 @@
   src: url("assets/asset-02.woff2") format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-/* cyrillic-ext */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400 500;
-  font-display: swap;
-  src: url("assets/asset-03.woff2") format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400 500;
-  font-display: swap;
-  src: url("assets/asset-04.woff2") format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
 /* greek */
 @font-face {
   font-family: 'JetBrains Mono';
@@ -109,24 +75,6 @@
   src: url("assets/asset-05.woff2") format('woff2');
   unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
 }
-/* vietnamese */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400 500;
-  font-display: swap;
-  src: url("assets/asset-06.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400 500;
-  font-display: swap;
-  src: url("assets/asset-07.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 /* latin */
 @font-face {
   font-family: 'JetBrains Mono';
@@ -135,51 +83,6 @@
   font-display: swap;
   src: url("assets/asset-08.woff2") format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Source Serif 4';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("assets/asset-09.woff2") format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'Source Serif 4';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("assets/asset-10.woff2") format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* greek */
-@font-face {
-  font-family: 'Source Serif 4';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("assets/asset-11.woff2") format('woff2');
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Source Serif 4';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("assets/asset-12.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Source Serif 4';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("assets/asset-13.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
@@ -211,7 +114,8 @@ html, body { margin: 0; padding: 0; background: var(--ink); color-scheme: dark; 
 ::selection { background: var(--signal); color: var(--ink); }
 a { color: var(--dim); text-decoration: none; transition: color 0.2s ease; }
 a:hover { color: var(--paper); }
-a:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--ink), 0 0 0 4px var(--signal); }
+/* transparent outline repaints in forced-colors mode; invisible otherwise — do not "simplify" to outline: none */
+a:focus-visible { outline: 2px solid transparent; outline-offset: 2px; box-shadow: 0 0 0 2px var(--ink), 0 0 0 4px var(--signal); }
 /* static grain: dithers the glow gradients, gives the void tooth */
 body::after { content: ''; position: fixed; inset: 0; z-index: 5; pointer-events: none; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 180px; }
 /* cursor system — orb rides the pointer; orange blooms only over actionable targets */
@@ -219,34 +123,30 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 5; pointer-events
 #orb::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, #FFF6E8 0%, #F8E7C8 40%, rgba(234, 126, 35, 0.45) 70%, transparent 100%); box-shadow: 0 0 10px 3px rgba(255, 240, 214, 0.45), 0 0 26px 8px rgba(234, 126, 35, 0.16); transition: transform 0.25s var(--ease-swift), box-shadow 0.25s ease; }
 #orb.on-link::before { transform: scale(1.7); box-shadow: 0 0 12px 4px rgba(255, 240, 214, 0.5), 0 0 30px 10px rgba(234, 126, 35, 0.35); }
 #orb.down::before { transform: scale(0.75); }
-#torch { position: fixed; left: 0; top: 0; z-index: 5; width: 360px; height: 360px; margin: -180px 0 0 -180px; border-radius: 50%; pointer-events: none; will-change: transform; background: radial-gradient(circle, rgba(248, 244, 240, 0.07) 0%, rgba(248, 244, 240, 0.04) 35%, rgba(248, 244, 240, 0.015) 60%, transparent 78%); }
+#torch { position: fixed; left: 0; top: 0; z-index: 5; width: 360px; height: 360px; margin: -180px 0 0 -180px; border-radius: 50%; pointer-events: none; opacity: 0; will-change: transform; transition: opacity 0.35s ease; background: radial-gradient(circle, rgba(248, 244, 240, 0.07) 0%, rgba(248, 244, 240, 0.04) 35%, rgba(248, 244, 240, 0.015) 60%, transparent 78%); }
 /* effects exist only when JS confirms a fine pointer without reduced motion */
 #torch, #orb { display: none; }
 .has-orb #torch, .has-orb #orb { display: block; }
-.has-orb main, .has-orb main a { cursor: none; }
-@media (forced-colors: active) { #torch, #orb, #reveal, body::after { display: none !important; } }
+/* cursor takeover only over decorative dead space — text keeps its I-beam, links keep the hand */
+.has-orb main { cursor: none; }
+.has-orb main a { cursor: pointer; }
+.has-orb .card { cursor: auto; }
+@media (forced-colors: active) { #torch, #orb, #reveal, body::after { display: none !important; } .has-orb main { cursor: auto !important; } }
 /* layered ground: warm tint toward the card, vignette at the base */
 main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidden; display: flex; align-items: center; padding: 64px 24px; background: radial-gradient(52% 58% at 50% 100%, rgba(4, 4, 4, 0) 0%, rgba(0, 0, 0, 0.5) 100%), radial-gradient(120% 90% at 32% 18%, #0a0705 0%, #040404 62%); }
 .ghost-wrap { position: absolute; inset: 0; pointer-events: none; will-change: transform; -webkit-mask-image: radial-gradient(115% 115% at 62% 50%, #000 25%, rgba(0, 0, 0, 0.55) 55%, transparent 82%); mask-image: radial-gradient(115% 115% at 62% 50%, #000 25%, rgba(0, 0, 0, 0.55) 55%, transparent 82%); }
 /* ambient layer: vignette-masked so it recedes near the type; the lit clone above it
    is revealed only inside the torch radius and is never scrambled — the cursor
    shows the pristine code while the ambient copy drifts and mutates */
-.ghost { position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3200px); height: auto; opacity: 0.16; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; animation: ghostin 2.2s ease-out 0.5s both, drift 480s linear 2s infinite; will-change: transform; }
-.ghost-lit { opacity: 0.38; animation: litin 2.2s ease-out 0.5s both, drift 480s linear 2s infinite; }
-.ghost-lit.ccw-el { animation: litin 2.2s ease-out 0.5s both, driftccwEl 640s linear 2s infinite; }
-#reveal { position: fixed; left: 0; top: 0; width: 480px; height: 480px; margin: -240px 0 0 -240px; z-index: 5; pointer-events: none; display: none; will-change: transform; -webkit-mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); }
+.ghost { position: absolute; top: 50%; right: 32%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3200px); height: auto; opacity: 0.16; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; animation: ghostin 2.2s ease-out 0.5s both; }
+.ghost-lit { opacity: 0.38; animation: litin 2.2s ease-out 0.5s both; }
+#reveal { position: fixed; left: 0; top: 0; width: 480px; height: 480px; margin: -240px 0 0 -240px; z-index: 5; pointer-events: none; display: none; opacity: 0; will-change: transform; transition: opacity 0.35s ease; -webkit-mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); }
 .has-orb #reveal { display: block; }
 .reveal-inner { position: absolute; left: 0; top: 0; width: 100vw; height: 100vh; will-change: transform; }
-/* counter-rotating layers are separate svg elements: element-level transforms
-   stay on the compositor — an animated inner <g> would re-raster every frame */
-.ghost.ccw-el { animation: ghostin 2.2s ease-out 0.5s both, driftccwEl 640s linear 2s infinite; }
-.ghost.static { animation: ghostin 2.2s ease-out 0.5s both; will-change: auto; }
 .wrap { width: 100%; max-width: 1240px; margin: 0 auto; position: relative; z-index: 6; }
 .card { max-width: 1000px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 @keyframes fade { from { opacity: 0; transform: translateY(18px); } }
 @keyframes h1in { from { opacity: 0; transform: translateY(22px); letter-spacing: 0.05em; } to { opacity: 1; transform: none; letter-spacing: 0; } }
-@keyframes drift { from { transform: translate(50%, -50%) rotate(0deg); } to { transform: translate(50%, -50%) rotate(360deg); } }
-@keyframes driftccwEl { from { transform: translate(50%, -50%) rotate(0deg); } to { transform: translate(50%, -50%) rotate(-360deg); } }
 @keyframes ghostin { from { opacity: 0; } to { opacity: 0.16; } }
 @keyframes litin { from { opacity: 0; } to { opacity: 0.38; } }
 /* the mark proves itself stroke by stroke; the accent lands last, then stillness */
@@ -267,12 +167,18 @@ nav a:nth-child(1) { animation-delay: 0.54s; }
 nav a:nth-child(2) { animation-delay: 0.62s; }
 nav a:nth-child(3) { animation-delay: 0.70s; }
 nav a:nth-child(4) { animation-delay: 0.78s; }
+.nav-meta { animation: fade 0.7s var(--ease-out) 0.86s both; }
+/* a focused link snaps to its final state — never an invisible focus target */
+nav a:focus-visible { animation: none; }
+/* the entrance plays once per session; revisits paint instantly */
+.revisit h1, .revisit .role, .revisit .bio, .revisit nav a, .revisit .nav-meta,
+.revisit .mark path, .revisit .mark circle, .revisit .mark line, .revisit .mark polygon { animation: none; }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 .mark { display: block; width: clamp(8rem, 13.42vw, 11.5rem); height: auto; aspect-ratio: 1; margin-bottom: 48px; }
 h1 { margin: 0 0 16px; font-family: 'Archivo', 'Archivo-fallback', Helvetica, Arial, sans-serif; font-weight: 600; font-stretch: 125%; font-size: 4rem; font-size: clamp(3rem, 7vw, 6rem); line-height: 1.05; letter-spacing: 0; color: var(--paper); text-transform: uppercase; }
 .role { margin: 0 0 40px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; font-size: clamp(0.6875rem, 0.9vw, 0.8125rem); text-wrap: balance; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); line-height: 1.7; }
-.bio { margin: 0 0 56px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 1.3rem; font-size: clamp(1.25rem, 1.65vw, 1.5rem); line-height: 1.62; color: var(--mid); max-width: 56ch; text-wrap: pretty; }
-nav { display: flex; flex-wrap: wrap; gap: 20px 48px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+.bio { margin: 0 0 56px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 1.2rem; font-size: clamp(1rem, 0.78rem + 1.1vw, 1.5rem); line-height: 1.62; color: var(--mid); max-width: 56ch; text-wrap: pretty; }
+nav { display: flex; flex-wrap: wrap; gap: 32px 48px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
 nav a { display: inline-flex; align-items: center; gap: 10px; color: var(--paper); padding: 14px 10px; margin: -14px -10px; border-radius: 6px; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: color 0.2s ease, background 0.2s ease, transform var(--dur-micro) var(--ease-out); }
 nav a svg { transition: transform var(--dur-ui) var(--ease-swift); }
 nav a span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; text-decoration-color: rgba(248, 244, 240, 0.55); transition: text-decoration-color 0.25s ease, text-underline-offset 0.25s var(--ease-swift); }
@@ -288,18 +194,45 @@ nav a:active span { text-decoration-color: var(--signal); }
 nav a:active svg:last-of-type { transform: translate(3px, -3px) scale(0.92); }
 nav a.email { color: var(--signal); }
 nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inline-block; min-width: 6ch; }
+/* reserved feedback line: empty until a desktop copy succeeds, then shows the
+   copied address for 2.5s — min-height keeps the layout from shifting */
+.nav-meta { margin: 28px 0 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.02em; text-transform: none; color: var(--dim); line-height: 1.7; min-height: 1.7em; max-width: 66ch; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 @media (min-resolution: 1.5dppx) {
   .ghost { width: min(228vh, 154vw, 1792px); }
 }
+/* ambient rotation is a fine-pointer garnish: touch devices keep the entrance
+   fade but never pay for an always-on compositor loop */
+@media (hover: none), (pointer: coarse) {
+  .ghost, .ghost.ccw-el { animation: ghostin 2.2s ease-out 0.5s both; will-change: auto; }
+}
+/* short-viewport tiers: height-only so 1366x768 laptops, landscape phones, and
+   zoomed windows compact too; placed before the width queries so narrow
+   screens still get their own overrides below */
+@media screen and (max-height: 800px) {
+  main { padding: 28px 24px; }
+  .mark { width: clamp(6rem, 9vw, 6.5rem); margin-bottom: 18px; }
+  h1 { margin-bottom: 10px; }
+  .role { margin-bottom: 16px; }
+  .bio { margin-bottom: 22px; }
+  .nav-meta { margin-top: 18px; }
+}
+@media screen and (max-height: 520px) {
+  main { padding: 16px 24px; }
+  .mark { width: 48px; margin-bottom: 10px; }
+  h1 { font-size: 2.25rem; margin-bottom: 6px; }
+  .role { margin-bottom: 8px; }
+  .bio { font-size: 1rem; line-height: 1.55; margin-bottom: 14px; }
+  .nav-meta { display: none; }
+}
 @media (max-width: 640px) {
   main { padding: 32px 24px; }
-  .mark { width: 224px; margin-bottom: 24px; }
-  h1 { font-size: clamp(2.5rem, 12.5vw, 3.25rem); margin-bottom: 12px; }
+  .mark { width: clamp(6.5rem, 20vw, 8rem); margin-bottom: 24px; }
+  h1 { font-size: clamp(2.5rem, 10vw, 3rem); margin-bottom: 12px; }
   .role { margin-bottom: 20px; }
-  .bio { font-size: 0.97rem; line-height: 1.55; margin-bottom: 32px; }
-  .paper-year { display: none; }
-  nav { gap: 20px 28px; }
-  .ghost { width: min(180vh, 1400px); }
+  .bio { line-height: 1.55; margin-bottom: 32px; }
+  nav { gap: 32px 28px; }
+  .ghost { width: min(180vh, 1400px); right: 50%; }
 }
 @media print {
   .ghost-wrap, #orb, #torch, #reveal, body::after { display: none !important; }
@@ -315,12 +248,13 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   nav a[href^='http']::after { content: ' (' attr(href) ')'; text-transform: none; letter-spacing: 0; font-size: 10px; }
   nav a.email::after { content: ' (simon@simondolera.com)'; text-transform: none; letter-spacing: 0; font-size: 10px; }
 }
-@media (max-width: 640px) and (max-height: 700px) {
+@media (max-width: 640px) and (max-height: 760px) {
   main { padding: 20px; }
-  .mark { width: 128px; margin-bottom: 14px; }
-  h1 { margin-bottom: 10px; }
-  .role { margin-bottom: 16px; }
-  .bio { font-size: 0.94rem; margin-bottom: 24px; }
+  .mark { width: 88px; margin-bottom: 14px; }
+  h1 { margin-bottom: 8px; }
+  .role { margin-bottom: 14px; }
+  .bio { margin-bottom: 20px; }
+  .nav-meta { margin-top: 16px; }
 }
 </style>
 </head>
@@ -332,110 +266,102 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   <div class="ghost-wrap">
   <svg viewBox="-75 -75 350 350" aria-hidden="true" class="ghost core" text-rendering="optimizeSpeed">
     <defs>
-      <!-- the mark's core at 1.55×; the hollow band's two edges become paired code streams -->
-      <path id="gp-band-a-outer" d="M 100 171 A 71 71 0 0 1 100 29" fill="none"></path>
-      <path id="gp-band-a-inner" d="M 100 159.2 A 59.2 59.2 0 0 1 100 40.8" fill="none"></path>
-      <path id="gp-band-b-outer" d="M 170.99 98.76 A 71 71 0 0 1 109.27 170.39" fill="none"></path>
-      <path id="gp-band-b-inner" d="M 159.19 98.97 A 59.2 59.2 0 0 1 107.73 158.69" fill="none"></path>
-      <path id="gp-circle" d="M 100 52.3 A 47.7 47.7 0 1 1 99.9 52.3" fill="none"></path>
-      <path id="gp-line" d="M 100 52.3 L 100 147.7" fill="none"></path>
-      <!-- full-circle code rings, start angles staggered by the golden angle -->
-      <path id="gp-ring-1" d="M 100.00 47.00 A 53 53 0 1 1 99.54 47.00" fill="none"></path>
-      <path id="gp-ring-2" d="M 153.37 158.24 A 79 79 0 1 1 153.88 157.78" fill="none"></path>
-      <path id="gp-ring-3" d="M 14.33 92.50 A 86 86 0 1 1 14.27 93.25" fill="none"></path>
-      <path id="gp-ring-4" d="M 173.78 43.39 A 93 93 0 1 1 173.29 42.74" fill="none"></path>
-      <path id="gp-ring-5" d="M 82.46 199.47 A 101 101 0 1 1 83.33 199.61" fill="none"></path>
-      <path id="gp-ring-6" d="M 41.43 8.07 A 109 109 0 1 1 40.63 8.58" fill="none"></path>
-      <path id="gp-ring-7" d="M 213.01 130.28 A 117 117 0 1 1 213.27 129.29" fill="none"></path>
-      <path id="gp-ring-8" d="M -10.88 157.72 A 125 125 0 1 1 -10.37 158.68" fill="none"></path>
-      <path id="gp-ring-9" d="M 145.49 -24.98 A 133 133 0 1 1 144.40 -25.37" fill="none"></path>
-      <path id="gp-ring-10" d="M 153.96 230.27 A 141 141 0 1 1 155.09 229.79" fill="none"></path>
-      <path id="gp-ring-11" d="M -35.04 37.03 A 149 149 0 1 1 -35.58 38.21" fill="none"></path>
-      <path id="gp-ring-12" d="M 249.73 52.79 A 157 157 0 1 1 249.32 51.48" fill="none"></path>
-      <path id="gp-ring-13" d="M 17.50 242.89 A 165 165 0 1 1 18.75 243.61" fill="none"></path>
-      <path id="gp-ring-14" d="M 100.00 84.00 A 16 16 0 1 1 99.86 84.00" fill="none"></path>
-      <path id="gp-ring-15" d="M 116.21 117.69 A 24 24 0 1 1 116.37 117.55" fill="none"></path>
-      <path id="gp-ring-16" d="M 68.12 97.21 A 32 32 0 1 1 68.10 97.49" fill="none"></path>
-      <path id="gp-ring-17" d="M 131.73 75.65 A 40 40 0 1 1 131.52 75.37" fill="none"></path>
-      <path id="gp-ring-18" d="M 69.96 270.37 A 173 173 0 1 1 71.45 270.63" fill="none"></path>
-      <path id="gp-ring-19" d="M 2.75 -52.65 A 181 181 0 1 1 1.42 -51.80" fill="none"></path>
-      <path id="gp-ring-20" d="M 282.56 148.92 A 189 189 0 1 1 282.98 147.32" fill="none"></path>
-      <path id="gp-ring-21" d="M -74.74 190.96 A 197 197 0 1 1 -73.94 192.49" fill="none"></path>
-      <path id="gp-ring-22" d="M 170.11 -92.64 A 205 205 0 1 1 168.43 -93.24" fill="none"></path>
-      <path id="gp-ring-23" d="M 181.51 296.79 A 213 213 0 1 1 183.23 296.07" fill="none"></path>
-      <path id="gp-ring-24" d="M -100.29 6.60 A 221 221 0 1 1 -101.10 8.35" fill="none"></path>
-      <path id="gp-ring-25" d="M 318.40 31.14 A 229 229 0 1 1 317.79 29.24" fill="none"></path>
-      <path id="gp-ring-26" d="M -18.50 305.25 A 237 237 0 1 1 -16.70 306.27" fill="none"></path>
-      <path id="gp-ring-27" d="M 46.97 -139.19 A 245 245 0 1 1 44.89 -138.72" fill="none"></path>
+      <path id="gp-spiral" d="M 88.0 100.0 L 87.9 99.0 L 88.0 98.1 L 88.0 97.1 L 88.2 96.1 L 88.5 95.1 L 88.8 94.2 L 89.2 93.2 L 89.7 92.3 L 90.3 91.5 L 90.9 90.7 L 91.6 89.9 L 92.4 89.2 L 93.3 88.5 L 94.2 87.9 L 95.1 87.4 L 96.1 86.9 L 97.1 86.6 L 98.2 86.3 L 99.3 86.1 L 100.4 86.0 L 101.5 85.9 L 102.7 86.0 L 103.8 86.2 L 104.9 86.4 L 106.1 86.8 L 107.1 87.2 L 108.2 87.7 L 109.2 88.4 L 110.2 89.1 L 111.1 89.8 L 112.0 90.7 L 112.8 91.6 L 113.5 92.6 L 114.1 93.7 L 114.7 94.8 L 115.1 95.9 L 115.5 97.2 L 115.8 98.4 L 116.0 99.7 L 116.0 100.9 L 116.0 102.2 L 115.9 103.5 L 115.7 104.8 L 115.3 106.1 L 114.9 107.3 L 114.3 108.6 L 113.7 109.7 L 112.9 110.9 L 112.1 111.9 L 111.2 112.9 L 110.2 113.9 L 109.1 114.7 L 107.9 115.5 L 106.7 116.2 L 105.4 116.8 L 104.1 117.2 L 102.7 117.6 L 101.3 117.9 L 99.9 118.0 L 98.4 118.0 L 97.0 118.0 L 95.5 117.8 L 94.1 117.4 L 92.7 117.0 L 91.3 116.5 L 89.9 115.8 L 88.6 115.0 L 87.4 114.1 L 86.2 113.2 L 85.2 112.1 L 84.2 110.9 L 83.3 109.7 L 82.4 108.3 L 81.7 106.9 L 81.1 105.5 L 80.7 104.0 L 80.3 102.4 L 80.1 100.9 L 80.0 99.3 L 80.0 97.7 L 80.1 96.0 L 80.4 94.4 L 80.8 92.9 L 81.4 91.3 L 82.0 89.8 L 82.8 88.3 L 83.7 86.9 L 84.8 85.6 L 85.9 84.4 L 87.1 83.2 L 88.5 82.1 L 89.9 81.2 L 91.4 80.3 L 92.9 79.6 L 94.6 79.0 L 96.2 78.6 L 97.9 78.2 L 99.7 78.0 L 101.5 78.0 L 103.2 78.1 L 105.0 78.3 L 106.7 78.7 L 108.5 79.2 L 110.2 79.8 L 111.8 80.6 L 113.4 81.5 L 114.9 82.6 L 116.3 83.7 L 117.6 85.0 L 118.8 86.4 L 119.9 87.9 L 120.9 89.5 L 121.8 91.2 L 122.5 92.9 L 123.1 94.7 L 123.6 96.6 L 123.9 98.5 L 124.0 100.4 L 124.0 102.3 L 123.9 104.2 L 123.5 106.1 L 123.1 108.0 L 122.4 109.9 L 121.7 111.7 L 120.8 113.5 L 119.7 115.1 L 118.5 116.7 L 117.2 118.2 L 115.7 119.6 L 114.2 120.9 L 112.5 122.0 L 110.7 123.1 L 108.9 123.9 L 107.0 124.7 L 105.0 125.3 L 103.0 125.7 L 100.9 125.9 L 98.8 126.0 L 96.8 126.0 L 94.7 125.7 L 92.6 125.3 L 90.6 124.7 L 88.6 124.0 L 86.6 123.1 L 84.8 122.0 L 83.0 120.8 L 81.3 119.5 L 79.8 118.0 L 78.3 116.4 L 77.0 114.6 L 75.8 112.8 L 74.8 110.9 L 73.9 108.8 L 73.1 106.8 L 72.6 104.6 L 72.2 102.4 L 72.0 100.2 L 72.0 97.9 L 72.1 95.7 L 72.5 93.4 L 73.0 91.2 L 73.7 89.1 L 74.5 87.0 L 75.6 84.9 L 76.8 82.9 L 78.1 81.1 L 79.7 79.3 L 81.3 77.7 L 83.1 76.2 L 85.0 74.8 L 87.0 73.6 L 89.1 72.6 L 91.3 71.7 L 93.6 71.0 L 95.9 70.5 L 98.3 70.1 L 100.7 70.0 L 103.1 70.0 L 105.5 70.3 L 107.9 70.7 L 110.2 71.3 L 112.5 72.2 L 114.8 73.2 L 116.9 74.3 L 119.0 75.7 L 120.9 77.2 L 122.8 78.9 L 124.5 80.7 L 126.0 82.7 L 127.4 84.7 L 128.6 86.9 L 129.7 89.2 L 130.5 91.6 L 131.2 94.1 L 131.7 96.6 L 132.0 99.1 L 132.0 101.7 L 131.9 104.2 L 131.5 106.8 L 131.0 109.3 L 130.3 111.8 L 129.3 114.2 L 128.2 116.6 L 126.8 118.8 L 125.3 121.0 L 123.6 123.0 L 121.8 124.9 L 119.8 126.6 L 117.6 128.2 L 115.4 129.6 L 113.0 130.9 L 110.5 131.9 L 108.0 132.7 L 105.3 133.4 L 102.7 133.8 L 100.0 134.0 L 97.2 134.0 L 94.5 133.8 L 91.8 133.3 L 89.1 132.6 L 86.5 131.8 L 84.0 130.7 L 81.5 129.4 L 79.2 127.9 L 76.9 126.2 L 74.8 124.4 L 72.9 122.3 L 71.1 120.2 L 69.5 117.8 L 68.1 115.4 L 66.9 112.8 L 65.9 110.2 L 65.0 107.4 L 64.5 104.6 L 64.1 101.8 L 64.0 98.9 L 64.1 96.0 L 64.4 93.1 L 65.0 90.3 L 65.8 87.5 L 66.8 84.7 L 68.0 82.1 L 69.5 79.5 L 71.1 77.1 L 73.0 74.8 L 75.0 72.6 L 77.2 70.7 L 79.6 68.8 L 82.1 67.2 L 84.7 65.8 L 87.5 64.6 L 90.3 63.6 L 93.2 62.8 L 96.2 62.3 L 99.2 62.0 L 102.3 62.0 L 105.3 62.2 L 108.3 62.6 L 111.3 63.3 L 114.3 64.3 L 117.1 65.4 L 119.9 66.8 L 122.5 68.4 L 125.0 70.2 L 127.4 72.3 L 129.6 74.5 L 131.6 76.9 L 133.5 79.4 L 135.1 82.1 L 136.5 84.9 L 137.7 87.9 L 138.6 90.9 L 139.4 94.0 L 139.8 97.2 L 140.0 100.4 L 140.0 103.6 L 139.6 106.8 L 139.1 109.9 L 138.3 113.1 L 137.2 116.1 L 135.9 119.1 L 134.3 121.9 L 132.5 124.7 L 130.5 127.3 L 128.3 129.7 L 125.9 131.9 L 123.3 134.0 L 120.6 135.8 L 117.7 137.5 L 114.7 138.8 L 111.6 140.0 L 108.4 140.9 L 105.1 141.5 L 101.8 141.9 L 98.4 142.0 L 95.0 141.9 L 91.7 141.4 L 88.4 140.7 L 85.1 139.8 L 81.9 138.5 L 78.9 137.1 L 75.9 135.3 L 73.1 133.4 L 70.5 131.2 L 68.0 128.8 L 65.7 126.2 L 63.6 123.5 L 61.8 120.5 L 60.2 117.4 L 58.8 114.2 L 57.7 110.9 L 56.9 107.5 L 56.3 104.1 L 56.0 100.6 L 56.0 97.0 L 56.3 93.5 L 56.8 90.0 L 57.7 86.6 L 58.8 83.2 L 60.2 79.9 L 61.8 76.7 L 63.7 73.7 L 65.9 70.8 L 68.2 68.1 L 70.8 65.6 L 73.6 63.3 L 76.6 61.2 L 79.7 59.4 L 83.0 57.8 L 86.4 56.5 L 89.9 55.4 L 93.4 54.7 L 97.1 54.2 L 100.8 54.0 L 104.4 54.1 L 108.1 54.5 L 111.8 55.2 L 115.3 56.2 L 118.8 57.4 L 122.2 59.0 L 125.5 60.8 L 128.6 62.9 L 131.5 65.2 L 134.3 67.8 L 136.8 70.6 L 139.1 73.5 L 141.2 76.7 L 143.0 80.0 L 144.6 83.5 L 145.9 87.1 L 146.9 90.8 L 147.5 94.5 L 147.9 98.4 L 148.0 102.2 L 147.8 106.0 L 147.2 109.9 L 146.4 113.6 L 145.3 117.3 L 143.8 120.9 L 142.1 124.4 L 140.1 127.8 L 137.8 130.9 L 135.3 133.9 L 132.5 136.7 L 129.6 139.3 L 126.4 141.6 L 123.0 143.7 L 119.5 145.5 L 115.8 147.0 L 112.1 148.2 L 108.2 149.1 L 104.2 149.7 L 100.3 150.0 L 96.3 150.0 L 92.3 149.6 L 88.3 148.9 L 84.4 147.9 L 80.6 146.6 L 76.9 145.0 L 73.3 143.1 L 69.9 140.9 L 66.6 138.4 L 63.6 135.7 L 60.8 132.8 L 58.2 129.6 L 55.9 126.2 L 53.8 122.6 L 52.1 118.9 L 50.6 115.1 L 49.5 111.1 L 48.7 107.0 L 48.2 102.9 L 48.0 98.7 L 48.1 94.6 L 48.6 90.4 L 49.5 86.3 L 50.6 82.3 L 52.1 78.4 L 53.9 74.6 L 56.0 70.9 L 58.4 67.4 L 61.0 64.1 L 64.0 61.1 L 67.1 58.2 L 70.5 55.7 L 74.1 53.3 L 77.9 51.3 L 81.8 49.6 L 85.9 48.2 L 90.0 47.2 L 94.3 46.4 L 98.6 46.1 L 102.9 46.0 L 107.2 46.3 L 111.5 47.0 L 115.7 47.9 L 119.9 49.3 L 123.9 50.9 L 127.8 52.9 L 131.5 55.2 L 135.1 57.8 L 138.4 60.7 L 141.5 63.8 L 144.3 67.2 L 146.9 70.7 L 149.2 74.5 L 151.2 78.5 L 152.8 82.6 L 154.1 86.9 L 155.1 91.2 L 155.7 95.7 L 156.0 100.1 L 155.9 104.6 L 155.5 109.1 L 154.7 113.5 L 153.5 117.9 L 152.0 122.1 L 150.2 126.3 L 148.0 130.2 L 145.5 134.0 L 142.7 137.6 L 139.6 141.0 L 136.3 144.1 L 132.7 147.0 L 128.9 149.5 L 124.9 151.8 L 120.7 153.7 L 116.4 155.3 L 111.9 156.5 L 107.4 157.4 L 102.8 157.9 L 98.2 158.0 L 93.5 157.8 L 88.9 157.2 L 84.3 156.2 L 79.9 154.9 L 75.5 153.2 L 71.3 151.1 L 67.2 148.8 L 63.4 146.1 L 59.7 143.1 L 56.4 139.8 L 53.2 136.2 L 50.4 132.4 L 47.9 128.4 L 45.7 124.2 L 43.8 119.8 L 42.3 115.3 L 41.2 110.6 L 40.4 105.9 L 40.0 101.1 L 40.0 96.3 L 40.4 91.5 L 41.2 86.8 L 42.3 82.1 L 43.8 77.5 L 45.7 73.1 L 48.0 68.8 L 50.6 64.6 L 53.5 60.7 L 56.7 57.1 L 60.2 53.7 L 64.0 50.5 L 68.0 47.7 L 72.2 45.3 L 76.6 43.1 L 81.2 41.3 L 85.9 39.9 L 90.8 38.9 L 95.7 38.2 L 100.6 38.0 L 105.6 38.1 L 110.5 38.7 L 115.4 39.6 L 120.2 40.9 L 124.9 42.7 L 129.5 44.7 L 133.9 47.2 L 138.0 50.0 L 142.0 53.1 L 145.7 56.5 L 149.1 60.3 L 152.2 64.3 L 154.9 68.5 L 157.4 72.9 L 159.5 77.6 L 161.2 82.4 L 162.5 87.3 L 163.4 92.3 L 163.9 97.4 L 164.0 102.5 L 163.7 107.6 L 163.0 112.7 L 161.9 117.7 L 160.3 122.7 L 158.4 127.5 L 156.1 132.1 L 153.5 136.5 L 150.5 140.8 L 147.1 144.7 L 143.5 148.4 L 139.5 151.8 L 135.3 154.9 L 130.9 157.6 L 126.2 160.0 L 121.3 162.0 L 116.3 163.6 L 111.2 164.8 L 106.0 165.6 L 100.8 166.0 L 95.5 165.9 L 90.2 165.5 L 85.0 164.6 L 79.8 163.3 L 74.8 161.5 L 69.9 159.4 L 65.2 156.9 L 60.7 154.0 L 56.5 150.8 L 52.5 147.2 L 48.8 143.3 L 45.4 139.2 L 42.3 134.7 L 39.7 130.1 L 37.4 125.2 L 35.5 120.1 L 33.9 114.9 L 32.9 109.6 L 32.2 104.2 L 32.0 98.8 L 32.2 93.4 L 32.8 87.9 L 33.9 82.6 L 35.4 77.3 L 37.4 72.2 L 39.7 67.2 L 42.4 62.5 L 45.5 57.9 L 49.0 53.6 L 52.8 49.6 L 56.9 45.9 L 61.3 42.6 L 66.0 39.6 L 70.9 37.0 L 75.9 34.7 L 81.2 32.9 L 86.6 31.5 L 92.1 30.6 L 97.7 30.1 L 103.3 30.0 L 108.9 30.4 L 114.4 31.2 L 119.9 32.5 L 125.3 34.2 L 130.5 36.4 L 135.5 38.9 L 140.4 41.9 L 144.9 45.2 L 149.3 48.9 L 153.3 52.9 L 156.9 57.3 L 160.2 61.9 L 163.2 66.8 L 165.7 71.9 L 167.9 77.2 L 169.6 82.7 L 170.8 88.3 L 171.6 94.0 L 172.0 99.7 L 171.9 105.5 L 171.3 111.2 L 170.3 116.9 L 168.8 122.5 L 166.9 128.0 L 164.5 133.3 L 161.8 138.4 L 158.6 143.3 L 155.0 147.9 L 151.1 152.2 L 146.8 156.2 L 142.2 159.8 L 137.4 163.1 L 132.2 166.0 L 126.9 168.4 L 121.4 170.5 L 115.7 172.0 L 109.9 173.2 L 104.0 173.8 L 98.1 174.0 L 92.2 173.7 L 86.3 173.0 L 80.5 171.7 L 74.8 170.0 L 69.2 167.9 L 63.9 165.3 L 58.7 162.3 L 53.8 158.9 L 49.2 155.1 L 44.9 150.9 L 40.9 146.4 L 37.3 141.6 L 34.1 136.5 L 31.3 131.1 L 28.9 125.6 L 27.0 119.9 L 25.5 114.0 L 24.6 108.0 L 24.1 101.9 L 24.0 95.9 L 24.5 89.8 L 25.5 83.8 L 26.9 77.8 L 28.8 72.0 L 31.2 66.4 L 34.0 60.9 L 37.3 55.7 L 40.9 50.8 L 45.0 46.2 L 49.4 41.9 L 54.1 37.9 L 59.2 34.4 L 64.5 31.2 L 70.1 28.5 L 75.9 26.3 L 81.8 24.5 L 87.9 23.1 L 94.1 22.3 L 100.3 22.0 L 106.5 22.2 L 112.7 22.8 L 118.9 24.0 L 124.9 25.7 L 130.8 27.8 L 136.6 30.4 L 142.1 33.5 L 147.3 37.0 L 152.3 40.9 L 156.9 45.2 L 161.2 49.8 L 165.1 54.8 L 168.6 60.1 L 171.6 65.7 L 174.2 71.5 L 176.4 77.5 L 178.0 83.6 L 179.2 89.9 L 179.9 96.2 L 180.0 102.6 L 179.6 109.0 L 178.8 115.4 L 177.4 121.7 L 175.5 127.8 L 173.1 133.8 L 170.3 139.6 L 167.0 145.1 L 163.2 150.4 L 159.1 155.4 L 154.5 160.0 L 149.6 164.2 L 144.4 168.1 L 138.9 171.5 L 133.1 174.5 L 127.0 177.0 L 120.8 179.0 L 114.5 180.5 L 108.0 181.5 L 101.5 182.0 L 94.9 181.9 L 88.4 181.4 L 81.9 180.3 L 75.5 178.7 L 69.2 176.5 L 63.2 173.9 L 57.3 170.8 L 51.8 167.3 L 46.5 163.3 L 41.5 158.9 L 36.9 154.1 L 32.7 148.9 L 28.9 143.4 L 25.6 137.7 L 22.7 131.6 L 20.3 125.4 L 18.5 119.0 L 17.1 112.4 L 16.3 105.8 L 16.0 99.0 L 16.2 92.3 L 17.0 85.6 L 18.3 79.0 L 20.2 72.5 L 22.5 66.2 L 25.4 60.1 L 28.7 54.2 L 32.5 48.6 L 36.8 43.3 L 41.5 38.3 L 46.5 33.8 L 51.9 29.6 L 57.6 25.9 L 63.6 22.7 L 69.9 19.9 L 76.4 17.7 L 83.0 16.0 L 89.8 14.8 L 96.6 14.1 L 103.5 14.0 L 110.4 14.5 L 117.2 15.5 L 123.9 17.0 L 130.5 19.1 L 136.9 21.7 L 143.1 24.8 L 149.0 28.4 L 154.7 32.5 L 159.9 37.0 L 164.9 41.9 L 169.4 47.2 L 173.5 52.9 L 177.1 58.9 L 180.2 65.1 L 182.8 71.6 L 184.9 78.3 L 186.5 85.1 L 187.5 92.1 L 188.0 99.1 L 187.9 106.1 L 187.2 113.2 L 186.0 120.1 L 184.2 126.9 L 181.9 133.6 L 179.0 140.1 L 175.6 146.3 L 171.8 152.3 L 167.4 157.9 L 162.7 163.2 L 157.5 168.1 L 151.9 172.6 L 146.0 176.6 L 139.8 180.1 L 133.3 183.1 L 126.6 185.6 L 119.7 187.5 L 112.6 188.9 L 105.5 189.8 L 98.3 190.0 L 91.1 189.7 L 83.9 188.8 L 76.9 187.3 L 69.9 185.3 L 63.2 182.7 L 56.6 179.6 L 50.4 176.0 L 44.4 171.8 L 38.8 167.2 L 33.5 162.2 L 28.7 156.7 L 24.3 150.9 L 20.4 144.7 L 16.9 138.3 L 14.1 131.6 L 11.7 124.6 L 9.9 117.5 L 8.7 110.3 L 8.1 102.9 L 8.0 95.6 L 8.6 88.2 L 9.7 80.9 L 11.4 73.8 L 13.7 66.7 L 16.6 59.9 L 20.0 53.3 L 23.9 47.0 L 28.3 41.0 L 33.1 35.4 L 38.4 30.2 L 44.2 25.4 L 50.2 21.1 L 56.7 17.3 L 63.4 14.0 L 70.3 11.2 L 77.5 9.1 L 84.8 7.4 L 92.2 6.4 L 99.8 6.0 L 107.3 6.2 L 114.8 7.0 L 122.2 8.3 L 129.5 10.3 L 136.6 12.9 L 143.5 16.0 L 150.1 19.6 L 156.4 23.8 L 162.4 28.5 L 168.0 33.6 L 173.1 39.2 L 177.9 45.2 L 182.1 51.5 L 185.8 58.2 L 188.9 65.2 L 191.5 72.3 L 193.6 79.7 L 195.0 87.2 L 195.8 94.9 L 196.0 102.5 L 195.6 110.2 L 194.6 117.8 L 192.9 125.4 L 190.7 132.8 L 187.9 139.9 L 184.5 146.9 L 180.6 153.5 L 176.1 159.9 L 171.2 165.8 L 165.7 171.4 L 159.9 176.5 L 153.6 181.1 L 147.0 185.2 L 140.1 188.8 L 132.9 191.8 L 125.5 194.3 L 117.9 196.1 L 110.2 197.3 L 102.4 197.9 L 94.5 197.9 L 86.7 197.3 L 79.0 196.0 L 71.3 194.1 L 63.9 191.6 L 56.6 188.5 L 49.6 184.9 L 42.9 180.6 L 36.6 175.9 L 30.7 170.7 L 25.2 165.0 L 20.1 158.8 L 15.6 152.3 L 11.6 145.5 L 8.2 138.3 L 5.3 130.9 L 3.0 123.2 L 1.4 115.4 L 0.4 107.5 L -0.0 99.5 L 0.3 91.5 L 1.2 83.5 L 2.7 75.7 L 4.8 67.9 L 7.6 60.4 L 11.0 53.1 L 14.9 46.1 L 19.4 39.4 L 24.5 33.1 L 30.0 27.2 L 36.0 21.7 L 42.4 16.8 L 49.1 12.4 L 56.3 8.5 L 63.7 5.2 L 71.3 2.5 L 79.2 0.4 L 87.2 -1.0 L 95.3 -1.8 L 103.5 -2.0 L 111.6 -1.5 L 119.7 -0.3 L 127.7 1.5 L 135.5 3.9 L 143.1 7.0 L 150.5 10.6 L 157.5 14.9 L 164.2 19.6 L 170.5 25.0 L 176.3 30.8 L 181.7 37.0 L 186.6 43.7 L 190.9 50.7 L 194.6 58.1 L 197.8 65.8 L 200.3 73.7 L 202.2 81.8 L 203.4 90.0 L 204.0 98.3 L 203.9 106.6 L 203.1 114.9 L 201.7 123.1 L 199.6 131.2 L 196.9 139.1 L 193.6 146.7 L 189.6 154.1 L 185.1 161.2 L 180.0 167.8 L 174.4 174.1 L 168.3 179.9 L 161.8 185.2 L 154.8 189.9 L 147.5 194.1 L 139.9 197.7 L 132.0 200.7 L 123.8 203.0 L 115.5 204.7 L 107.1 205.7 L 98.7 206.0 L 90.2 205.7 L 81.8 204.6 L 73.4 202.9 L 65.3 200.6 L 57.3 197.6 L 49.6 194.0 L 42.2 189.7 L 35.1 184.9 L 28.5 179.5 L 22.3 173.6 L 16.6 167.2 L 11.4 160.4 L 6.8 153.2 L 2.7 145.6 L -0.7 137.7 L -3.5 129.6 L -5.6 121.2 L -7.1 112.7 L -7.9 104.1 L -8.0 95.5 L -7.4 86.9 L -6.1 78.3 L -4.1 69.9 L -1.4 61.6 L 1.9 53.6 L 5.8 45.8 L 10.3 38.4 L 15.5 31.4 L 21.1 24.8 L 27.3 18.7 L 34.0 13.0 L 41.1 7.9 L 48.6 3.4 L 56.5 -0.4 L 64.6 -3.7 L 73.0 -6.3 L 81.5 -8.2 L 90.2 -9.5 L 99.0 -10.0 L 107.8 -9.8 L 116.6 -8.9 L 125.2 -7.4 L 133.8 -5.1 L 142.1 -2.2 L 150.2 1.4 L 158.0 5.7 L 165.4 10.5 L 172.4 16.0 L 178.9 21.9 L 185.0 28.4 L 190.5 35.4 L 195.5 42.8 L 199.8 50.6 L 203.6 58.7 L 206.6 67.0 L 209.0 75.6 L 210.7 84.4 L 211.7 93.3 L 212.0 102.3 L 211.6 111.2 L 210.4 120.1 L 208.6 128.9 L 206.0 137.5 L 202.7 145.9 L 198.8 154.0 L 194.3 161.8 L 189.1 169.2 L 183.4 176.2 L 177.1 182.7 L 170.3 188.6 L 163.1 194.1 L 155.4 198.9 L 147.4 203.1 L 139.0 206.6 L 130.4 209.5 L 121.6 211.7 L 112.6 213.2 L 103.5 213.9 L 94.4 213.9 L 85.3 213.2 L 76.2 211.8 L 67.4 209.6 L 58.7 206.7 L 50.2 203.2 L 42.1 199.0 L 34.3 194.1 L 26.9 188.6 L 20.0 182.6 L 13.6 176.0 L 7.7 168.9 L 2.4 161.4 L -2.3 153.4 L -6.3 145.1 L -9.7 136.5 L -12.3 127.7 L -14.3 118.6 L -15.5 109.4 L -16.0 100.2 L -15.7 90.9 L -14.7 81.6 L -13.0 72.5 L -10.5 63.5 L -7.4 54.8 L -3.5 46.3 L 1.0 38.1 L 6.2 30.4 L 12.0 23.0 L 18.4 16.2 L 25.3 9.8 L 32.6 4.1 L 40.5 -1.1 L 48.7 -5.6 L 57.3 -9.5 L 66.1 -12.6 L 75.2 -15.1 L 84.5 -16.8 L 93.8 -17.8 L 103.3 -18.0 L 112.7 -17.5 L 122.1 -16.2 L 131.3 -14.1 L 140.4 -11.4 L 149.2 -7.9 L 157.7 -3.7 L 165.8 1.2 L 173.6 6.7 L 180.9 12.8 L 187.7 19.5 L 193.9 26.7 L 199.6 34.3 L 204.6 42.5 L 208.9 51.0 L 212.6 59.8 L 215.6 68.9 L 217.8 78.2 L 219.2 87.7 L 219.9 97.2 L 219.9 106.8 L 219.0 116.4 L 217.5 125.9 L 215.1 135.2 L 212.0 144.4 L 208.2 153.2 L 203.7 161.7 L 198.5 169.9 L 192.7 177.6 L 186.3 184.8 L 179.3 191.5 L 171.8 197.7 L 163.8 203.2 L 155.4 208.0 L 146.6 212.2 L 137.5 215.7 L 128.2 218.4 L 118.7 220.4 L 109.0 221.6 L 99.2 222.0 L 89.5 221.7 L 79.8 220.5 L 70.2 218.6 L 60.8 216.0 L 51.6 212.5 L 42.7 208.4 L 34.2 203.6 L 26.0 198.1 L 18.4 191.9 L 11.2 185.2 L 4.6 177.9 L -1.4 170.0 L -6.7 161.8 L -11.4 153.1 L -15.4 144.0 L -18.7 134.7 L -21.2 125.1 L -22.9 115.4 L -23.8 105.5 L -24.0 95.6 L -23.3 85.7 L -21.9 75.9 L -19.7 66.2 L -16.7 56.7 L -12.9 47.5 L -8.5 38.6 L -3.3 30.0 L 2.6 21.9 L 9.0 14.3 L 16.1 7.3 L 23.7 0.8 L 31.8 -5.1 L 40.4 -10.3 L 49.4 -14.8 L 58.7 -18.6 L 68.3 -21.6 L 78.1 -23.8 L 88.0 -25.3 L 98.1 -26.0 L 108.1 -25.8 L 118.2 -24.9 L 128.1 -23.1 L 137.9 -20.6 L 147.5 -17.2 L 156.7 -13.2 L 165.6 -8.4 L 174.1 -2.9 L 182.2 3.3 L 189.7 10.1 L 196.7 17.5 L 203.1 25.5 L 208.8 33.9 L 213.8 42.7 L 218.1 52.0 L 221.7 61.5 L 224.5 71.4 L 226.5 81.4 L 227.6 91.5 L 228.0 101.8 L 227.6 112.0 L 226.3 122.2 L 224.2 132.2 L 221.3 142.1 L 217.7 151.7 L 213.3 161.0 L 208.1 169.9 L 202.3 178.4 L 195.8 186.3 L 188.6 193.8 L 180.9 200.7 L 172.7 206.9 L 163.9 212.4 L 154.8 217.3 L 145.3 221.4 L 135.5 224.7 L 125.4 227.2 L 115.2 229.0 L 104.8 229.9 L 94.4 229.9 L 84.0 229.2 L 73.7 227.6 L 63.6 225.2 L 53.7 222.0 L 44.0 218.0 L 34.7 213.2 L 25.8 207.7 L 17.4 201.5 L 9.5 194.7 L 2.1 187.2 L -4.6 179.2 L -10.7 170.6 L -16.1 161.6 L -20.7 152.1 L -24.6 142.4 L -27.7 132.3 L -29.9 122.0 L -31.4 111.6 L -32.0 101.0 L -31.7 90.5 L -30.7 80.0 L -28.7 69.6 L -26.0 59.3 L -22.4 49.4 L -18.1 39.7 L -13.0 30.4 L -7.1 21.5 L -0.6 13.1 L 6.6 5.3 L 14.4 -1.9 L 22.8 -8.5 L 31.6 -14.4 L 40.9 -19.6 L 50.7 -24.1 L 60.7 -27.7 L 71.0 -30.5 L 81.5 -32.5 L 92.2 -33.7 L 102.9 -34.0 L 113.6 -33.4 L 124.2 -32.0 L 134.7 -29.8 L 145.0 -26.7 L 155.0 -22.8 L 164.7 -18.1 L 174.0 -12.6 L 182.8 -6.4 L 191.1 0.5 L 198.9 8.0 L 206.0 16.1 L 212.4 24.8 L 218.2 34.0 L 223.2 43.6 L 227.4 53.6 L 230.8 63.9 L 233.3 74.4 L 235.0 85.2 L 235.9 96.0 L 235.9 106.9 L 235.0 117.7 L 233.3 128.5 L 230.7 139.1 L 227.2 149.4 L 222.9 159.5 L 217.9 169.2 L 212.1 178.4 L 205.5 187.2 L 198.3 195.4 L 190.4 203.0 L 181.9 210.0 L 172.9 216.3 L 163.5 221.9 L 153.6 226.6 L 143.3 230.6 L 132.8 233.7 L 122.0 236.0 L 111.0 237.5 L 100.0 238.0 L 89.0 237.7 L 78.0 236.4 L 67.1 234.3 L 56.5 231.4 L 46.1 227.6 L 36.0 223.0 L 26.3 217.5 L 17.1 211.4 L 8.4 204.5 L 0.3 196.9 L -7.2 188.7 L -14.0 179.9 L -20.1 170.5 L -25.5 160.8 L -30.0 150.6 L -33.8 140.1 L -36.6 129.3 L -38.6 118.3 L -39.8 107.1 L -40.0 95.9 L -39.3 84.8 L -37.7 73.6 L -35.3 62.7 L -32.0 52.0 L -27.8 41.5 L -22.8 31.5 L -17.0 21.8 L -10.5 12.6 L -3.2 4.0 L 4.7 -4.0 L 13.3 -11.4 L 22.4 -18.0 L 32.0 -23.9 L 42.1 -29.1 L 52.6 -33.4 L 63.3 -36.8 L 74.4 -39.4 L 85.6 -41.1 L 96.9 -41.9 L 108.3 -41.8 L 119.6 -40.8 L 130.8 -38.9 L 141.8 -36.1 L 152.6 -32.4 L 163.1 -27.9 L 173.1 -22.5 L 182.8 -16.4 L 191.9 -9.4 L 200.4 -1.8 L 208.3 6.5 L 215.5 15.3 L 222.0 24.8 L 227.7 34.7 L 232.6 45.1 L 236.6 55.8 L 239.8 66.9 L 242.1 78.1 L 243.5 89.6 L 244.0 101.1 L 243.6 112.6 L 242.2 124.0 L 239.9 135.3 L 236.7 146.4 L 232.7 157.3 L 227.8 167.7 L 222.0 177.8 L 215.5 187.4 L 208.2 196.4 L 200.3 204.8 L 191.6 212.5 L 182.4 219.6 L 172.6 225.9 L 162.4 231.4 L 151.7 236.0 L 140.7 239.8 L 129.4 242.7 L 117.9 244.7 L 106.3 245.8 L 94.6 245.9 L 83.0 245.2 L 71.4 243.4 L 60.0 240.8 L 48.9 237.2 L 38.0 232.8 L 27.6 227.5 L 17.5 221.4 L 8.0 214.5 L -0.9 206.9 L -9.2 198.5 L -16.8 189.5 L -23.7 180.0 L -29.7 169.9 L -35.0 159.3 L -39.4 148.4 L -42.9 137.1 L -45.5 125.6 L -47.2 113.9 L -48.0 102.1 L -47.8 90.3 L -46.6 78.5 L -44.5 66.8 L -41.5 55.3 L -37.6 44.1 L -32.8 33.3 L -27.1 22.8 L -20.6 12.8 L -13.3 3.4 L -5.3 -5.4 L 3.4 -13.6 L 12.7 -21.0 L 22.6 -27.7 L 33.0 -33.5 L 43.9 -38.6 L 55.1 -42.7 L 66.6 -45.9 L 78.4 -48.2 L 90.3 -49.6 L 102.3 -50.0 L 114.2 -49.4 L 126.2 -47.9 L 137.9 -45.5 L 149.5 -42.1 L 160.7 -37.7 L 171.6 -32.5 L 182.0 -26.5 L 191.9 -19.6 L 201.2 -12.0 L 209.9 -3.6 L 217.9 5.5 L 225.2 15.1 L 231.7 25.4 L 237.3 36.1 L 242.1 47.2 L 245.9 58.7 L 248.9 70.5 L 250.8 82.5 L 251.9 94.6 L 251.9 106.7 L 251.0 118.9 L 249.1 130.9 L 246.2 142.7 L 242.5 154.3 L 237.8 165.6 L 232.2 176.4 L 225.7 186.8 L 218.5 196.6 L 210.4 205.9 L 201.7 214.4 L 192.3 222.3 L 182.3 229.3 L 171.7 235.6 L 160.7 241.0 L 149.3 245.5 L 137.5 249.0 L 125.5 251.7 L 113.3 253.3 L 101.0 254.0 L 88.7 253.7 L 76.4 252.4 L 64.3 250.1 L 52.4 246.9 L 40.8 242.7 L 29.5 237.6 L 18.7 231.6 L 8.4 224.8 L -1.4 217.1 L -10.5 208.7 L -18.9 199.6 L -26.6 189.8 L -33.4 179.5 L -39.4 168.6 L -44.6 157.3 L -48.8 145.6 L -52.1 133.6 L -54.4 121.3 L -55.7 108.9 L -56.0 96.5 L -55.3 84.0 L -53.6 71.6 L -51.0 59.4 L -47.3 47.4 L -42.8 35.8 L -37.3 24.5 L -30.9 13.8 L -23.6 3.5 L -15.6 -6.1 L -6.8 -15.1 L 2.6 -23.4 L 12.8 -30.8 L 23.4 -37.5 L 34.6 -43.2 L 46.3 -48.1 L 58.2 -52.0 L 70.5 -55.0 L 83.0 -56.9 L 95.6 -57.9 L 108.2 -57.9 L 120.8 -56.8 L 133.3 -54.7 L 145.6 -51.7 L 157.6 -47.6 L 169.2 -42.7 L 180.5 -36.8 L 191.2 -30.0 L 201.4 -22.3 L 210.9 -13.9 L 219.7 -4.8 L 227.8 5.1 L 235.0 15.5 L 241.5 26.5 L 247.0 38.0 L 251.5 50.0 L 255.2 62.2 L 257.8 74.7 L 259.4 87.4 L 260.0 100.2 L 259.6 113.0 L 258.1 125.7 L 255.7 138.3 L 252.2 150.6 L 247.8 162.7 L 242.4 174.3 L 236.1 185.5 L 228.9 196.2 L 220.9 206.2 L 212.1 215.6 L 202.5 224.3 L 192.3 232.2 L 181.5 239.2 L 170.2 245.4 L 158.4 250.6 L 146.2 254.9 L 133.7 258.2 L 120.9 260.5 L 108.0 261.7 L 95.1 262.0 L 82.2 261.2 L 69.3 259.3 L 56.7 256.5 L 44.3 252.6 L 32.2 247.7 L 20.6 241.9 L 9.4 235.2 L -1.2 227.6 L -11.1 219.2 L -20.4 210.0 L -28.8 200.1 L -36.5 189.5 L -43.3 178.4 L -49.2 166.7 L -54.2 154.6 L -58.1 142.2 L -61.1 129.4 L -63.0 116.4 L -63.9 103.4 L -63.8 90.2 L -62.6 77.2 L -60.3 64.2 L -57.1 51.5 L -52.8 39.1 L -47.5 27.0 L -41.3 15.4 L -34.2 4.3 L -26.2 -6.2 L -17.4 -16.0 L -7.8 -25.1 L 2.5 -33.4 L 13.4 -40.8 L 24.9 -47.4 L 36.9 -53.0 L 49.3 -57.6 L 62.0 -61.3 L 75.0 -63.9 L 88.2 -65.5 L 101.4 -66.0 L 114.7 -65.5 L 127.9 -63.9 L 140.9 -61.2 L 153.7 -57.5 L 166.2 -52.8 L 178.2 -47.1 L 189.8 -40.5 L 200.8 -32.9 L 211.2 -24.5 L 220.8 -15.3 L 229.7 -5.4 L 237.8 5.3 L 245.0 16.5 L 251.3 28.4 L 256.7 40.6 L 261.0 53.3 L 264.3 66.3 L 266.6 79.6 L 267.8 92.9 L 267.9 106.4 L 267.0 119.8 L 265.0 133.1 L 261.9 146.2 L 257.8 159.0 L 252.7 171.5 L 246.5 183.5 L 239.5 195.0 L 231.5 205.9 L 222.7 216.1 L 213.1 225.7 L 202.8 234.4 L 191.8 242.2 L 180.1 249.2 L 168.0 255.2 L 155.4 260.3 L 142.5 264.3 L 129.2 267.2 L 115.8 269.1 L 102.2 270.0 L 88.6 269.7 L 75.1 268.3 L 61.7 265.9 L 48.5 262.4 L 35.6 257.9 L 23.2 252.3 L 11.2 245.8 L -0.2 238.3 L -11.0 229.9 L -21.1 220.7 L -30.5 210.7 L -39.0 200.0 L -46.6 188.6 L -53.3 176.7 L -59.0 164.2 L -63.8 151.3 L -67.4 138.1 L -70.0 124.6 L -71.6 110.9 L -72.0 97.2 L -71.3 83.5 L -69.6 69.8 L -66.7 56.3 L -62.8 43.1 L -57.8 30.2 L -51.8 17.8 L -44.8 5.9 L -36.9 -5.5 L -28.1 -16.1 L -18.5 -26.1 L -8.1 -35.2 L 3.0 -43.5 L 14.7 -50.9 L 27.0 -57.3 L 39.8 -62.8 L 52.9 -67.1 L 66.4 -70.5 L 80.1 -72.7 L 94.0 -73.9 L 107.9 -73.9 L 121.8 -72.8 L 135.6 -70.6 L 149.1 -67.3 L 162.4 -62.9 L 175.2 -57.5 L 187.6 -51.1 L 199.5 -43.7 L 210.7 -35.4 L 221.2 -26.2 L 231.0 -16.1 L 240.0 -5.4 L 248.0 6.1 L 255.1 18.2 L 261.3 30.8 L 266.4 43.9 L 270.4 57.3 L 273.4 71.1 L 275.3 85.0 L 276.0 99.1 L 275.6 113.1 L 274.1 127.1 L 271.5 141.0 L 267.7 154.6 L 262.9 167.9 L 257.1 180.7 L 250.2 193.1 L 242.4 204.8 L 233.6 215.9 L 224.0 226.3 L 213.6 235.9 L 202.4 244.6 L 190.6 252.4 L 178.1 259.3 L 165.2 265.1 L 151.8 269.9 L 138.1 273.6 L 124.1 276.2 L 110.0 277.6 L 95.7 278.0 L 81.5 277.2 L 67.4 275.2 L 53.5 272.2 L 39.8 268.0 L 26.6 262.7 L 13.7 256.4 L 1.5 249.1 L -10.2 240.9 L -21.2 231.7 L -31.4 221.6 L -40.8 210.8 L -49.3 199.3 L -56.8 187.1 L -63.4 174.3 L -68.9 161.0 L -73.3 147.4 L -76.6 133.4 L -78.8 119.2 L -79.9 104.8 L -79.8 90.4 L -78.6 76.1 L -76.2 61.9 L -72.7 47.9 L -68.1 34.2 L -62.4 21.0 L -55.6 8.2 L -47.9 -4.0 L -39.1 -15.6 L -29.5 -26.4 L -19.1 -36.4 L -7.9 -45.6 L 4.1 -53.8 L 16.6 -61.1 L 29.7 -67.3 L 43.3 -72.5 L 57.2 -76.6 L 71.5 -79.5 L 85.9 -81.4 L 100.4 -82.0 L 115.0 -81.5 L 129.4 -79.8 L 143.7 -77.0 L 157.8 -73.0 L 171.5 -67.9 L 184.7 -61.8 L 197.4 -54.6 L 209.5 -46.4 L 220.9 -37.2 L 231.6 -27.2 L 241.4 -16.4 L 250.3 -4.7 L 258.3 7.6 L 265.3 20.5 L 271.2 33.9 L 276.0 47.8 L 279.8 62.0 L 282.3 76.4 L 283.7 91.1 L 283.9 105.8 L 283.0 120.5 L 280.9 135.1 L 277.6 149.4 L 273.2 163.5 L 267.6 177.2 L 261.0 190.4 L 253.4 203.0 L 244.7 215.0 L 235.1 226.3 L 224.7 236.7 L 213.4 246.4 L 201.4 255.0 L 188.8 262.7 L 175.5 269.4 L 161.8 275.0 L 147.6 279.5 L 133.1 282.8 L 118.4 285.0 L 103.6 285.9 L 88.7 285.7 L 73.9 284.3 L 59.2 281.8 L 44.8 278.0 L 30.7 273.1 L 17.0 267.1 L 3.9 260.1 L -8.6 251.9 L -20.5 242.9 L -31.6 232.8 L -41.9 222.0 L -51.3 210.3 L -59.7 197.9 L -67.1 184.9 L -73.4 171.3 L -78.7 157.2 L -82.8 142.8 L -85.7 128.1 L -87.4 113.2 L -88.0 98.1 L -87.4 83.1 L -85.5 68.2 L -82.5 53.4 L -78.3 39.0 L -72.9 24.9 L -66.4 11.2 L -58.9 -1.8 L -50.3 -14.3 L -40.8 -26.0 L -30.3 -36.9 L -19.1 -47.0 L -7.0 -56.1 L 5.8 -64.2 L 19.2 -71.3 L 33.1 -77.3 L 47.4 -82.2 L 62.1 -85.9 L 77.1 -88.5 L 92.2 -89.8 L 107.4 -89.9 L 122.6 -88.8 L 137.6 -86.5 L 152.4 -83.0 L 166.9 -78.3 L 181.0 -72.5 L 194.6 -65.5 L 207.6 -57.5 L 219.9 -48.5 L 231.4 -38.5 L 242.2 -27.7 L 252.0 -15.9 L 260.9 -3.5 L 268.7 9.7 L 275.5 23.4 L 281.1 37.6 L 285.6 52.3 L 289.0 67.2 L 291.1 82.4 L 292.0 97.8 L 291.6 113.1 L 290.1 128.4 L 287.3 143.5 L 283.3 158.4 L 278.2 172.9 L 271.9 186.9 L 264.4 200.4 L 256.0 213.3 L 246.5 225.5 L 236.1 236.9 L 224.8 247.4 L 212.6 257.0 L 199.8 265.6 L 186.3 273.1 L 172.2 279.5 L 157.7 284.8 L 142.7 288.9 L 127.5 291.9 L 112.1 293.5 L 96.6 294.0 L 81.1 293.2 L 65.7 291.2 L 50.5 287.9 L 35.6 283.5 L 21.1 277.8 L 7.1 271.0 L -6.3 263.2 L -19.1 254.2 L -31.1 244.3 L -42.3 233.4 L -52.6 221.7 L -61.9 209.2 L -70.2 195.9 L -77.4 182.1 L -83.5 167.7 L -88.4 152.8 L -92.1 137.6 L -94.6 122.1 L -95.8 106.5 L -95.8 90.8 L -94.6 75.2 L -92.1 59.7 L -88.3 44.5 L -83.4 29.6 L -77.3 15.1 L -70.0 1.1 L -61.7 -12.2 L -52.2 -24.8 L -41.9 -36.7 L -30.6 -47.6 L -18.4 -57.7 L -5.5 -66.7 L 8.1 -74.7 L 22.4 -81.6 L 37.1 -87.3 L 52.2 -91.8 L 67.7 -95.1 L 83.4 -97.2 L 99.2 -98.0 L 115.0 -97.5 L 130.8 -95.8 L 146.4 -92.8 L 161.6 -88.6 L 176.6 -83.1 L 191.0 -76.5 L 204.9 -68.8 L 218.1 -59.9 L 230.6 -50.1 L 242.2 -39.2 L 252.9 -27.5 L 262.7 -14.9 L 271.5 -1.6 L 279.1 12.4 L 285.7 26.9 L 291.0 42.0 L 295.1 57.4 L 298.0 73.1 L 299.6 89.0 L 300.0 105.0 L 299.0 121.0 L 296.8 136.9 L 293.3 152.5 L 288.6 167.8 L 282.7 182.7 L 275.6 197.1 L 267.3 210.9 L 258.0 224.0 L 247.7 236.3 L 236.4 247.7 L 224.2 258.2 L 211.2 267.7 L 197.5 276.2 L 183.2 283.5 L 168.3 289.6 L 152.9 294.6 L 137.2 298.3 L 121.3 300.7 L 105.2 301.9 L 89.0 301.8 L 72.9 300.3 L 57.0 297.6 L 41.3 293.7 L 26.0 288.5 L 11.1 282.0 L -3.2 274.4 L -16.9 265.7 L -29.8 255.9 L -41.9 245.1 L -53.2 233.4 L -63.4 220.8 L -72.6 207.4 L -80.7 193.3 L -87.7 178.6 L -93.5 163.4 L -98.0 147.7 L -101.3 131.8 L -103.3 115.6 L -104.0 99.3 L -103.4 83.0 L -101.5 66.7 L -98.3 50.7 L -93.8 35.0 L -88.1 19.7 L -81.2 4.9 L -73.1 -9.4 L -63.8 -22.9 L -53.6 -35.7 L -42.3 -47.6 L -30.1 -58.6 L -17.1 -68.5 L -3.3 -77.4 L 11.2 -85.2 L 26.2 -91.8 L 41.7 -97.2 L 57.7 -101.3 L 73.9 -104.2 L 90.3 -105.7 L 106.7 -105.9 L 123.2 -104.8 L 139.5 -102.4 L 155.6 -98.7 L 171.3 -93.7 L 186.6 -87.5 L 201.4 -80.1 L 215.5 -71.5 L 228.9 -61.8 L 241.5 -51.0 L 253.2 -39.3 L 263.9 -26.7 L 273.6 -13.2 L 282.2 0.9 L 289.6 15.8 L 295.8 31.2 L 300.8 47.0 L 304.5 63.2 L 306.9 79.7 L 307.9 96.2 L 307.7 112.9 L 306.1 129.5 L 303.2 145.9 L 299.0 162.0 L 293.5 177.7 L 286.7 193.0 L 278.8 207.6 L 269.7 221.6 L 259.5 234.9 L 248.3 247.3 L 236.1 258.7 L 223.1 269.2 L 209.2 278.6 L 194.6 286.8 L 179.4 293.9 L 163.7 299.7 L 147.6 304.2 L 131.1 307.5 L 114.4 309.4 L 97.7 310.0 L 80.9 309.2 L 64.2 307.1 L 47.7 303.7 L 31.6 299.0 L 15.9 293.0 L 0.7 285.7 L -13.9 277.3 L -27.8 267.7 L -40.8 257.0 L -53.0 245.3 L -64.2 232.7 L -74.4 219.2 L -83.4 204.9 L -91.3 190.0 L -98.0 174.4 L -103.4 158.4 L -107.5 142.0 L -110.3 125.3 L -111.8 108.4 L -111.9 91.4 L -110.6 74.5 L -108.0 57.8 L -104.1 41.2 L -98.8 25.1 L -92.3 9.4 L -84.5 -5.7 L -75.6 -20.2 L -65.5 -33.9 L -54.3 -46.8 L -42.2 -58.7 L -29.1 -69.6 L -15.2 -79.5 L -0.5 -88.2 L 14.8 -95.7 L 30.7 -102.0 L 47.0 -107.0 L 63.7 -110.7 L 80.7 -113.0 L 97.8 -114.0 L 114.9 -113.6 L 131.9 -111.8 L 148.8 -108.7 L 165.3 -104.2 L 181.5 -98.4 L 197.1 -91.4 L 212.1 -83.1 L 226.5 -73.6 L 240.0 -63.0 L 252.7 -51.4 L 264.4 -38.8 L 275.0 -25.3 L 284.5 -10.9 L 292.9 4.1 L 300.0 19.8 L 305.9 36.0 L 310.5 52.7 L 313.7 69.6 L 315.5 86.8 L 316.0 104.1 L 315.1 121.3 L 312.8 138.5 L 309.1 155.4 L 304.1 171.9 L 297.8 188.1 L 290.2 203.6 L 281.4 218.6 L 271.5 232.7 L 260.4 246.1 L 248.3 258.5 L 235.2 269.9 L 221.2 280.3 L 206.5 289.5 L 191.0 297.5 L 175.0 304.2 L 158.5 309.7 L 141.6 313.8 L 124.4 316.5 L 107.0 317.8 L 89.5 317.8 L 72.2 316.4 L 54.9 313.6 L 38.0 309.4 L 21.4 303.8 L 5.3 297.0 L -10.2 288.9 L -25.0 279.6 L -39.0 269.1 L -52.1 257.5 L -64.3 244.9 L -75.4 231.4 L -85.5 217.0 L -94.3 201.9 L -101.9 186.0 L -108.2 169.7 L -113.2 152.8 L -116.9 135.6 L -119.1 118.2 L -120.0 100.6 L -119.4 83.0 L -117.5 65.5 L -114.1 48.2 L -109.4 31.3 L -103.3 14.7 L -96.0 -1.3 L -87.3 -16.7 L -77.5 -31.4 L -66.5 -45.2 L -54.4 -58.1 L -41.4 -70.0 L -27.4 -80.9 L -12.6 -90.6 L 3.0 -99.0 L 19.1 -106.2 L 35.9 -112.1 L 53.0 -116.7 L 70.4 -119.9 L 88.1 -121.6 L 105.9 -122.0 L 123.6 -120.9 L 141.2 -118.4 L 158.5 -114.5 L 175.5 -109.2 L 192.0 -102.6 L 208.0 -94.7 L 223.3 -85.5 L 237.8 -75.2 L 251.4 -63.7 L 264.1 -51.1 L 275.7 -37.6 L 286.2 -23.2 L 295.5 -7.9 L 303.6 8.0 L 310.4 24.5 L 315.9 41.5 L 320.0 59.0 L 322.6 76.7 L 323.9 94.5 L 323.7 112.4 L 322.1 130.3 L 319.1 148.0 L 314.6 165.4 L 308.8 182.3 L 301.7 198.8 L 293.2 214.7 L 283.5 229.8 L 272.6 244.1 L 260.6 257.5 L 247.6 269.9 L 233.6 281.3 L 218.8 291.5 L 203.1 300.4 L 186.8 308.1 L 169.9 314.5 L 152.6 319.5 L 134.9 323.1 L 117.0 325.3 L 98.9 326.0 L 80.9 325.3 L 62.9 323.1 L 45.2 319.6 L 27.7 314.6 L 10.8 308.2 L -5.6 300.5 L -21.3 291.5 L -36.3 281.3 L -50.4 269.9 L -63.6 257.4 L -75.7 243.9 L -86.8 229.4 L -96.6 214.1 L -105.2 198.1 L -112.5 181.4 L -118.4 164.2 L -122.9 146.6 L -126.0 128.6 L -127.7 110.5 L -127.9 92.2 L -126.7 74.0 L -124.0 56.0 L -119.8 38.2 L -114.3 20.8 L -107.4 3.9 L -99.1 -12.4 L -89.6 -28.0 L -78.8 -42.8 L -66.9 -56.7 L -53.9 -69.6 L -39.9 -81.5 L -25.0 -92.2 L -9.3 -101.6 L 7.1 -109.8 L 24.1 -116.7 L 41.7 -122.1 L 59.6 -126.2 L 77.8 -128.8 L 96.1 -129.9 L 114.5 -129.6 L 132.8 -127.8 L 151.0 -124.6 L 168.8 -119.9 L 186.2 -113.8 L 203.0 -106.3 L 219.2 -97.5 L 234.7 -87.4 L 249.3 -76.1 L 263.0 -63.7 L 275.6 -50.2 L 287.1 -35.8 L 297.5 -20.4 L 306.6 -4.3 L 314.3 12.5 L 320.7 29.9 L 325.7 47.7 L 329.3 65.9 L 331.4 84.3 L 332.0 102.9 L 331.1 121.4 L 328.8 139.8 L 325.0 158.0 L 319.7 175.8 L 313.0 193.2 L 305.0 210.0 L 295.6 226.1 L 285.0 241.4 L 273.2 255.8 L 260.3 269.2 L 246.3 281.5 L 231.4 292.7 L 215.6 302.7 L 199.1 311.4 L 181.9 318.7 L 164.2 324.6 L 146.1 329.2 L 127.6 332.2 L 109.0 333.8 L 90.3 333.9 L 71.6 332.4 L 53.1 329.5 L 34.9 325.1 L 17.1 319.3 L -0.3 312.1 L -16.9 303.5 L -32.9 293.5 L -48.0 282.4 L -62.1 270.1 L -75.3 256.6 L -87.3 242.2 L -98.2 226.8 L -107.8 210.6 L -116.0 193.7 L -122.9 176.2 L -128.4 158.1 L -132.4 139.7 L -134.9 121.0 L -136.0 102.2 L -135.5 83.3 L -133.5 64.5 L -130.0 45.9 L -125.1 27.7 L -118.7 9.9 L -110.9 -7.3 L -101.7 -23.9 L -91.2 -39.7 L -79.5 -54.6 L -66.7 -68.5 L -52.7 -81.4 L -37.8 -93.1 L -22.0 -103.5 L -5.4 -112.7 L 11.9 -120.6 L 29.8 -127.0 L 48.1 -132.0 L 66.8 -135.5 L 85.7 -137.5 L 104.8 -138.0 L 123.8 -136.9 L 142.7 -134.4 L 161.3 -130.3 L 179.5 -124.8 L 197.3 -117.8 L 214.4 -109.4 L 230.8 -99.7 L 246.4 -88.7 L 261.1 -76.4 L 274.8 -63.1 L 287.3 -48.7 L 298.7 -33.3 L 308.8 -17.0 L 317.6 0.0 L 325.0 17.7 L 330.9 35.9 L 335.4 54.5 L 338.4 73.5 L 339.8 92.6 L 339.8 111.8 L 338.2 130.9 L 335.0 149.9 L 330.4 168.6 L 324.3 186.8 L 316.7 204.5 L 307.8 221.5 L 297.5 237.8 L 285.9 253.2 L 273.1 267.6 L 259.3 281.0 L 244.3 293.2 L 228.5 304.2 L 211.8 313.9 L 194.4 322.3 L 176.4 329.2 L 157.8 334.7 L 138.9 338.6 L 119.7 341.1 L 100.4 342.0 L 81.0 341.4 L 61.8 339.2 L 42.8 335.4 L 24.1 330.2 L 5.9 323.5 L -11.7 315.4 L -28.6 305.8 L -44.7 295.0 L -59.9 282.9 L -74.1 269.6 L -87.1 255.2 L -99.0 239.8 L -109.6 223.5 L -118.9 206.4 L -126.8 188.6 L -133.3 170.2 L -138.3 151.4 L -141.7 132.2 L -143.6 112.8 L -143.9 93.3 L -142.7 73.8 L -140.0 54.4 L -135.6 35.4 L -129.8 16.7 L -122.5 -1.4 L -113.8 -18.9 L -103.7 -35.7 L -92.3 -51.6 L -79.6 -66.5 L -65.8 -80.4 L -50.9 -93.2 L -35.1 -104.7 L -18.3 -114.9 L -0.8 -123.8 L 17.4 -131.2 L 36.1 -137.2 L 55.2 -141.7 L 74.7 -144.6 L 94.3 -145.9 L 114.0 -145.7 L 133.6 -143.9 L 153.0 -140.5 L 172.1 -135.6 L 190.7 -129.2 L 208.8 -121.3 L 226.2 -112.0 L 242.8 -101.3 L 258.4 -89.3 L 273.1 -76.1 L 286.7 -61.8 L 299.2 -46.4 L 310.3 -30.1 L 320.1 -12.9 L 328.5 5.0 L 335.5 23.5 L 341.0 42.6 L 344.9 62.0 L 347.2 81.7" fill="none"></path>
     </defs>
-    <text font-size="5.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-band-a-outer">theorem assurance_bound : ∀ x, verified x → risk x ≤ ε</textPath></text>
-    <text font-size="5.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-band-a-inner">fn verify(claim: &amp;Claim) -&gt; Result&lt;Proof, Bound&gt;</textPath></text>
-    <text font-size="5.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-band-b-outer">(check-sat) (get-model)</textPath></text>
-    <text font-size="5.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-band-b-inner">(assert (≤ risk ε))</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-circle">lemma proof_runs_out : ¬ ∀ (s : System), Decidable (safe s) := by exact halting_reduction</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4"><textPath href="#gp-line">#check @assurance_bound</textPath></text>
-    <text font-size="4" fill="#A8A199" letter-spacing="0.4" opacity="0.65"><textPath href="#gp-ring-1">(set-logic QF_LIA) (assert (&lt;= risk bound)) (check-sat) (get-unsat-core)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-3">theorem no_false_assurance : ∀ v, admits v → certified v := by exact audit_sound -- verified end-to-end</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-ring-5">structure Evidence where claim : Claim proof : Proof bound : ℝ deriving Repr -- evidence over eloquence</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.35"><textPath href="#gp-ring-7">#[test] fn audit_survives() { assert!(system.verify_all().is_sound()) } // passes and survives</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-ring-9">(define-fun residual_risk () Real (- claimed proven)) (assert (= residual_risk 0.0)) (check-sat) ; unsat means honest</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.17"><textPath href="#gp-ring-11">inductive Verdict | certified (p : Proof) | bounded (b : Bound) | clean_stop -- three honest answers, nothing in between</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.11"><textPath href="#gp-ring-13">∎ QED — what is proven stays proven; what is assumed stays labeled; what is unknown stays bounded — simondolera.com</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.5"><textPath href="#gp-spiral" startOffset="0">impl Verified { fn downgrade(self) -&gt; Speculated { Speculated::from(self) } }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.5"><textPath href="#gp-spiral" startOffset="253">theorem audit_closure : ∀ s, survives s ↔ (∀ c ∈ claims s, certified c ∧ within_bound c) -- q.e.d.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.49"><textPath href="#gp-spiral" startOffset="570">Theorem soundness : ⊢ e : τ → eval e ∈ ⟦τ⟧.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.49"><textPath href="#gp-spiral" startOffset="718">Fixpoint check (l : list Claim) : bool := match l with [] =&gt; true | c :: t =&gt; sound c &amp;&amp; check t end.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.49"><textPath href="#gp-spiral" startOffset="1045">fn verify(claim: &amp;Claim) -&gt; Result&lt;Proof, Bound&gt;</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="1208">LEMMA Safety /\ Liveness =&gt; Assurance</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="1336">CONSTANT Epsilon ASSUME Epsilon \in Real /\ Epsilon &gt; 0 \* every bound is named before it is trusted</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="1660">Liveness == \A g \in goals : (g \in admissible) ~&gt; (Certified(g) \/ CleanStop(g)) \* progress promised only inside the envelope</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.47"><textPath href="#gp-spiral" startOffset="2068">match verdict with | Certified p =&gt; accept p | CleanStop =&gt; halt | Unknown =&gt; widen the bound -- never bluff</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.47"><textPath href="#gp-spiral" startOffset="2417">Inv == \A c \in claims : proven[c]</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.47"><textPath href="#gp-spiral" startOffset="2536">∎ QED — what is proven stays proven; what is assumed stays labeled; what is unknown stays bounded — simondolera.com</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="2907">(assert (≤ risk ε))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="2980">#[kani::proof] fn overflow_free() { let x: u32 = kani::any(); kani::assume(x &lt;= BOUND); assert!(x.checked_add(DELTA).is_some()); }</textPath></text>
   </svg>
-  <svg viewBox="-75 -75 350 350" aria-hidden="true" class="ghost core ccw-el" text-rendering="optimizeSpeed">
-      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-2">impl Audit for Verifier { fn admit(&amp;self, c: Claim) -&gt; Verdict } // prove-or-clean-stop</textPath></text>
-      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-ring-4">def assurance (S : System) : Prop := ∀ c ∈ S.claims, proved c ∨ bounded c -- soundness before persuasion</textPath></text>
-      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-ring-6">match verdict with | Certified p =&gt; accept p | CleanStop =&gt; halt | Unknown =&gt; widen the bound -- never bluff</textPath></text>
-      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.3"><textPath href="#gp-ring-8">axiom no_free_assurance : ¬ ∃ (p : Proof), cost p = 0 ∧ sound p -- every guarantee is earned, not asserted</textPath></text>
-      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.2"><textPath href="#gp-ring-10">theorem audit_closure : ∀ s, survives s ↔ (∀ c ∈ claims s, certified c ∧ within_bound c) -- q.e.d.</textPath></text>
-      <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.14"><textPath href="#gp-ring-12">fn main() { let audit = Auditor::new(policy); std::process::exit(audit.run(system).code()) } // exit code is the verdict</textPath></text>
-  </svg>
-  <!-- static aura: never mutated, never rotated — rasterizes once -->
-  <svg viewBox="-75 -75 350 350" aria-hidden="true" class="ghost aura static" text-rendering="optimizeSpeed">
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-ring-5" startOffset="339">(assert (not (exists ((x Real)) (and (certified x) (&gt; (risk x) delta)))))</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.35"><textPath href="#gp-ring-7" startOffset="314">(define-fun honest ((c Real) (b Real)) Bool (and (&lt;= c b) (&gt;= b 0.0)))</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-ring-9" startOffset="383">Inductive Assurance := Proven (p : Proof) | Bounded (b : ℝ) | Unknown.</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.17"><textPath href="#gp-ring-11" startOffset="392">structure Certificate where (claim : Prop) (evidence : claim) (ε : ℝ)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.11"><textPath href="#gp-ring-13" startOffset="380">Fairness == WF_vars(Verify) /\ SF_vars(Disclose) \* no claim starves</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.11"><textPath href="#gp-ring-13" startOffset="708">Lemma clean_stop_sound : ∀ P, ¬ decidable P → verdict P = CleanStop.</textPath></text>
-    <text font-size="3.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-ring-15">Theorem belief_not_proof : ∃ c P, believes c P ∧ ¬ P.</textPath></text>
-    <text font-size="4" fill="#A8A199" letter-spacing="0.4" opacity="0.35"><textPath href="#gp-ring-17">lemma AuditSurvives(t: Trace) requires Complete(t) ensures Replay(t) == Verdict(t)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.09"><textPath href="#gp-ring-19">(push 1) (assert (not invariant)) (check-sat) (pop 1) ; unsat is the certificate, sat hands you the counterexample</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.09"><textPath href="#gp-ring-19" startOffset="379">fn admit(claim: Claim) -&gt; Result&lt;Sealed&lt;Fact&gt;, Unsound&gt; { verify(&amp;claim.witness).map(|p| Sealed::mint(claim, p)) }</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.09"><textPath href="#gp-ring-19" startOffset="758">// invariant: no capability is minted without a checker-verified proof; confidence alone admits nothing</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.075"><textPath href="#gp-ring-21">Liveness == \A g \in goals : (g \in admissible) ~&gt; (Certified(g) \/ CleanStop(g)) \* progress promised only inside the envelope</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.075"><textPath href="#gp-ring-21" startOffset="413">theorem honesty : ∀ (c : Claim), (∃ p, Proof p c) ∨ (∃ b, Bound b c) ∨ verdict c = Verdict.clean_stop := by exact trichotomy c</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.075"><textPath href="#gp-ring-21" startOffset="825">(define-fun assurance ((claim Bool) (proof Bool)) Bool (and claim proof)) ; confidence without proof does not typecheck here</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.065"><textPath href="#gp-ring-23">theorem no_overclaim (s : System) (h : sound s) : ∀ c, s.asserts c → Provable c ∨ s.flags_uncertain c := fun c hc =&gt; audit_split s h c hc</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.065"><textPath href="#gp-ring-23" startOffset="446">Theorem replay_deterministic : ∀ l l', ledger_ok l → ledger_ok l' → tip l = tip l' → l = l'. Proof. induction l; destruct l'; auto. Qed.</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.065"><textPath href="#gp-ring-23" startOffset="892">THEOREM Impl =&gt; Spec \* refinement: the audit survives because the mapping is exhibited, not assumed</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.055"><textPath href="#gp-ring-25">method Audit(log: seq&lt;Event&gt;) returns (v: Verdict) ensures v.Certified? ==&gt; Sound(log)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.055"><textPath href="#gp-ring-25" startOffset="480">debug_assert!(claims.iter().all(|c| c.witness.is_some()), "unwitnessed claim");</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.055"><textPath href="#gp-ring-25" startOffset="959">theorem clean_stop_sound : ¬ decidable_here q → verdict q = Verdict.clean_stop</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.045"><textPath href="#gp-ring-27">impl Verified { fn downgrade(self) -&gt; Speculated { Speculated::from(self) } }</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.045"><textPath href="#gp-ring-27" startOffset="513">#[ensures(result.risk() &lt;= EPSILON || matches!(result, Verdict::CleanStop))]</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.045"><textPath href="#gp-ring-27" startOffset="1026">def Verdict.honest : Verdict → Prop | .certified p =&gt; Sound p | _ =&gt; True</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-ring-6" startOffset="355">Print Assumptions assurance_bound. (* Closed under the global context *)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.3"><textPath href="#gp-ring-8" startOffset="349">CheckedByTLC == \A s \in reachable : Inv(s) \* 2^47 states, zero faith</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.2"><textPath href="#gp-ring-10" startOffset="324">Lemma audit_survives_replay : ∀ w, wf w → audit w = audit (replay w).</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.14"><textPath href="#gp-ring-12" startOffset="395">theorem audit_survives : ∀ t, holds_at t claim → holds_at (t+1) claim</textPath></text>
-    <text font-size="3.5" fill="#A8A199" letter-spacing="0.4" opacity="0.5"><textPath href="#gp-ring-14">(assert (=&gt; verified (&lt;= risk eps)))</textPath></text>
-    <text font-size="4" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-ring-16">requires no_hidden_assumptions(env) ensures result.risk &lt;= epsilon</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.1"><textPath href="#gp-ring-18">Corollary risk_bounded : ∀ x, verified x → risk x ≤ ε. Proof. intros; apply assurance_bound; assumption. Qed.</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.1"><textPath href="#gp-ring-18" startOffset="362">THEOREM Assurance == Spec =&gt; [](\A claim \in asserted : proven(claim) \/ bounded(claim) \/ clean_stop(claim))</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.1"><textPath href="#gp-ring-18" startOffset="725">predicate AuditSurvivesReplay(t: Trace) { forall step :: step in t ==&gt; Justified(step) &amp;&amp; Replayable(step) }</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.08"><textPath href="#gp-ring-20">(assert (forall ((s State)) (=&gt; (reachable s) (or (safe s) (flagged s))))) ; every reachable state answers to the audit</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.08"><textPath href="#gp-ring-20" startOffset="396">theorem risk_antitone : ∀ x y, evidence x ≤ evidence y → risk y ≤ risk x := by intro x y h; exact bound_of_evidence h</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.08"><textPath href="#gp-ring-20" startOffset="792">assert forall i :: 0 &lt;= i &lt; |ledger| ==&gt; ledger[i].hash == Blake3(ledger[i].prev, ledger[i].claim); // tamper-evident</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.07"><textPath href="#gp-ring-22">#[kani::proof] fn overflow_free() { let x: u32 = kani::any(); kani::assume(x &lt;= BOUND); assert!(x.checked_add(DELTA).is_some()); }</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.07"><textPath href="#gp-ring-22" startOffset="429">method Certify(evidence: set&lt;Fact&gt;) returns (v: Verdict) ensures v.Certified? ==&gt; forall f :: f in evidence ==&gt; Checked(f)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.07"><textPath href="#gp-ring-22" startOffset="859">Fixpoint check (l : list Claim) : bool := match l with [] =&gt; true | c :: t =&gt; sound c &amp;&amp; check t end.</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.06"><textPath href="#gp-ring-24">CONSTANT Epsilon ASSUME Epsilon \in Real /\ Epsilon &gt; 0 \* every bound is named before it is trusted</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.06"><textPath href="#gp-ring-24" startOffset="463">(set-logic QF_UFLRA) (set-option :produce-unsat-cores true) (set-option :produce-proofs true)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.06"><textPath href="#gp-ring-24" startOffset="926">Theorem no_certificate_without_witness : ∀ c, certified c → ∃ p : Proof, checker p c = true.</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.05"><textPath href="#gp-ring-26">forAll(arbitrary[Claim]) { c =&gt; verify(c).isBounded || verify(c).isCleanStop }</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.05"><textPath href="#gp-ring-26" startOffset="496">quickcheck(prop_verdict_never_overclaims); // 10_000 cases, 0 counterexamples</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.05"><textPath href="#gp-ring-26" startOffset="993">fn certify(e: Evidence) -&gt; Result&lt;Sealed&lt;Claim&gt;, CleanStop&gt; { gate.check(e) }</textPath></text>
+  <!-- outer spiral: never mutated — rasterizes once, rotates on the compositor -->
+  <svg viewBox="-75 -75 350 350" aria-hidden="true" class="ghost aura" text-rendering="optimizeSpeed">
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="3397">theorem audit_survives : ∀ t, holds_at t claim → holds_at (t+1) claim</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="3625">requires no_hidden_assumptions(env) ensures result.risk &lt;= epsilon</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="3843">Proof. induction trace; destruct verdict; lia. Qed.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="4015">def Verdict.honest : Verdict → Prop | .certified p =&gt; Sound p | _ =&gt; True</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.44"><textPath href="#gp-spiral" startOffset="4256">theorem no_false_assurance : ∀ v, admits v → certified v := by exact audit_sound -- verified end-to-end</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.44"><textPath href="#gp-spiral" startOffset="4589">def assurance (S : System) : Prop := ∀ c ∈ S.claims, proved c ∨ bounded c -- soundness before persuasion</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="4925">axiom no_free_assurance : ¬ ∃ (p : Proof), cost p = 0 ∧ sound p -- every guarantee is earned, not asserted</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="5268">CheckedByTLC == \A s \in reachable : Inv(s) \* 2^47 states, zero faith</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="5499">#[kani::proof] fn no_silent_overflow() {}</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="5640">theorem bounded_of_verified : ∀ x ∈ audit_log, risk x ≤ ε + δ</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="5843">(check-sat-assuming (audit_passed))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="5966">(assert (distinct proven assumed))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="6085">(get-value (risk_bound)) ; interrogate the model, not the vibes</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="6294">fn certify(e: Evidence) -&gt; Result&lt;Sealed&lt;Claim&gt;, CleanStop&gt; { gate.check(e) }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="6547">THEOREM Assurance == Spec =&gt; [](\A claim \in asserted : proven(claim) \/ bounded(claim) \/ clean_stop(claim))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="6899">structure Certificate where (claim : Prop) (evidence : claim) (ε : ℝ)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="7127">THEOREM Spec =&gt; [](confidence &lt;= evidence)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-spiral" startOffset="7271">theorem clean_stop_sound : ¬ decidable_here q → verdict q = Verdict.clean_stop</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-spiral" startOffset="7527">(push 1) (assert (not invariant)) (check-sat) (pop 1) ; unsat is the certificate, sat hands you the counterexample</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.4"><textPath href="#gp-spiral" startOffset="7894">Corollary risk_bounded : ∀ x, verified x → risk x ≤ ε. Proof. intros; apply assurance_bound; assumption. Qed.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.39"><textPath href="#gp-spiral" startOffset="8246">assert forall i :: 0 &lt;= i &lt; |ledger| ==&gt; ledger[i].hash == Blake3(ledger[i].prev, ledger[i].claim); // tamper-evident</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.39"><textPath href="#gp-spiral" startOffset="8623">Theorem replay_deterministic : ∀ l l', ledger_ok l → ledger_ok l' → tip l = tip l' → l = l'. Proof. induction l; destruct l'; auto. Qed.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.38"><textPath href="#gp-spiral" startOffset="9058">assert Verified(x) ==&gt; Bounded(x);</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.38"><textPath href="#gp-spiral" startOffset="9178">Safe == [](\A t \in transitions : Verified(t) \/ CleanStop(t))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.38"><textPath href="#gp-spiral" startOffset="9384">// invariant: no capability is minted without a checker-verified proof; confidence alone admits nothing</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.37"><textPath href="#gp-spiral" startOffset="9717">quickcheck(prop_verdict_never_overclaims); // 10_000 cases, 0 counterexamples</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.37"><textPath href="#gp-spiral" startOffset="9970">(check-sat) (get-model)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.37"><textPath href="#gp-spiral" startOffset="10055">theorem risk_antitone : ∀ x y, evidence x ≤ evidence y → risk y ≤ risk x := by intro x y h; exact bound_of_evidence h</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.36"><textPath href="#gp-spiral" startOffset="10432">(get-unsat-core) ; the audit that survives</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.36"><textPath href="#gp-spiral" startOffset="10576">(set-logic QF_UFLRA) (set-option :produce-unsat-cores true) (set-option :produce-proofs true)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.36"><textPath href="#gp-spiral" startOffset="10878">lemma proof_runs_out : ¬ ∀ (s : System), Decidable (safe s) := by exact halting_reduction</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.35"><textPath href="#gp-spiral" startOffset="11168">#[test] fn audit_survives() { assert!(system.verify_all().is_sound()) } // passes and survives</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.35"><textPath href="#gp-spiral" startOffset="11474">Lemma clean_stop_sound : ∀ P, ¬ decidable P → verdict P = CleanStop.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.34"><textPath href="#gp-spiral" startOffset="11699">impl Audit for Verifier { fn admit(&amp;self, c: Claim) -&gt; Verdict } // prove-or-clean-stop</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.34"><textPath href="#gp-spiral" startOffset="11982">predicate AuditSurvivesReplay(t: Trace) { forall step :: step in t ==&gt; Justified(step) &amp;&amp; Replayable(step) }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.34"><textPath href="#gp-spiral" startOffset="12331">#[requires(bound.is_finite())]</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.33"><textPath href="#gp-spiral" startOffset="12438">(assert (not (exists ((x Real)) (and (certified x) (&gt; (risk x) delta)))))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.33"><textPath href="#gp-spiral" startOffset="12678">def residual_risk (x : Claim) : ℝ := 1 - assurance x</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.33"><textPath href="#gp-spiral" startOffset="12854">Print Assumptions assurance_bound. (* Closed under the global context *)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.33"><textPath href="#gp-spiral" startOffset="13091">theorem no_overclaim (s : System) (h : sound s) : ∀ c, s.asserts c → Provable c ∨ s.flags_uncertain c := fun c hc =&gt; audit_split s h c hc</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.32"><textPath href="#gp-spiral" startOffset="13530">#eval audit_log.all fun e =&gt; e.checked</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.32"><textPath href="#gp-spiral" startOffset="13661">(assert (forall ((x Real)) (=&gt; (verified x) (&lt;= (risk x) epsilon))))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.32"><textPath href="#gp-spiral" startOffset="13886">#[ensures(forall(|i: usize| i &lt; out.len() ==&gt; out[i].audited))]</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.31"><textPath href="#gp-spiral" startOffset="14095">Theorem belief_not_proof : ∃ c P, believes c P ∧ ¬ P.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.31"><textPath href="#gp-spiral" startOffset="14274">forAll(arbitrary[Claim]) { c =&gt; verify(c).isBounded || verify(c).isCleanStop }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.31"><textPath href="#gp-spiral" startOffset="14529">decreases risk, gap; // audit terminates</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.31"><textPath href="#gp-spiral" startOffset="14667">structure Evidence where claim : Claim proof : Proof bound : ℝ deriving Repr -- evidence over eloquence</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.3"><textPath href="#gp-spiral" startOffset="15001">theorem honesty : ∀ (c : Claim), (∃ p, Proof p c) ∨ (∃ b, Bound b c) ∨ verdict c = Verdict.clean_stop := by exact trichotomy c</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.3"><textPath href="#gp-spiral" startOffset="15405">inductive Verdict | certified (p : Proof) | bounded (b : Bound) | clean_stop -- three honest answers, nothing in between</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.29"><textPath href="#gp-spiral" startOffset="15791">(set-logic QF_LIA) (assert (&lt;= risk bound)) (check-sat) (get-unsat-core)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.29"><textPath href="#gp-spiral" startOffset="16029">(assert (forall ((s State)) (=&gt; (reachable s) (or (safe s) (flagged s))))) ; every reachable state answers to the audit</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.28"><textPath href="#gp-spiral" startOffset="16411">method Audit(log: seq&lt;Event&gt;) returns (v: Verdict) ensures v.Certified? ==&gt; Sound(log)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.28"><textPath href="#gp-spiral" startOffset="16692">THEOREM Impl =&gt; Spec \* refinement: the audit survives because the mapping is exhibited, not assumed</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.27"><textPath href="#gp-spiral" startOffset="17016">Inductive Assurance := Proven (p : Proof) | Bounded (b : ℝ) | Unknown.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.27"><textPath href="#gp-spiral" startOffset="17247">fn admit(claim: Claim) -&gt; Result&lt;Sealed&lt;Fact&gt;, Unsound&gt; { verify(&amp;claim.witness).map(|p| Sealed::mint(claim, p)) }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.27"><textPath href="#gp-spiral" startOffset="17614">theorem consistency : ¬ ∃ p, proves p ⊥</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.26"><textPath href="#gp-spiral" startOffset="17749">#check (sound : Verified → Honest)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.26"><textPath href="#gp-spiral" startOffset="17869">assert!(audit.survives(replay));</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.26"><textPath href="#gp-spiral" startOffset="17982">let verdict: Result&lt;Proof, CleanStop&gt;;</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.26"><textPath href="#gp-spiral" startOffset="18114">#[ensures(result.risk() &lt;= EPSILON || matches!(result, Verdict::CleanStop))]</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.26"><textPath href="#gp-spiral" startOffset="18363">lemma AuditSurvives(t: Trace) requires Complete(t) ensures Replay(t) == Verdict(t)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-spiral" startOffset="18632">Lemma audit_survives_replay : ∀ w, wf w → audit w = audit (replay w).</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-spiral" startOffset="18860">assert Sound(gate) &amp;&amp; !Complete(gate);</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-spiral" startOffset="18991">(assert (=&gt; verified (&lt;= risk eps)))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.25"><textPath href="#gp-spiral" startOffset="19117">Fairness == WF_vars(Verify) /\ SF_vars(Disclose) \* no claim starves</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.24"><textPath href="#gp-spiral" startOffset="19342">Audit == INSTANCE Ledger WITH entries &lt;- history, tamper &lt;- FALSE</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.24"><textPath href="#gp-spiral" startOffset="19557">fn main() { let audit = Auditor::new(policy); std::process::exit(audit.run(system).code()) } // exit code is the verdict</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.24"><textPath href="#gp-spiral" startOffset="19943">Lemma no_overclaim : claimed ≤ proven.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.23"><textPath href="#gp-spiral" startOffset="20075">Theorem no_certificate_without_witness : ∀ c, certified c → ∃ p : Proof, checker p c = true.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.23"><textPath href="#gp-spiral" startOffset="20374">(define-fun honest ((c Real) (b Real)) Bool (and (&lt;= c b) (&gt;= b 0.0)))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.23"><textPath href="#gp-spiral" startOffset="20605">theorem assurance_bound : ∀ x, verified x → risk x ≤ ε</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.22"><textPath href="#gp-spiral" startOffset="20787">THEOREM Spec =&gt; []Inv \* proved, not sampled</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.22"><textPath href="#gp-spiral" startOffset="20937">debug_assert!(claims.iter().all(|c| c.witness.is_some()), "unwitnessed claim");</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.22"><textPath href="#gp-spiral" startOffset="21196">(define-fun residual_risk () Real (- claimed proven)) (assert (= residual_risk 0.0)) (check-sat) ; unsat means honest</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.21"><textPath href="#gp-spiral" startOffset="21573">method Certify(evidence: set&lt;Fact&gt;) returns (v: Verdict) ensures v.Certified? ==&gt; forall f :: f in evidence ==&gt; Checked(f)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.21"><textPath href="#gp-spiral" startOffset="21965">#check @assurance_bound</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.21"><textPath href="#gp-spiral" startOffset="22050">invariant 0 &lt;= confidence &lt;= evidence</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.21"><textPath href="#gp-spiral" startOffset="22179">(define-fun assurance ((claim Bool) (proof Bool)) Bool (and claim proof)) ; confidence without proof does not typecheck here</textPath></text>
   </svg>
   </div>
 
@@ -459,7 +385,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
 
       <h1>Simon Dolera</h1>
 
-      <p class="role">Independent Researcher <span class="sep" aria-hidden="true">·</span> Formal Verification &amp; AI Assurance</p>
+      <p class="role">Independent Researcher <span aria-hidden="true">·</span> Formal Verification &amp; AI Assurance</p>
 
       <p class="bio">I construct machine-checked guarantees for AI systems: formal proof where verification is tractable, explicit bounds where it is not. Every assumption is stated, every residual risk quantified — nothing rests on confidence alone.</p>
 
@@ -471,19 +397,22 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
         </a>
         <a href="https://github.com/rockwayz/bounded-uncertainty-verification" title="github.com/rockwayz/bounded-uncertainty-verification — Lean 4, no-sorry formalization">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
-          <span>GitHub</span>
+          <span>Code — Lean 4</span>
           <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 9.5 L9.5 2.5"></path><path d="M4 2.5 H9.5 V8"></path></svg>
         </a>
-        <a href="https://linkedin.com/in/simon-dolera" rel="me" title="linkedin.com/in/simon-dolera">
+        <a href="https://www.linkedin.com/in/simon-dolera" rel="me" title="www.linkedin.com/in/simon-dolera">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M1 1h14v14H1V1Zm3.4 4.2a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM3.3 6.4h2.2v6.3H3.3V6.4Zm4 0h2.1v.9c.3-.55 1.05-1.1 2.1-1.1 1.9 0 2.5 1.2 2.5 2.9v3.6h-2.2V9.6c0-.9-.3-1.5-1.1-1.5-.75 0-1.2.55-1.2 1.5v3.1H7.3V6.4Z"></path></svg>
           <span>LinkedIn</span>
           <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 9.5 L9.5 2.5"></path><path d="M4 2.5 H9.5 V8"></path></svg>
         </a>
         <a class="email" href="mailto:simon@simondolera.com" title="simon@simondolera.com">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1"></rect><path d="M1.5 4.5 8 9 14.5 4.5"></path></svg>
-          <span aria-live="polite">Email</span>
+          <span>Email</span>
         </a>
       </nav>
+
+      <p class="nav-meta addr" aria-hidden="true"></p>
+      <span class="visually-hidden" role="status" aria-live="polite" id="copy-status"></span>
 
     </div>
   </div>
@@ -492,6 +421,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
 (function () {
   var fineQ = window.matchMedia('(hover: hover) and (pointer: fine)');
   var reduceQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var fcQ = window.matchMedia('(forced-colors: active)');
   var torch = document.getElementById('torch');
   var orb = document.getElementById('orb');
   var ghostWrap = document.querySelector('.ghost-wrap');
@@ -535,12 +465,13 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
     document.documentElement.classList.remove('has-orb');
   }
   function applyGates() {
-    if (fineQ.matches && !reduceQ.matches) enableEffects(); else disableEffects();
+    if (fineQ.matches && !reduceQ.matches && !fcQ.matches) enableEffects(); else disableEffects();
   }
   applyGates();
   if (fineQ.addEventListener) {
     fineQ.addEventListener('change', applyGates);
     reduceQ.addEventListener('change', applyGates);
+    fcQ.addEventListener('change', applyGates);
   }
 
   // Pointer physics — frame-rate independent damping so the torch trails
@@ -569,10 +500,31 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
     }
     requestAnimationFrame(tick);
   }
+  // Donut mask: transparent over the card (no design overlay), field visible
+  // around it, soft fade at the far rim. Recomputed on load and resize.
+  var card = document.querySelector('.card');
+  function updateClearZone() {
+    var rc = card.getBoundingClientRect();
+    var cx = rc.left + rc.width / 2, cy = rc.top + rc.height / 2;
+    var R = Math.sqrt(Math.pow(Math.max(cx, window.innerWidth - cx), 2) + Math.pow(Math.max(cy, window.innerHeight - cy), 2)) + 80;
+    var clear = (Math.max(rc.width, rc.height) / 2 + 36) / R * 100;
+    var g = 'radial-gradient(circle ' + R.toFixed(0) + 'px at ' + cx.toFixed(0) + 'px ' + cy.toFixed(0) + 'px, transparent 0%, transparent ' + clear.toFixed(1) + '%, rgba(0,0,0,0.75) ' + Math.min(clear + 14, 88).toFixed(1) + '%, #000 ' + Math.min(clear + 26, 94).toFixed(1) + '%, rgba(0,0,0,0.35) 100%)';
+    ghostWrap.style.webkitMaskImage = g;
+    ghostWrap.style.maskImage = g;
+  }
+  window.addEventListener('resize', updateClearZone);
+  window.addEventListener('load', updateClearZone);
+  updateClearZone();
+
   window.addEventListener('mousemove', function (e) {
     if (!effectsOn) return;
     tx = e.clientX; ty = e.clientY;
-    if (!seen) { seen = true; cx = tx; cy = ty; orb.style.opacity = '1'; }
+    if (!seen) {
+      seen = true; cx = tx; cy = ty;
+      orb.style.opacity = '1';
+      torch.style.opacity = '1';
+      if (reveal) reveal.style.opacity = '1';
+    }
     // The orb rides the real pointer so clicks land where it shows; the torch trails.
     orb.style.transform = 'translate(' + tx + 'px, ' + ty + 'px)';
     if (!ticking) { ticking = true; last = performance.now(); requestAnimationFrame(tick); }
@@ -587,15 +539,22 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   document.addEventListener('mousedown', function () { orb.classList.add('down'); }, { passive: true });
   document.addEventListener('mouseup', function () { orb.classList.remove('down'); }, { passive: true });
 
-  // Email click-to-copy: feedback lives in the element; mailto stays the fallback.
+  // Email click-to-copy: a desktop plain-click convenience only. Touch and
+  // modified clicks keep the native mailto contract; feedback lives in the
+  // visible address line and a separate status region — never the link's name.
   var emailA = document.querySelector('nav a.email');
-  var emailSpan = emailA.querySelector('span');
+  var addrLine = document.querySelector('.nav-meta.addr');
+  var copyStatus = document.getElementById('copy-status');
   emailA.addEventListener('click', function (e) {
-    if (!navigator.clipboard) return;
+    if (!navigator.clipboard || !fineQ.matches || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
     navigator.clipboard.writeText('simon@simondolera.com').then(function () {
-      emailSpan.textContent = 'Copied';
-      setTimeout(function () { emailSpan.textContent = 'Email'; }, 1400);
+      if (addrLine) addrLine.textContent = 'simon@simondolera.com — copied';
+      if (copyStatus) copyStatus.textContent = 'Email address copied';
+      setTimeout(function () {
+        if (addrLine) addrLine.textContent = '';
+        if (copyStatus) copyStatus.textContent = '';
+      }, 2500);
     }, function () { window.location.href = 'mailto:simon@simondolera.com'; });
   });
 
@@ -673,7 +632,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
       lastTick = now;
     }
     if (mode === 'spin') {
-      var interval = Math.max(240, 560 - v * 30);
+      var interval = Math.max(380, 700 - v * 30);
       if (now - lastTick >= interval) { lastTick = now; pick().forEach(scrambleNode); }
     }
     schedule();
