@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://simondolera.com/sitemap.xml
