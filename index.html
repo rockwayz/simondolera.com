@@ -285,6 +285,9 @@ nav a:active span { text-decoration-color: var(--signal); }
 nav a:active svg:last-of-type { transform: translate(3px, -3px) scale(0.92); }
 nav a.email { color: var(--signal); }
 nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inline-block; min-width: 6ch; }
+@media (min-resolution: 1.5dppx) {
+  .ghost { width: min(228vh, 154vw, 1792px); }
+}
 @media (max-width: 640px) {
   main { padding: 32px 24px; }
   .mark { width: 224px; margin-bottom: 24px; }
@@ -541,7 +544,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   function esc(c) { return c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c; }
   // Touch only a small rotating slice per tick; tspans only for changed glyphs.
   var cursor = 0;
-  var SLICE = 3;
+  var SLICE = 2;
   function pick() {
     var out = [];
     for (var k = 0; k < SLICE; k++) out.push(nodes[(cursor + k) % nodes.length]);
@@ -604,7 +607,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
       lastTick = now;
     }
     if (mode === 'spin') {
-      var interval = Math.max(160, 500 - v * 30);
+      var interval = Math.max(240, 560 - v * 30);
       if (now - lastTick >= interval) { lastTick = now; pick().forEach(scrambleNode); }
     }
     schedule();
