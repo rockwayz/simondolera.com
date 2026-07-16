@@ -134,11 +134,11 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 5; pointer-events
 @media (forced-colors: active) { #torch, #orb, #reveal, body::after { display: none !important; } .has-orb main { cursor: auto !important; } }
 /* layered ground: warm tint toward the card, vignette at the base */
 main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidden; display: flex; align-items: center; padding: 64px 24px; background: radial-gradient(52% 58% at 50% 100%, rgba(4, 4, 4, 0) 0%, rgba(0, 0, 0, 0.5) 100%), radial-gradient(120% 90% at 32% 18%, #0a0705 0%, #040404 62%); }
-.ghost-wrap { position: absolute; inset: 0; pointer-events: none; will-change: transform; -webkit-mask-image: radial-gradient(115% 115% at 62% 50%, #000 25%, rgba(0, 0, 0, 0.55) 55%, transparent 82%); mask-image: radial-gradient(115% 115% at 62% 50%, #000 25%, rgba(0, 0, 0, 0.55) 55%, transparent 82%); }
+.ghost-wrap { position: absolute; inset: 0; pointer-events: none; will-change: transform; -webkit-mask-image: none; mask-image: none; }
 /* ambient layer: vignette-masked so it recedes near the type; the lit clone above it
    is revealed only inside the torch radius and is never scrambled — the cursor
    shows the pristine code while the ambient copy drifts and mutates */
-.ghost { position: absolute; top: 50%; right: 32%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3200px); height: auto; opacity: 0.16; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; animation: ghostin 2.2s ease-out 0.5s both; }
+.ghost { position: absolute; top: 50%; right: 32%; transform: translate(50%, -50%); width: min(228vh, 154vw, 3600px); height: auto; opacity: 0.18; pointer-events: none; user-select: none; -webkit-user-select: none; font-family: 'JetBrains Mono', ui-monospace, monospace; animation: ghostin 2.2s ease-out 0.5s both; }
 .ghost-lit { opacity: 0.38; animation: litin 2.2s ease-out 0.5s both; }
 #reveal { position: fixed; left: 0; top: 0; width: 480px; height: 480px; margin: -240px 0 0 -240px; z-index: 5; pointer-events: none; display: none; opacity: 0; will-change: transform; transition: opacity 0.35s ease; -webkit-mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); }
 .has-orb #reveal { display: block; }
@@ -147,7 +147,7 @@ main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidd
 .card { max-width: 1000px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 @keyframes fade { from { opacity: 0; transform: translateY(18px); } }
 @keyframes h1in { from { opacity: 0; transform: translateY(22px); letter-spacing: 0.05em; } to { opacity: 1; transform: none; letter-spacing: 0; } }
-@keyframes ghostin { from { opacity: 0; } to { opacity: 0.16; } }
+@keyframes ghostin { from { opacity: 0; } to { opacity: 0.18; } }
 @keyframes litin { from { opacity: 0; } to { opacity: 0.38; } }
 /* the mark proves itself stroke by stroke; the accent lands last, then stillness */
 @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
@@ -199,7 +199,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
 .nav-meta { margin: 28px 0 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.02em; text-transform: none; color: var(--dim); line-height: 1.7; min-height: 1.7em; max-width: 66ch; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 @media (min-resolution: 1.5dppx) {
-  .ghost { width: min(228vh, 154vw, 1792px); }
+  .ghost { width: min(228vh, 154vw, 2048px); }
 }
 /* ambient rotation is a fine-pointer garnish: touch devices keep the entrance
    fade but never pay for an always-on compositor loop */
@@ -505,10 +505,14 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   var card = document.querySelector('.card');
   function updateClearZone() {
     var rc = card.getBoundingClientRect();
-    var cx = rc.left + rc.width / 2, cy = rc.top + rc.height / 2;
-    var R = Math.sqrt(Math.pow(Math.max(cx, window.innerWidth - cx), 2) + Math.pow(Math.max(cy, window.innerHeight - cy), 2)) + 80;
-    var clear = (Math.max(rc.width, rc.height) / 2 + 36) / R * 100;
-    var g = 'radial-gradient(circle ' + R.toFixed(0) + 'px at ' + cx.toFixed(0) + 'px ' + cy.toFixed(0) + 'px, transparent 0%, transparent ' + clear.toFixed(1) + '%, rgba(0,0,0,0.75) ' + Math.min(clear + 14, 88).toFixed(1) + '%, #000 ' + Math.min(clear + 26, 94).toFixed(1) + '%, rgba(0,0,0,0.35) 100%)';
+    // protect the actual content extent, not the card's max-width box
+    var maxW = 0;
+    for (var i = 0; i < card.children.length; i++) {
+      maxW = Math.max(maxW, card.children[i].getBoundingClientRect().width);
+    }
+    var cx = rc.left + maxW / 2, cy = rc.top + rc.height / 2;
+    var rx = maxW / 2 + 84, ry = rc.height / 2 + 84;
+    var g = 'radial-gradient(ellipse ' + rx.toFixed(0) + 'px ' + ry.toFixed(0) + 'px at ' + cx.toFixed(0) + 'px ' + cy.toFixed(0) + 'px, transparent 0%, transparent 85%, rgba(0,0,0,0.8) 95%, #000 100%)';
     ghostWrap.style.webkitMaskImage = g;
     ghostWrap.style.maskImage = g;
   }
