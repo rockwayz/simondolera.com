@@ -143,6 +143,16 @@ main { min-height: 100vh; min-height: 100svh; position: relative; overflow: hidd
 #reveal { position: fixed; left: 0; top: 0; width: 480px; height: 480px; margin: -240px 0 0 -240px; z-index: 5; pointer-events: none; display: none; opacity: 0; will-change: transform; transition: opacity 0.35s ease; -webkit-mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 72%); }
 .has-orb #reveal { display: block; }
 .reveal-inner { position: absolute; left: 0; top: 0; width: 100vw; height: 100vh; will-change: transform; }
+.star { position: absolute; z-index: 4; pointer-events: none; will-change: transform; }
+.star i { display: block; height: 2px; border-radius: 2px; width: var(--len); opacity: 0;
+  background: linear-gradient(90deg, rgba(255, 246, 232, 0) 0%, rgba(255, 246, 232, 0.03) 55%, rgba(255, 246, 232, 0.7) 90%, #FFF6E8 100%);
+  animation: shoot var(--dur) linear forwards; }
+@keyframes shoot {
+  0% { transform: translateX(0); opacity: 0; }
+  12% { opacity: 0.85; }
+  70% { opacity: 0.5; }
+  100% { transform: translateX(var(--dist)); opacity: 0; }
+}
 .wrap { width: 100%; max-width: 1240px; margin: 0 auto; position: relative; z-index: 6; }
 .card { max-width: 1000px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 @keyframes fade { from { opacity: 0; transform: translateY(18px); } }
@@ -542,6 +552,41 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   }, { passive: true });
   document.addEventListener('mousedown', function () { orb.classList.add('down'); }, { passive: true });
   document.addEventListener('mouseup', function () { orb.classList.remove('down'); }, { passive: true });
+
+  // Shooting stars: rare streaks across the upper sky, sometimes a pair.
+  (function () {
+    var sky = document.querySelector('main');
+    function spawn() {
+      var vw = window.innerWidth, vh = window.innerHeight;
+      var angle = 12 + Math.random() * 28;
+      var dir = Math.random() < 0.5 ? 1 : -1;
+      var s = document.createElement('div');
+      s.className = 'star';
+      s.style.left = (Math.random() * vw * 0.9) + 'px';
+      s.style.top = (Math.random() * vh * 0.45) + 'px';
+      s.style.transform = 'rotate(' + (dir === 1 ? angle : 180 - angle) + 'deg)';
+      var i = document.createElement('i');
+      var dur = 0.7 + Math.random() * 0.6;
+      i.style.setProperty('--len', (90 + Math.random() * 70).toFixed(0) + 'px');
+      i.style.setProperty('--dist', (240 + Math.random() * 320).toFixed(0) + 'px');
+      i.style.setProperty('--dur', dur.toFixed(2) + 's');
+      s.appendChild(i);
+      sky.appendChild(s);
+      i.addEventListener('animationend', function () { s.remove(); });
+      setTimeout(function () { s.remove(); }, dur * 1000 + 400); // backstop if the animation was nuked
+    }
+    function cycle(first) {
+      var delay = first ? 4000 + Math.random() * 5000 : 9000 + Math.random() * 13000;
+      setTimeout(function () {
+        if (!document.hidden && !reduceQ.matches) {
+          spawn();
+          if (Math.random() < 0.3) setTimeout(spawn, 250 + Math.random() * 500);
+        }
+        cycle(false);
+      }, delay);
+    }
+    cycle(true);
+  })();
 
   // Email click-to-copy: a desktop plain-click convenience only. Touch and
   // modified clicks keep the native mailto contract; feedback lives in the
