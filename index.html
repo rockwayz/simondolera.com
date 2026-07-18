@@ -372,6 +372,10 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.21"><textPath href="#gp-spiral" startOffset="21965">#check @assurance_bound</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.21"><textPath href="#gp-spiral" startOffset="22050">invariant 0 &lt;= confidence &lt;= evidence</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.21"><textPath href="#gp-spiral" startOffset="22179">(define-fun assurance ((claim Bool) (proof Bool)) Bool (and claim proof)) ; confidence without proof does not typecheck here</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.5"><textPath href="#gp-spiral" startOffset="22580">Corollary risk_bounded : ∀ x, verified x → risk x ≤ ε. Proof. intros; apply assurance_bound; assumption. Qed.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.5"><textPath href="#gp-spiral" startOffset="22942">(assert (forall ((s State)) (=&gt; (reachable s) (or (safe s) (flagged s)))))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.5"><textPath href="#gp-spiral" startOffset="23195">predicate AuditSurvivesReplay(t: Trace) { forall step :: step in t ==&gt; Justified(step) &amp;&amp; Replayable(step) }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.5"><textPath href="#gp-spiral" startOffset="23554">THEOREM Impl =&gt; Spec \* refinement: the mapping is exhibited, not assumed</textPath></text>
   </svg>
   </div>
 
@@ -515,13 +519,19 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   var card = document.querySelector('.card');
   function updateClearZone() {
     var rc = card.getBoundingClientRect();
-    // protect the actual content extent, not the card's max-width box
-    var maxW = 0;
+    // protect the text block only (name -> links); the mark is a bold drawing
+    // and reads fine over the faint field
+    var maxW = 0, top = Infinity, bottom = -Infinity;
     for (var i = 0; i < card.children.length; i++) {
-      maxW = Math.max(maxW, card.children[i].getBoundingClientRect().width);
+      var ch = card.children[i];
+      if (ch.classList.contains('mark')) continue;
+      var r = ch.getBoundingClientRect();
+      maxW = Math.max(maxW, r.width);
+      top = Math.min(top, r.top);
+      bottom = Math.max(bottom, r.bottom);
     }
-    var cx = rc.left + maxW / 2, cy = rc.top + rc.height / 2;
-    var rx = maxW / 2 + 120, ry = rc.height / 2 + 120;
+    var cx = rc.left + maxW / 2, cy = (top + bottom) / 2;
+    var rx = maxW / 2 + 120, ry = (bottom - top) / 2 + 120;
     var g = 'radial-gradient(ellipse ' + rx.toFixed(0) + 'px ' + ry.toFixed(0) + 'px at ' + cx.toFixed(0) + 'px ' + cy.toFixed(0) + 'px, transparent 0%, transparent 85%, rgba(0,0,0,0.8) 95%, #000 100%)';
     ghostWrap.style.webkitMaskImage = g;
     ghostWrap.style.maskImage = g;
