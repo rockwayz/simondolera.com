@@ -291,91 +291,91 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.53"><textPath href="#gp-spiral" startOffset="2536">∎ QED — what is proven stays proven; what is assumed stays labeled; what is unknown stays bounded — simondolera.com</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.53"><textPath href="#gp-spiral" startOffset="2907">(assert (≤ risk ε))</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.53"><textPath href="#gp-spiral" startOffset="2980">#[kani::proof] fn overflow_free() { let x: u32 = kani::any(); kani::assume(x &lt;= BOUND); assert!(x.checked_add(DELTA).is_some()); }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.52"><textPath href="#gp-spiral" startOffset="3397">theorem audit_survives : ∀ t, holds_at t claim → holds_at (t+1) claim</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.52"><textPath href="#gp-spiral" startOffset="4015">def Verdict.honest : Verdict → Prop | .certified p =&gt; Sound p | _ =&gt; True</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="4925">axiom no_free_assurance : ¬ ∃ (p : Proof), cost p = 0 ∧ sound p -- every guarantee is earned, not asserted</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="5640">theorem bounded_of_verified : ∀ x ∈ audit_log, risk x ≤ ε + δ</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="6085">(get-value (risk_bound)) ; interrogate the model, not the vibes</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.50"><textPath href="#gp-spiral" startOffset="6899">structure Certificate where (claim : Prop) (evidence : claim) (ε : ℝ)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.50"><textPath href="#gp-spiral" startOffset="7527">(push 1) (assert (not invariant)) (check-sat) (pop 1) ; unsat is the certificate, sat hands you the counterexample</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.49"><textPath href="#gp-spiral" startOffset="8623">Theorem replay_deterministic : ∀ l l', ledger_ok l → ledger_ok l' → tip l = tip l' → l = l'. Proof. induction l; destruct l'; auto. Qed.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.49"><textPath href="#gp-spiral" startOffset="9384">// invariant: no capability is minted without a checker-verified proof; confidence alone admits nothing</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="10055">theorem risk_antitone : ∀ x y, evidence x ≤ evidence y → risk y ≤ risk x := by intro x y h; exact bound_of_evidence h</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="10878">lemma proof_runs_out : ¬ ∀ (s : System), Decidable (safe s) := by exact halting_reduction</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.47"><textPath href="#gp-spiral" startOffset="11699">impl Audit for Verifier { fn admit(&amp;self, c: Claim) -&gt; Verdict } // prove-or-clean-stop</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="12438">(assert (not (exists ((x Real)) (and (certified x) (&gt; (risk x) delta)))))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="13091">theorem no_overclaim (s : System) (h : sound s) : ∀ c, s.asserts c → Provable c ∨ s.flags_uncertain c := fun c hc =&gt; audit_split s h c hc</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="13886">#[ensures(forall(|i: usize| i &lt; out.len() ==&gt; out[i].audited))]</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="14529">decreases risk, gap; // audit terminates</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="15405">inductive Verdict | certified (p : Proof) | bounded (b : Bound) | clean_stop -- three honest answers, nothing in between</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.44"><textPath href="#gp-spiral" startOffset="16411">method Audit(log: seq&lt;Event&gt;) returns (v: Verdict) ensures v.Certified? ==&gt; Sound(log)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="17247">fn admit(claim: Claim) -&gt; Result&lt;Sealed&lt;Fact&gt;, Unsound&gt; { verify(&amp;claim.witness).map(|p| Sealed::mint(claim, p)) }</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="17869">assert!(audit.survives(replay));</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="18363">lemma AuditSurvives(t: Trace) requires Complete(t) ensures Replay(t) == Verdict(t)</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="18991">(assert (=&gt; verified (&lt;= risk eps)))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="19557">fn main() { let audit = Auditor::new(policy); std::process::exit(audit.run(system).code()) } // exit code is the verdict</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="20374">(define-fun honest ((c Real) (b Real)) Bool (and (&lt;= c b) (&gt;= b 0.0)))</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="20937">debug_assert!(claims.iter().all(|c| c.witness.is_some()), "unwitnessed claim");</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.40"><textPath href="#gp-spiral" startOffset="21965">#check @assurance_bound</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-spiral" startOffset="22580">Corollary risk_bounded : ∀ x, verified x → risk x ≤ ε. Proof. intros; apply assurance_bound; assumption. Qed.</textPath></text>
+    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-spiral" startOffset="23554">THEOREM Impl =&gt; Spec \* refinement: the mapping is exhibited, not assumed</textPath></text>
   </svg>
   <!-- outer spiral: never mutated — rasterizes once, rotates on the compositor -->
   <svg viewBox="-75 -75 350 350" aria-hidden="true" class="ghost aura" text-rendering="optimizeSpeed">
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.52"><textPath href="#gp-spiral" startOffset="3397">theorem audit_survives : ∀ t, holds_at t claim → holds_at (t+1) claim</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.52"><textPath href="#gp-spiral" startOffset="3625">requires no_hidden_assumptions(env) ensures result.risk &lt;= epsilon</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.52"><textPath href="#gp-spiral" startOffset="3843">Proof. induction trace; destruct verdict; lia. Qed.</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.52"><textPath href="#gp-spiral" startOffset="4015">def Verdict.honest : Verdict → Prop | .certified p =&gt; Sound p | _ =&gt; True</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.52"><textPath href="#gp-spiral" startOffset="4256">theorem no_false_assurance : ∀ v, admits v → certified v := by exact audit_sound -- verified end-to-end</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.52"><textPath href="#gp-spiral" startOffset="4589">def assurance (S : System) : Prop := ∀ c ∈ S.claims, proved c ∨ bounded c -- soundness before persuasion</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="4925">axiom no_free_assurance : ¬ ∃ (p : Proof), cost p = 0 ∧ sound p -- every guarantee is earned, not asserted</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="5268">CheckedByTLC == \A s \in reachable : Inv(s) \* 2^47 states, zero faith</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="5499">#[kani::proof] fn no_silent_overflow() {}</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="5640">theorem bounded_of_verified : ∀ x ∈ audit_log, risk x ≤ ε + δ</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="5843">(check-sat-assuming (audit_passed))</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="5966">(assert (distinct proven assumed))</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="6085">(get-value (risk_bound)) ; interrogate the model, not the vibes</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.51"><textPath href="#gp-spiral" startOffset="6294">fn certify(e: Evidence) -&gt; Result&lt;Sealed&lt;Claim&gt;, CleanStop&gt; { gate.check(e) }</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.50"><textPath href="#gp-spiral" startOffset="6547">THEOREM Assurance == Spec =&gt; [](\A claim \in asserted : proven(claim) \/ bounded(claim) \/ clean_stop(claim))</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.50"><textPath href="#gp-spiral" startOffset="6899">structure Certificate where (claim : Prop) (evidence : claim) (ε : ℝ)</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.50"><textPath href="#gp-spiral" startOffset="7127">THEOREM Spec =&gt; [](confidence &lt;= evidence)</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.50"><textPath href="#gp-spiral" startOffset="7271">theorem clean_stop_sound : ¬ decidable_here q → verdict q = Verdict.clean_stop</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.50"><textPath href="#gp-spiral" startOffset="7527">(push 1) (assert (not invariant)) (check-sat) (pop 1) ; unsat is the certificate, sat hands you the counterexample</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.50"><textPath href="#gp-spiral" startOffset="7894">Corollary risk_bounded : ∀ x, verified x → risk x ≤ ε. Proof. intros; apply assurance_bound; assumption. Qed.</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.49"><textPath href="#gp-spiral" startOffset="8246">assert forall i :: 0 &lt;= i &lt; |ledger| ==&gt; ledger[i].hash == Blake3(ledger[i].prev, ledger[i].claim); // tamper-evident</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.49"><textPath href="#gp-spiral" startOffset="8623">Theorem replay_deterministic : ∀ l l', ledger_ok l → ledger_ok l' → tip l = tip l' → l = l'. Proof. induction l; destruct l'; auto. Qed.</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.49"><textPath href="#gp-spiral" startOffset="9058">assert Verified(x) ==&gt; Bounded(x);</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.49"><textPath href="#gp-spiral" startOffset="9178">Safe == [](\A t \in transitions : Verified(t) \/ CleanStop(t))</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.49"><textPath href="#gp-spiral" startOffset="9384">// invariant: no capability is minted without a checker-verified proof; confidence alone admits nothing</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="9717">quickcheck(prop_verdict_never_overclaims); // 10_000 cases, 0 counterexamples</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="9970">(check-sat) (get-model)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="10055">theorem risk_antitone : ∀ x y, evidence x ≤ evidence y → risk y ≤ risk x := by intro x y h; exact bound_of_evidence h</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="10432">(get-unsat-core) ; the audit that survives</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="10576">(set-logic QF_UFLRA) (set-option :produce-unsat-cores true) (set-option :produce-proofs true)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.48"><textPath href="#gp-spiral" startOffset="10878">lemma proof_runs_out : ¬ ∀ (s : System), Decidable (safe s) := by exact halting_reduction</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.47"><textPath href="#gp-spiral" startOffset="11168">#[test] fn audit_survives() { assert!(system.verify_all().is_sound()) } // passes and survives</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.47"><textPath href="#gp-spiral" startOffset="11474">Lemma clean_stop_sound : ∀ P, ¬ decidable P → verdict P = CleanStop.</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.47"><textPath href="#gp-spiral" startOffset="11699">impl Audit for Verifier { fn admit(&amp;self, c: Claim) -&gt; Verdict } // prove-or-clean-stop</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.47"><textPath href="#gp-spiral" startOffset="11982">predicate AuditSurvivesReplay(t: Trace) { forall step :: step in t ==&gt; Justified(step) &amp;&amp; Replayable(step) }</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.47"><textPath href="#gp-spiral" startOffset="12331">#[requires(bound.is_finite())]</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="12438">(assert (not (exists ((x Real)) (and (certified x) (&gt; (risk x) delta)))))</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="12678">def residual_risk (x : Claim) : ℝ := 1 - assurance x</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="12854">Print Assumptions assurance_bound. (* Closed under the global context *)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="13091">theorem no_overclaim (s : System) (h : sound s) : ∀ c, s.asserts c → Provable c ∨ s.flags_uncertain c := fun c hc =&gt; audit_split s h c hc</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="13530">#eval audit_log.all fun e =&gt; e.checked</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="13661">(assert (forall ((x Real)) (=&gt; (verified x) (&lt;= (risk x) epsilon))))</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.46"><textPath href="#gp-spiral" startOffset="13886">#[ensures(forall(|i: usize| i &lt; out.len() ==&gt; out[i].audited))]</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="14095">Theorem belief_not_proof : ∃ c P, believes c P ∧ ¬ P.</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="14274">forAll(arbitrary[Claim]) { c =&gt; verify(c).isBounded || verify(c).isCleanStop }</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="14529">decreases risk, gap; // audit terminates</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="14667">structure Evidence where claim : Claim proof : Proof bound : ℝ deriving Repr -- evidence over eloquence</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="15001">theorem honesty : ∀ (c : Claim), (∃ p, Proof p c) ∨ (∃ b, Bound b c) ∨ verdict c = Verdict.clean_stop := by exact trichotomy c</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.45"><textPath href="#gp-spiral" startOffset="15405">inductive Verdict | certified (p : Proof) | bounded (b : Bound) | clean_stop -- three honest answers, nothing in between</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.44"><textPath href="#gp-spiral" startOffset="15791">(set-logic QF_LIA) (assert (&lt;= risk bound)) (check-sat) (get-unsat-core)</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.44"><textPath href="#gp-spiral" startOffset="16029">(assert (forall ((s State)) (=&gt; (reachable s) (or (safe s) (flagged s))))) ; every reachable state answers to the audit</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.44"><textPath href="#gp-spiral" startOffset="16411">method Audit(log: seq&lt;Event&gt;) returns (v: Verdict) ensures v.Certified? ==&gt; Sound(log)</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.44"><textPath href="#gp-spiral" startOffset="16692">THEOREM Impl =&gt; Spec \* refinement: the audit survives because the mapping is exhibited, not assumed</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="17016">Inductive Assurance := Proven (p : Proof) | Bounded (b : ℝ) | Unknown.</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="17247">fn admit(claim: Claim) -&gt; Result&lt;Sealed&lt;Fact&gt;, Unsound&gt; { verify(&amp;claim.witness).map(|p| Sealed::mint(claim, p)) }</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="17614">theorem consistency : ¬ ∃ p, proves p ⊥</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="17749">#check (sound : Verified → Honest)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="17869">assert!(audit.survives(replay));</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="17982">let verdict: Result&lt;Proof, CleanStop&gt;;</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="18114">#[ensures(result.risk() &lt;= EPSILON || matches!(result, Verdict::CleanStop))]</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.43"><textPath href="#gp-spiral" startOffset="18363">lemma AuditSurvives(t: Trace) requires Complete(t) ensures Replay(t) == Verdict(t)</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="18632">Lemma audit_survives_replay : ∀ w, wf w → audit w = audit (replay w).</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="18860">assert Sound(gate) &amp;&amp; !Complete(gate);</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="18991">(assert (=&gt; verified (&lt;= risk eps)))</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="19117">Fairness == WF_vars(Verify) /\ SF_vars(Disclose) \* no claim starves</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="19342">Audit == INSTANCE Ledger WITH entries &lt;- history, tamper &lt;- FALSE</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="19557">fn main() { let audit = Auditor::new(policy); std::process::exit(audit.run(system).code()) } // exit code is the verdict</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.42"><textPath href="#gp-spiral" startOffset="19943">Lemma no_overclaim : claimed ≤ proven.</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="20075">Theorem no_certificate_without_witness : ∀ c, certified c → ∃ p : Proof, checker p c = true.</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="20374">(define-fun honest ((c Real) (b Real)) Bool (and (&lt;= c b) (&gt;= b 0.0)))</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="20605">theorem assurance_bound : ∀ x, verified x → risk x ≤ ε</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="20787">THEOREM Spec =&gt; []Inv \* proved, not sampled</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="20937">debug_assert!(claims.iter().all(|c| c.witness.is_some()), "unwitnessed claim");</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.41"><textPath href="#gp-spiral" startOffset="21196">(define-fun residual_risk () Real (- claimed proven)) (assert (= residual_risk 0.0)) (check-sat) ; unsat means honest</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.40"><textPath href="#gp-spiral" startOffset="21573">method Certify(evidence: set&lt;Fact&gt;) returns (v: Verdict) ensures v.Certified? ==&gt; forall f :: f in evidence ==&gt; Checked(f)</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.40"><textPath href="#gp-spiral" startOffset="21965">#check @assurance_bound</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.40"><textPath href="#gp-spiral" startOffset="22050">invariant 0 &lt;= confidence &lt;= evidence</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.40"><textPath href="#gp-spiral" startOffset="22179">(define-fun assurance ((claim Bool) (proof Bool)) Bool (and claim proof)) ; confidence without proof does not typecheck here</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-spiral" startOffset="22580">Corollary risk_bounded : ∀ x, verified x → risk x ≤ ε. Proof. intros; apply assurance_bound; assumption. Qed.</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-spiral" startOffset="22942">(assert (forall ((s State)) (=&gt; (reachable s) (or (safe s) (flagged s)))))</textPath></text>
     <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-spiral" startOffset="23195">predicate AuditSurvivesReplay(t: Trace) { forall step :: step in t ==&gt; Justified(step) &amp;&amp; Replayable(step) }</textPath></text>
-    <text font-size="4.5" fill="#A8A199" letter-spacing="0.4" opacity="0.55"><textPath href="#gp-spiral" startOffset="23554">THEOREM Impl =&gt; Spec \* refinement: the mapping is exhibited, not assumed</textPath></text>
   </svg>
   </div>
 
@@ -617,88 +617,95 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
     }, function () { window.location.href = 'mailto:simon@simondolera.com'; });
   });
 
-  // ---- ambient scramble: original ghost only — the lit clone stays pristine ----
+  // ---- glitch wave: a front launches at the spiral's eye and travels the coil;
+  //      segments it crosses become same-length multi-language junk, then decode
+  //      back to the real theorems in its wake ----
   if (reduceQ.matches || !fineQ.matches) return;
-  var pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789∀∃εδℝ≤→{}()[]<>=+-*/;:#?!';
-  var nodes = Array.prototype.map.call(ghostWrap.querySelectorAll('.ghost.core textPath[href^="#gp-"]'), function (el) {
-    return { el: el, original: el.textContent, dirty: false };
-  });
-  // Grey speaks in three brightnesses; the orange accent never enters the background.
-  var colors = ['#C6BFB5', '#A8A199', '#A8A199', '#8F887F'];
-  function esc(c) { return c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c; }
-  // Touch only a small rotating slice per tick; tspans only for changed glyphs.
-  var cursor = 0;
-  var SLICE = 2;
-  function pick() {
-    var out = [];
-    for (var k = 0; k < SLICE; k++) out.push(nodes[(cursor + k) % nodes.length]);
-    cursor = (cursor + SLICE) % nodes.length;
-    return out;
-  }
-  function scrambleNode(n) {
+  var TOKENS = ['null', 'void', 'let ', 'fn ', 'def ', '=>', '::', '&&', '||', '!=', '===', '0x1F', '404', 'if(', 'else', 'for(', 'while', 'int ', 'bool', 'char', 'try{', 'catch', 'async', 'await', 'yield', '$var', '%s', '#include', 'import ', 'pub ', 'class ', 'struct', 'enum ', 'match', 'SELECT', 'FROM ', 'WHERE', 'printf', 'cout<<', 'NaN', 'true', 'false', 'nil', 'undef', 'lambda', 'elif', 'done;', 'sudo ', 'grep ', '[]', '{}', '();', '</>', '|>', '<-', '->', ':=', '+=', '0b1010', '3.14', '42;', '&mut ', '*ptr', 'sizeof', 'goto ', 'raise', 'assert', 'panic!', 'throw ', '1e-9', 'u64', 'f32', 'regex', 'xor ', 'mod ', 'print(', 'ret ', 'var ', 'new ', 'del ', 'not ', 'and ', 'or ', '!==', '++;', '--;', '::<>', '__init__', 'self.', 'this.', '??'];
+  var FILL = '0123456789+-*/=<>(){}[];:_#!&|.$';
+  function codeJunk(len) {
     var out = '';
-    for (var i = 0; i < n.original.length; i++) {
-      var c = n.original[i];
-      if (c !== ' ' && Math.random() < 0.1) {
-        out += '<tspan fill="' + colors[(Math.random() * colors.length) | 0] + '">' +
-          esc(pool[(Math.random() * pool.length) | 0]) + '</tspan>';
-      } else {
-        out += esc(c);
-      }
+    while (out.length < len) {
+      out += (Math.random() < 0.72 ? TOKENS[(Math.random() * TOKENS.length) | 0] : FILL[(Math.random() * FILL.length) | 0]) + (Math.random() < 0.35 ? ' ' : '');
     }
-    n.el.innerHTML = out;
+    return out.slice(0, len);
+  }
+  var colors = ['#C6BFB5', '#A8A199', '#A8A199', '#8F887F'];
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  var nodes = Array.prototype.map.call(ghostWrap.querySelectorAll('.ghost.core textPath[href^="#gp-"]'), function (el) {
+    var fs = parseFloat(el.parentNode.getAttribute('font-size')) || 4.5;
+    var start = parseFloat(el.getAttribute('startOffset')) || 0;
+    return { el: el, original: el.textContent, dirty: false, resolving: false,
+             start: start, end: start + el.textContent.length * (0.6 * fs + 0.4) };
+  });
+  var SPIRAL_LEN = 24500;
+  var BAND = 2600; // width of the glitching front, in path units
+  function junkNode(n) {
+    n.el.innerHTML = '<tspan fill="' + colors[(Math.random() * colors.length) | 0] + '">' + esc(codeJunk(n.original.length)) + '</tspan>';
     n.dirty = true;
   }
-  // Spin→idle resolves like a decoder settling: five steps back to the truth.
   function resolveNode(n, step) {
-    if (mode !== 'idle') return; // spin re-entered — leave dirty, next idle re-heals
-    if (step >= 4) { n.el.textContent = n.original; n.dirty = false; return; }
+    if (step >= 3) { n.el.textContent = n.original; n.dirty = false; n.resolving = false; return; }
+    var junk = codeJunk(n.original.length);
     var out = '';
     for (var i = 0; i < n.original.length; i++) {
-      var c = n.original[i];
-      if (c !== ' ' && Math.random() > (step + 1) / 4) {
-        out += '<tspan fill="' + colors[(Math.random() * colors.length) | 0] + '">' +
-          esc(pool[(Math.random() * pool.length) | 0]) + '</tspan>';
-      } else {
-        out += esc(c);
-      }
+      out += Math.random() < (step + 1) / 3 ? esc(n.original[i]) : esc(junk[i]);
     }
-    n.el.innerHTML = out;
-    setTimeout(function () { resolveNode(n, step + 1); }, 50);
+    n.el.innerHTML = '<tspan fill="' + colors[(Math.random() * colors.length) | 0] + '">' + out + '</tspan>';
+    setTimeout(function () { resolveNode(n, step + 1); }, 60);
   }
-  var lastTick = 0;
-  var mode = 'idle';
+  function startResolve(n) {
+    if (n.resolving) return;
+    n.resolving = true;
+    resolveNode(n, 0);
+  }
+  var mode = 'idle', wavePos = -1, lastNow = 0, lastMut = 0;
   function loop(now) {
-    if (document.hidden) { lastTick = now; schedule(); return; }
+    if (document.hidden) { lastNow = now; schedule(); return; }
     var v = speed.v;
     // Hysteresis: enter spin fast, leave slow — no mode flapping near a threshold.
     var newMode = mode === 'spin' ? (v < 0.3 ? 'idle' : 'spin') : (v > 0.9 ? 'spin' : 'idle');
     if (newMode !== mode) {
       mode = newMode;
-      if (mode === 'idle') {
-        var i = 0;
-        nodes.forEach(function (n) {
-          if (n.dirty) setTimeout(function () { resolveNode(n, 0); }, (i++) * 30);
-        });
-        // hard guarantee: whatever the resolve race left behind, idle text is truth
+      if (mode === 'spin' && wavePos < 0) { wavePos = 0; lastNow = now; }
+      if (mode === 'idle' && wavePos >= 0) {
+        wavePos = -1; // cursor settled — kill the wave and heal everything now
+        nodes.forEach(function (n) { if (n.dirty) startResolve(n); });
         setTimeout(function () {
-          if (mode !== 'idle') return;
+          if (wavePos >= 0) return;
           nodes.forEach(function (n) {
-            if (n.dirty) { n.el.textContent = n.original; n.dirty = false; }
+            if (n.dirty && !n.resolving) { n.el.textContent = n.original; n.dirty = false; }
           });
-        }, 1200);
+        }, 900);
       }
-      lastTick = now;
     }
-    if (mode === 'spin') {
-      var interval = Math.max(380, 700 - v * 30);
-      if (now - lastTick >= interval) { lastTick = now; pick().forEach(scrambleNode); }
+    var dt = Math.min(now - lastNow, 300);
+    lastNow = now;
+    if (wavePos >= 0) {
+      wavePos += 7 * dt; // ~3.5s for a full sweep of the coil
+      var head = wavePos, tail = wavePos - BAND;
+      if (now - lastMut >= 200) {
+        lastMut = now;
+        nodes.forEach(function (n) {
+          if (n.start < head && n.end > tail) junkNode(n);
+          else if (n.dirty && n.end <= tail) startResolve(n);
+        });
+      }
+      if (tail > SPIRAL_LEN) {
+        wavePos = mode === 'spin' ? 0 : -1; // chain waves while the cursor stays fast
+        nodes.forEach(function (n) { if (n.dirty) startResolve(n); });
+        setTimeout(function () {
+          if (wavePos >= 0) return;
+          nodes.forEach(function (n) {
+            if (n.dirty && !n.resolving) { n.el.textContent = n.original; n.dirty = false; }
+          });
+        }, 900);
+      }
     }
     schedule();
   }
   function schedule() {
-    // Idle needs only ~4Hz to catch the spin threshold; spin runs on frames.
-    if (mode === 'idle') setTimeout(function () { requestAnimationFrame(loop); }, 250);
+    if (mode === 'idle' && wavePos < 0) setTimeout(function () { requestAnimationFrame(loop); }, 250);
     else requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
