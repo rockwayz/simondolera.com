@@ -456,7 +456,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
       litWrap.className = 'ghost-wrap';
       litWrap.style.maskImage = 'none';
       litWrap.style.webkitMaskImage = 'none';
-      ghostWrap.querySelectorAll('.ghost.core').forEach(function (g) {
+      ghostWrap.querySelectorAll('.ghost').forEach(function (g) {
         var c = g.cloneNode(true);
         var defs = c.querySelector('defs');
         if (defs) defs.remove(); // textPath hrefs resolve to the originals' defs
