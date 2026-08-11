@@ -38,7 +38,7 @@
   "description": "Independent researcher working on formal verification and AI assurance.",
   "url": "https://simondolera.com/",
   "image": "https://simondolera.com/og.png",
-  "email": "mailto:simon@simondolera.com",
+  "email": "mailto:simon@zafetra.com",
   "worksFor": {
     "@type": "Organization",
     "name": "DEA Research & Development"
@@ -281,7 +281,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   .mark [stroke='#040404'] { stroke: #fff; }
   .mark .tri { fill: #b35c10; }
   nav a[href^='http']::after { content: ' (' attr(href) ')'; text-transform: none; letter-spacing: 0; font-size: 10px; }
-  nav a.email::after { content: ' (simon@simondolera.com)'; text-transform: none; letter-spacing: 0; font-size: 10px; }
+  nav a.email::after { content: ' (simon@zafetra.com)'; text-transform: none; letter-spacing: 0; font-size: 10px; }
 }
 @media (max-width: 640px) and (max-height: 760px) {
   main { padding: 20px; }
@@ -444,7 +444,7 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
           <span>LinkedIn</span>
           <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 9.5 L9.5 2.5"></path><path d="M4 2.5 H9.5 V8"></path></svg>
         </a>
-        <a class="email" href="mailto:simon@simondolera.com" title="simon@simondolera.com">
+        <a class="email" href="mailto:simon@zafetra.com" title="simon@zafetra.com">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1"></rect><path d="M1.5 4.5 8 9 14.5 4.5"></path></svg>
           <span>Email</span>
         </a>
@@ -632,14 +632,14 @@ nav a.email span { text-decoration-color: rgba(234, 126, 35, 0.45); display: inl
   emailA.addEventListener('click', function (e) {
     if (!navigator.clipboard || !fineQ.matches || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
-    navigator.clipboard.writeText('simon@simondolera.com').then(function () {
-      if (addrLine) addrLine.textContent = 'simon@simondolera.com — copied';
+    navigator.clipboard.writeText('simon@zafetra.com').then(function () {
+      if (addrLine) addrLine.textContent = 'simon@zafetra.com — copied';
       if (copyStatus) copyStatus.textContent = 'Email address copied';
       setTimeout(function () {
         if (addrLine) addrLine.textContent = '';
         if (copyStatus) copyStatus.textContent = '';
       }, 2500);
-    }, function () { window.location.href = 'mailto:simon@simondolera.com'; });
+    }, function () { window.location.href = 'mailto:simon@zafetra.com'; });
   });
 
   // ---- glitch wave: a front launches at the spiral's eye and travels the coil;
