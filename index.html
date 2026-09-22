@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<!-- CSP, hashed, no 'unsafe-inline'. Regenerate with: python3 tools/make-csp.py --write
+     (the build fails loudly if a hash goes stale). frame-ancestors and HSTS cannot
+     be set from a meta tag; they need response headers GitHub Pages does not send. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-hnemMXD5vgoJSMPkHzZL93NccAxEpaJSiytzDz9X/NQ=' 'sha256-7RYwoXkQCYNP41X+0e0fMY9Sa6pZotmJ1uK2iMHp7xg=' 'sha256-tTQHAWeWVcGb5NFYjd31HaNkX/BlAeIEMoWjpEmITHI='; style-src 'sha256-l0m3bDscNsaLo895kFrUMbvS4pVBoFnmQPQbT+AR/bs=' 'sha256-16Who9c3vaW+kFO8hRf0hiysEjQ5jZKPGJk/iYHkuyg='; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#040404">
 <meta name="color-scheme" content="dark">
@@ -92,7 +97,8 @@
 }
 </script>
 <script>/* entrance choreography plays once per session — revisits paint instantly */
-try { if (sessionStorage.getItem('sd-seen')) document.documentElement.classList.add('revisit'); else sessionStorage.setItem('sd-seen', '1'); } catch (e) {}</script>
+try { if (sessionStorage.getItem('sd-seen')) document.documentElement.classList.add('revisit'); else sessionStorage.setItem('sd-seen', '1'); } catch (e) {}
+</script>
 <link rel="preload" href="assets/asset-02.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/asset-08.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/asset-14.woff2" as="font" type="font/woff2" crossorigin>
